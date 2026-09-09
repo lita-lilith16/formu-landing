@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formu (포뮤) — 모두의 창업 2기 심사용 공식 피치덱 (11장)</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <style>
+    :root {
+      --font-main: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --color-primary: #3182F6;
+      --color-primary-hover: #1B64DA;
+      --color-primary-subtle: #EBF4FF;
+      --color-primary-text: #1967D2;
+      --color-green: #03C75A;
+      --color-green-subtle: #ECFDF3;
+      --color-danger: #D92D20;
+      --color-danger-subtle: #FEF3F2;
+      --bg-canvas: #0F172A;
+      --bg-slide: #FFFFFF;
+      --bg-subtle: #F8F9FA;
+      --border-color: #E5E8EB;
+      --text-primary: #191F28;
+      --text-secondary: #4E5968;
+      --text-muted: #8B95A1;
+      --slide-width: 1280px;
+      --slide-height: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      max-width: var(--slide-width);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94A3B8;
+      font-size: 14px;
+      padding: 0 8px;
+    }
+    .top-bar strong { color: #FFFFFF; }
+    .btn-print {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .btn-print:hover { background: var(--color-primary-hover); }
+
+    /* Slide Base (16:9) */
+    .slide-page {
+      width: var(--slide-width);
+      height: var(--slide-height);
+      background: var(--bg-slide);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 48px 56px;
+      page-break-after: always;
+    }
+
+    /* Slide Header */
+    .slide-tag {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .slide-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    /* Slide Footnote */
+    .slide-footnote {
+      position: absolute;
+      bottom: 24px;
+      left: 56px;
+      right: 56px;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid #F2F4F6;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Badges & Pills */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .pill-blue { background: var(--color-primary-subtle); color: var(--color-primary-text); }
+    .pill-green { background: var(--color-green-subtle); color: #027A48; }
+    .pill-red { background: var(--color-danger-subtle); color: var(--color-danger); }
+
+    /* Slide 1: Cover */
+    .cover-layout {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .cover-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cover-brand-title {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--color-primary);
+    }
+    .cover-headline {
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    .cover-sub {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+    .cover-footer-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cover-footer-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .cover-footer-meta strong {
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    /* Grids & Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card-clean {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+    .card-clean.accent-top-blue { border-top: 4px solid var(--color-primary); }
+    .card-clean.accent-top-green { border-top: 4px solid var(--color-green); }
+    .card-clean.accent-top-red { border-top: 4px solid var(--color-danger); }
+    .card-clean.filled { background: var(--bg-subtle); border-color: transparent; }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .card-body-text {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Big Numbers */
+    .stat-hero-num {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-hero-num.blue { color: var(--color-primary); }
+    .stat-hero-num.green { color: var(--color-green); }
+
+    /* Comparison Table in Slide 6 */
+    .clean-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .clean-table th {
+      background: #F1F5F9;
+      padding: 14px 18px;
+      font-weight: 800;
+      text-align: left;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .clean-table th.th-formu {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-text);
+      border-left: 2px solid var(--color-primary);
+    }
+    .clean-table td {
+      padding: 13px 18px;
+      border-bottom: 1px solid #F1F5F9;
+      color: var(--text-secondary);
+    }
+    .clean-table td.td-formu {
+      background: rgba(49, 130, 246, 0.03);
+      color: var(--text-primary);
+      font-weight: 700;
+      border-left: 2px solid var(--color-primary);
+    }
+    .clean-table tr:last-child td { border-bottom: none; }
+
+    /* Print Styles */
+    @media print {
+      body {
+        padding: 0;
+        background: transparent;
+        gap: 0;
+      }
+      .top-bar { display: none; }
+      .slide-page {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div><strong>Formu (포뮤)</strong> — 모두의 창업 2기 피치덱 (16:9 슬라이드 11장)</div>
+    <button class="btn-print" onclick="window.print()">🖨️ PDF 인쇄 / 다운로드</button>
+  </div>
+
+  <!-- SLIDE 1: 표지 -->
+  <section class="slide-page">
+    <div class="cover-layout">
+      <div>
+        <div class="cover-brand">
+          <svg width="34" height="34" viewBox="0 0 32 32" style="border-radius: 7px;">
+            <rect width="32" height="32" rx="7" fill="#3182F6" />
+            <rect x="4.5" y="9.5" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
+            <rect x="10" y="9.5" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
+            <rect x="4.5" y="15" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
+            <rect x="10" y="15" width="4.5" height="4.5" rx="1" fill="#03C75A" />
+            <rect x="4.5" y="21" width="10" height="2" rx="1" fill="#A5C7F9" />
+            <path d="M16 16.5 H19.5 M18 14.5 L20 16.5 L18 18.5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="23.5" y="8" width="3" height="3" rx="0.8" fill="#A5C7F9" />
+            <path d="M22.5 12 H27.5 C28.5 12 29 12.8 29 13.8 L28.5 21.5 C28.5 22.8 27.5 23.5 26.5 23.5 H23.5 C22.5 23.5 21.5 22.8 21.5 21.5 L21 13.8 C21 12.8 21.5 12 22.5 12 Z" fill="#FFFFFF" />
+          </svg>
+          <span class="cover-brand-title">Formu</span>
+          <span class="pill pill-blue">B2B RegTech OS</span>
+        </div>
+
+        <h1 class="cover-headline">
+          “배합표 한 장을,<br />
+          출시 가능한 제품으로.”
+        </h1>
+
+        <p class="cover-sub">
+          1인 디퓨저·방향제 브랜드가 배합표만으로 식약처 라벨과 환경부 CHEMP 신고 입력값을 셀프 점검하는 규제 자동화 SaaS
+        </p>
+      </div>
+
+      <div class="cover-footer-box">
+        <div class="cover-footer-meta">
+          <strong>모두의 창업 2기 사업계획서</strong><br />
+          지원 분야: 일반 / 기술 분야 · 트랙: 예비창업자 (1인 체제)
+        </div>
+        <div>
+          <span class="pill pill-green">MVP 라이브 가동 중</span>
+          <span style="font-size: 12px; color: var(--text-muted); margin-left: 8px;">formu-landing.onrender.com</span>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footnote">
+      <span>Formu · 1인 브랜드의 규제 출시 소프트웨어</span>
+      <span>01 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: 문제 인식 (Problem) -->
+  <section class="slide-page">
+    <div class="slide-tag">01. Problem · 문제 인식</div>
+    <h2 class="slide-title">소수점 하나 틀려 단상자 3,000장 전량 폐기하기 전에.</h2>
+
+    <div class="grid-3" style="flex: 1;">
+      <div class="card-clean accent-top-red">
+        <div class="pill pill-red" style="margin-bottom: 12px; width: fit-content;">접점 분산</div>
+        <h3 class="card-title">6~7개 분산 접점의 피로</h3>
+        <p class="card-body-text">
+          디퓨저 하나를 출시하려면 시험기관 검사 → 성분 배합표 정리 → 환경부 CHEMP 신고 → 라벨 작성 → 단상자 인쇄까지 6~7곳의 분산된 접점을 1인이 모두 감당해야 함.<br /><br />
+          평균 소요 기간만 <strong>약 2개월(40~60시간)</strong>이 소요되어 창작자가 본업에 집중하지 못함.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-red">
+        <div class="pill pill-red" style="margin-bottom: 12px; width: fit-content;">폐기 공포</div>
+        <h3 class="card-title">치명적인 실패 비용</h3>
+        <p class="card-body-text">
+          식약처 알레르기 유발성분 25종(2024 개정 기준 26종)의 0.001% 초과 표기 규정을 엑셀로 수기 계산하다 소수점 오타 빈발.<br /><br />
+          인쇄 후 오류 발견 시 <strong>단상자 3,000장 전량 폐기(평균 240만 원 손실)</strong> 및 식약처 불시 점검 시 <strong>최대 300만 원 과태료</strong> 부과.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-red">
+        <div class="pill pill-red" style="margin-bottom: 12px; width: fit-content;">부처 이원화</div>
+        <h3 class="card-title">식약처·환경부 이원화 이중고</h3>
+        <p class="card-body-text">
+          향수·바디미스트는 <strong>식약처(화장품법)</strong>, 디퓨저·캔들은 <strong>환경부(생활화학제품법)</strong>로 관할 부처가 완전히 분산.<br /><br />
+          소규모 브랜드는 두 제품군을 동시 취급하며 전혀 다른 2개 법령과 신고 시스템을 각각 공부해야 하는 극심한 행정 혼란에 직면.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>출처: 화장품법 제10조 및 시행규칙 제19조, 생활화학제품 및 살생물제의 안전관리에 관한 법률</span>
+      <span>02 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: 해결 방안 (Solution) -->
+  <section class="slide-page">
+    <div class="slide-tag">02. Solution · 해결 방안</div>
+    <h2 class="slide-title">접점 6~7개 ➔ 배합표 단 1개로 해결하는 셀프서브 SaaS</h2>
+
+    <div class="grid-2" style="margin-bottom: 20px; flex: 1;">
+      <div class="card-clean filled">
+        <span class="pill pill-red" style="margin-bottom: 14px; width: fit-content;">기존 수작업 프로세스 (약 2개월 소요)</span>
+        <div style="font-size: 13.5px; line-height: 1.9; color: var(--text-secondary);">
+          ❌ <strong>원료 수급:</strong> CAS 번호·MSDS를 받지 못해 구글링 헤맴<br />
+          ❌ <strong>성분 계산:</strong> 엑셀로 알레르기 수기 계산 (오타·폐기 위험)<br />
+          ❌ <strong>환경부 신고:</strong> CHEMP 시스템에 수십 개 성분 일일이 타이핑<br />
+          ❌ <strong>라벨 인쇄:</strong> 법정 폰트(7pt) 규격 누락으로 인한 재인쇄 손실<br />
+          ❌ <strong>시험기관:</strong> 파생제품 면제 여부 몰라 20~30만원 중복 지출
+        </div>
+      </div>
+
+      <div class="card-clean accent-top-blue" style="background: var(--color-primary-subtle); border-color: #BDD9FE;">
+        <span class="pill pill-blue" style="margin-bottom: 14px; width: fit-content;">Formu 혁신 워크플로 (배합표 1장 ➔ 1초 연산)</span>
+        <div style="font-size: 13.5px; line-height: 1.9; color: var(--text-primary);">
+          ✅ <strong>2.1만 DB 매핑:</strong> 원료명 검색 즉시 CAS 번호·알레르기 25/26종 매핑<br />
+          ✅ <strong>1초 서식 연산:</strong> 식약처 라벨 전성분 + 환경부 CHEMP 엑셀 자동 렌더링<br />
+          ✅ <strong>중복 시험비 절감:</strong> 대표·파생제품 자동 판정으로 불필요한 시험 면제<br />
+          ✅ <strong>인쇄 파트너 연결:</strong> 규격 검증 완료 단상자 도안 인쇄소 다이렉트 전송<br />
+          ✅ <strong>원스톱 관리:</strong> 2개 부처로 나뉜 서류를 한 화면에서 동시 해결
+        </div>
+      </div>
+    </div>
+
+    <div class="card-clean filled" style="padding: 14px 20px; flex-direction: row; justify-content: space-between; align-items: center;">
+      <div style="font-size: 13px; color: var(--text-primary);">
+        ⚖️ <strong>법적 책임 분리 원칙:</strong> Formu는 행정기관 서류를 <strong>대행하지 않습니다</strong>. 이용자가 직접 신고하도록 서식을 자동 정리하는 <strong>셀프서브 소프트웨어</strong>입니다.
+      </div>
+      <span class="pill pill-blue">삼쩜삼·로톡 판례 구조</span>
+    </div>
+
+    <div class="slide-footnote">
+      <span>참고: 삼쩜삼·로톡 합법 판례 기반의 무자격 대리 혐의 불기소 아키텍처 적용</span>
+      <span>03 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: 시장 규모 (Market) -->
+  <section class="slide-page">
+    <div class="slide-tag">03. Market · 시장 규모 및 성장성</div>
+    <h2 class="slide-title">5년 만에 2배 급증한 1인 인디 뷰티·프래그런스 시장</h2>
+
+    <div class="grid-3" style="margin-bottom: 24px;">
+      <div class="card-clean accent-top-blue">
+        <div class="stat-hero-num blue">31,524 곳</div>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">화장품 책임판매업자 수</div>
+        <p class="card-body-text">
+          2019년 15,707곳에서 2023년 31,524곳으로 <strong>5년 만에 2배 이상 급증</strong> (소규모 브랜드 폭증)
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <div class="stat-hero-num green">연 4,600 곳</div>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">연간 신규 브랜드 창업</div>
+        <p class="card-body-text">
+          2024년 11월 기준 신규 등록 4,600개사 돌파. 텀블벅·와디즈에서 매월 수백 개 신규 펀딩 론칭
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue">
+        <div class="stat-hero-num blue">연 17억 개</div>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">생활화학제품 제조·수입</div>
+        <p class="card-body-text">
+          디퓨저, 룸스프레이, 캔들 등 14분류 43개 품목. 매년 수억 병이 신규 신고 및 유통
+        </p>
+      </div>
+    </div>
+
+    <div class="card-clean filled" style="flex: 1; padding: 20px 24px;">
+      <div style="font-size: 15px; font-weight: 800; margin-bottom: 8px; color: var(--text-primary);">
+        <span class="pill pill-blue" style="margin-right: 6px;">MARKET INSIGHT</span> 제조 OEM/ODM 대중화로 진입은 쉬워졌으나, 규제 행정 장벽은 심화
+      </div>
+      <div style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.7;">
+        • 1인 인디 브랜드는 평균 1~3명의 극소수 인력으로 운영되며, <strong>전담 규제 행정 인력이 0명</strong>입니다.<br />
+        • 오프라인 인허가 컨설팅은 건당 50~150만 원의 고비용이라 영세 브랜드의 진입이 불가능합니다.<br />
+        • <strong>"건당 3만원대 셀프서브 소프트웨어"</strong>라는 완전히 새로운 가격대의 RegTech 세그먼트를 개척합니다.
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>출처: 조선일보(2024.12), 기후에너지환경부 생활화학제품 공공데이터</span>
+      <span>04 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: 핵심 차별화 (Competitive Edge) -->
+  <section class="slide-page">
+    <div class="slide-tag">04. Competitive Edge · 독점적 차별화</div>
+    <h2 class="slide-title">1인 브랜드를 위해 설계된 4대 독점적 차별화 포인트</h2>
+
+    <div class="grid-2" style="flex: 1; gap: 20px;">
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 8px; width: fit-content;">차별화 01</span>
+        <h3 class="card-title">셀프서브 소프트웨어 구조 (합법 & 저비용)</h3>
+        <p class="card-body-text">
+          서류를 맡기는 대행이 아닌, 이용자가 직접 신고하도록 돕는 1초 자동 연산 SaaS. 행정사법 위반 리스크를 원천 차단하고 비용을 1/10 수준(건당 3만원대)으로 혁신.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <span class="pill pill-green" style="margin-bottom: 8px; width: fit-content;">차별화 02</span>
+        <h3 class="card-title">식약처 2.1만 DB 화이트리스트 자동 매핑</h3>
+        <p class="card-body-text">
+          1인 공방이 원료사로부터 MSDS를 받지 못해도, 원료명 검색만으로 CAS 번호, 알레르기 유발성분 25종(2024 개정 기준 26종) 해당 여부, 배합 한도를 자동 매핑 제시.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 8px; width: fit-content;">차별화 03</span>
+        <h3 class="card-title">대표·파생제품 중복 시험비 절감 판정</h3>
+        <p class="card-body-text">
+          정부 고시 시험 수수료는 임의 할인이 불가하지만, 파생제품 시험 면제 규정을 자동 점검하여 불필요한 반복 시험비(건당 20~30만원)를 원천 절감.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <span class="pill pill-green" style="margin-bottom: 8px; width: fit-content;">차별화 04</span>
+        <h3 class="card-title">1인 브랜드 맞춤형 출시 원스톱 특화</h3>
+        <p class="card-body-text">
+          대기업 중심의 무거운 ERP/PLM과 달리, 1인 조향 공방 및 펀딩 창업자의 실무 워크플로(단상자 인쇄 규격 연계, 검증 리포트)에 맞춘 올인원 운영체제.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>출처: 식품의약품안전처 화장품 원료성분정보 오픈 API, 환경부 생활화학제품 안전확인 고시</span>
+      <span>05 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: 경쟁사 비교 (Competition) -->
+  <section class="slide-page">
+    <div class="slide-tag">05. Competition · 경쟁사 비교 분석</div>
+    <h2 class="slide-title">1인 브랜드를 위한 출시 원스톱 솔루션의 시장 공백 독점</h2>
+
+    <div style="flex: 1;">
+      <table class="clean-table">
+        <thead>
+          <tr>
+            <th style="width: 18%;">비교 기준</th>
+            <th style="width: 20%;">인증쏙 (행정사 의뢰)</th>
+            <th style="width: 20%;">COS247 (대기업 툴)</th>
+            <th style="width: 20%;">리이치24시 (글로벌)</th>
+            <th class="th-formu" style="width: 22%;">Formu (포뮤)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>타깃 고객</strong></td>
+            <td>일반 소상공인 단건</td>
+            <td>중견/대기업 OEM/ODM</td>
+            <td>해외 수출 글로벌 기업</td>
+            <td class="td-formu"><strong>1인 향수·디퓨저 브랜드</strong></td>
+          </tr>
+          <tr>
+            <td><strong>서비스 방식</strong></td>
+            <td>서류 작성 인력 대행</td>
+            <td>대기업 ERP/PLM 연계</td>
+            <td>맞춤형 종합 컨설팅</td>
+            <td class="td-formu"><strong>셀프서브 클라우드 SaaS</strong></td>
+          </tr>
+          <tr>
+            <td><strong>소요 비용</strong></td>
+            <td>건당 15만 ~ 50만 원</td>
+            <td>월 수백만 원 (엔터프라이즈)</td>
+            <td>건당 200만 ~ 1,000만 원</td>
+            <td class="td-formu"><strong>건당 3.5만원 / 월 3.9만원</strong></td>
+          </tr>
+          <tr>
+            <td><strong>처리 속도</strong></td>
+            <td>2주 ~ 3주 소요</td>
+            <td>수일 ~ 수주 소요</td>
+            <td>수개월 소요</td>
+            <td class="td-formu"><strong>배합표 업로드 즉시 1초</strong></td>
+          </tr>
+          <tr>
+            <td><strong>부처 이원화 대응</strong></td>
+            <td>단일 품목별 개별 수임</td>
+            <td>화장품 중심 (생활화학 부재)</td>
+            <td>해외 인허가 중심</td>
+            <td class="td-formu"><strong>식약처 + 환경부 동시 연산</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-clean filled" style="padding: 12px 20px; margin-top: 14px;">
+      <div style="font-size: 13px; color: var(--text-secondary);">
+        <strong style="color: var(--color-primary); margin-right: 6px;">포지셔닝 핵심:</strong> 기존 대행사는 1인 브랜드를 감당하기에 너무 비싸고, 대기업 SaaS는 너무 무겁습니다. Formu는 가장 저렴하고 직관적인 1인 전용 소프트웨어로 독점적 포지션을 확보합니다.
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>출처: 각 사 공식 공시 가격 및 서비스 모델 분석</span>
+      <span>06 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: 비즈니스 모델 (Business Model) -->
+  <section class="slide-page">
+    <div class="slide-tag">06. Business Model · 수익 창출 계획</div>
+    <h2 class="slide-title">건당 리포트에서 SaaS 구독, 인쇄 파트너십으로 이어지는 3단계 BM</h2>
+
+    <div class="grid-3" style="margin-bottom: 20px; flex: 1;">
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 10px; width: fit-content;">1단계 (현재 ~ 8주)</span>
+        <h3 class="card-title">건당 유료 진단 리포트</h3>
+        <div style="font-size: 24px; font-weight: 900; color: var(--color-primary); margin-bottom: 10px;">35,000원 <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">/ 건</span></div>
+        <p class="card-body-text">
+          • 배합표 기반 신고 서식 초안 + 알레르기 25/26종 체크리스트 제공<br />
+          • Take Rate: 100% (자체 매출)<br />
+          • 90일 내 첫 매출 발생을 위한 핵심 상품
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <span class="pill pill-green" style="margin-bottom: 10px; width: fit-content;">2단계 (8주 ~ 6개월)</span>
+        <h3 class="card-title">셀프서브 SaaS 정기 구독</h3>
+        <div style="font-size: 24px; font-weight: 900; color: var(--color-green); margin-bottom: 10px;">월 39,000원 <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">/ 월</span></div>
+        <p class="card-body-text">
+          • 월 무제한 원료 자동 매핑 및 CHEMP 엑셀 서식 1초 다운로드<br />
+          • 규제 고시 개정 시 서식 실시간 자동 업데이트 지원<br />
+          • 안정적인 월 반복 매출(MRR) 창출
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 10px; width: fit-content;">3단계 (6개월 이후 ~)</span>
+        <h3 class="card-title">라벨·인쇄 파트너 연결 수수료</h3>
+        <div style="font-size: 24px; font-weight: 900; color: var(--color-primary); margin-bottom: 10px;">10 ~ 15% <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Take Rate</span></div>
+        <p class="card-body-text">
+          • 규격 검증 완료된 단상자·라벨 인쇄소로 주문 데이터 다이렉트 전송<br />
+          • 1회 인쇄 결제(50만원) 당 약 5만 원 수수료 수취<br />
+          • 인쇄 사고 0% 보증을 통한 강력한 락인
+        </p>
+      </div>
+    </div>
+
+    <div class="card-clean" style="background: #F8FAF7; border-color: #D1F0D8; padding: 14px 22px;">
+      <div style="font-size: 13px; color: #027A48; font-weight: 700; margin-bottom: 4px;">
+        🛡️ 컴플라이언스 원칙: 수수료 수취 금지 대상 명문화
+      </div>
+      <div style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.5;">
+        • <strong>공인시험기관(KTR/KCL 등):</strong> 정부 지정 공익기관 회계규정상 중개 수수료 수취 불가 ➔ 시료 접수 및 전자 성적서 연동 파트너로만 순수 협력<br />
+        • <strong>공인 행정사:</strong> 행정사법 검토 후 정액 광고료·입점료 등 합법적 플랫폼 제휴 형태로만 진행 (현재 법률 검토 진행 중)
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>출처: 공기업·준정부기관 회계사무규칙 제8조, 행정사법 제2조·제36조</span>
+      <span>07 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: 사업화 로드맵 (Roadmap) -->
+  <section class="slide-page">
+    <div class="slide-tag">07. Roadmap · 사업화 추진 전략</div>
+    <h2 class="slide-title">90일 내 첫 매출 창출 및 5단계 실증 로드맵 (검증 진행 중)</h2>
+
+    <div style="display: flex; gap: 14px; flex: 1; margin-bottom: 20px;">
+      <div class="card-clean accent-top-blue" style="flex: 1;">
+        <span class="pill pill-blue" style="margin-bottom: 8px;">1단계 (0~2주)</span>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">랜딩 배포 & 사전신청</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-green); margin-bottom: 8px;">🎯 목표: 사전신청 30건</div>
+        <p class="card-body-text" style="font-size: 12px;">
+          랜딩페이지 오픈 및 전환율 측정. 2026 규제 가이드북(PDF) 즉시 제공.<br /><strong>(실제 배포 완료)</strong>
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue" style="flex: 1;">
+        <span class="pill pill-blue" style="margin-bottom: 8px;">2단계 (2~4주)</span>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">고객 심층 인터뷰</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-green); margin-bottom: 8px;">🎯 목표: 브랜드 5~10명</div>
+        <p class="card-body-text" style="font-size: 12px;">
+          1인 향수·디퓨저 브랜드 대표 대면/비대면 인터뷰로 가장 큰 규제 병목 및 지불의향 검증.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green" style="flex: 1; background: var(--color-green-subtle); border-color: #A6F4C5;">
+        <span class="pill pill-green" style="margin-bottom: 8px;">3단계 (4~8주)</span>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">수작업 유료 리포트</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-green); margin-bottom: 8px;">🎯 목표: 유료 1~3건</div>
+        <p class="card-body-text" style="font-size: 12px;">
+          3.5만 원 진단 리포트 수작업 제공으로 <strong>90일 내 첫 현금 매출 달성</strong> 및 단위경제 실증.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue" style="flex: 1;">
+        <span class="pill pill-blue" style="margin-bottom: 8px;">4단계 (8~12주)</span>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">자동 매핑 MVP 개발</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-green); margin-bottom: 8px;">🎯 목표: 자동화율 80%</div>
+        <p class="card-body-text" style="font-size: 12px;">
+          식약처 2.1만 DB 연계로 수기 작업 자동화. 월 3.9만 원 SaaS 정기 구독 모듈 오픈.
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue" style="flex: 1;">
+        <span class="pill pill-blue" style="margin-bottom: 8px;">5단계 (3~6개월)</span>
+        <div style="font-size: 15px; font-weight: 800; margin-bottom: 6px;">파트너십 체계 구축</div>
+        <div style="font-size: 13px; font-weight: 700; color: var(--color-green); margin-bottom: 8px;">🎯 목표: 응답률 20%</div>
+        <p class="card-body-text" style="font-size: 12px;">
+          시험기관 접수 연동 및 패키지 인쇄소 B2B 제휴로 10~15% 연결 수수료 체계 완성.
+        </p>
+      </div>
+    </div>
+
+    <div class="card-clean filled" style="padding: 12px 20px;">
+      <div style="font-size: 13px; color: var(--text-primary);">
+        ⚡ <strong>무자본 1인 완결 실행 원칙:</strong> 고정비 지출을 0원으로 통제하며 대표가 직접 고객 응대와 리포트 작성을 병행하고, 검증된 반복 업무부터 순차 소프트웨어화합니다.
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>참고: 린 스타트업 고객 개발 방법론 기반 가설 검증 진행 중</span>
+      <span>08 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: 창업자 역량 (Team) -->
+  <section class="slide-page">
+    <div class="slide-tag">08. Team · 창업자 역량 및 전문성</div>
+    <h2 class="slide-title">16년 UI/UX 디렉팅 + AI 자동화 실무로 1인 완결 실행력 보유</h2>
+
+    <div class="grid-3" style="flex: 1;">
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 12px; width: fit-content;">핵심 역량 01</span>
+        <h3 class="card-title">🎨 UI/UX 디자인 16년</h3>
+        <p class="card-body-text">
+          • 복잡하고 난해한 공공 규제 서류와 화학 데이터를 비전공자도 1초 만에 이해하는 화면으로 전환하는 전문성 보유<br /><br />
+          • 토스(Toss), 네이버 수준의 엄격한 웹 접근성(WCAG AA) 및 정밀 디자인 토큰 아키텍처 설계 역량<br /><br />
+          • Formu의 핵심 가치인 '쉬운 화면'을 외주 없이 대표 1인이 직접 기획·디자인 완결
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <span class="pill pill-green" style="margin-bottom: 12px; width: fit-content;">핵심 역량 02</span>
+        <h3 class="card-title">🤖 AI 제작 & 자동화 구축</h3>
+        <p class="card-body-text">
+          • 자체 유튜브 채널을 기획·운영하며 AI 이미지·영상·음성 생성 및 데이터 자동화 파이프라인 직접 구축 경험<br /><br />
+          • 최신 LLM 프롬프트 엔지니어링 및 오픈소스 API 결합으로 규제 서식 자동 렌더링 로직 구현<br /><br />
+          • 빠른 가설 검증과 노코드/로우코드 MVP 제작에 최적화된 최신 생성형 AI 실전 실행력
+        </p>
+      </div>
+
+      <div class="card-clean accent-top-blue">
+        <span class="pill pill-blue" style="margin-bottom: 12px; width: fit-content;">핵심 역량 03</span>
+        <h3 class="card-title">🚀 1인 완결 실전 실행력</h3>
+        <p class="card-body-text">
+          • 막연한 기획서에 머물지 않고 실제 작동하는 실시간 연산 엔진 및 라이브 랜딩페이지 직접 배포·운영 중<br /><br />
+          • 예비창업자 신분으로 고정비를 0원으로 통제하며 생존율을 극대화하는 린 스타트업 실행<br /><br />
+          • 초기 타깃 고객 교육 콘텐츠 및 와디즈/텀블벅 크리에이터 네트워크 다이렉트 컨택 역량
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>창업자 포트폴리오 및 라이브 서비스 배포 실적 (formu-landing.onrender.com)</span>
+      <span>09 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 10: 멘토링 및 지원금 (Mentorship & Budget) -->
+  <section class="slide-page">
+    <div class="slide-tag">09. Mentoring & Budget · 자문 및 자금 운용</div>
+    <h2 class="slide-title">책임멘토 자문 요청 및 정부 지원금(5,000만 원) 집행 계획</h2>
+
+    <div class="grid-2" style="flex: 1;">
+      <div class="card-clean accent-top-blue">
+        <h3 class="card-title">🤝 책임멘토단 자문 요청 분야</h3>
+        <div style="font-size: 13.5px; line-height: 1.8; color: var(--text-secondary);">
+          • <strong>최우선: 규제·법무 책임경계 검토:</strong> Formu가 대행이 아닌 셀프서브 소프트웨어로서 행정사법 제2조 리스크 없이 안전하게 운영되도록 법률 전문가 자문<br />
+          • <strong>BM 고도화:</strong> 건당 리포트 ➔ 정기 구독 ➔ 인쇄 연결 수수료로 이어지는 B2B Take Rate 및 가격 정책 최적화<br />
+          • <strong>공공데이터 API 아키텍처:</strong> 식약처 2.1만 개 공공 DB 및 환경부 CHEMP 서식의 실시간 데이터 파이프라인 기술 조언<br />
+          • <strong>희망 멘토링 기관:</strong> 엔슬파트너스(2기 멘토기관), K-Startup 원스톱 법률지원, KISED 협업로펌
+        </div>
+      </div>
+
+      <div class="card-clean accent-top-green">
+        <h3 class="card-title">💰 정부 지원금 집행 계획 (총 5,000만 원)</h3>
+        <div style="font-size: 13.5px; line-height: 1.8; color: var(--text-secondary);">
+          • <strong>시제품 제작비 (2,500만 원 / 50%):</strong> 식약처·환경부 공공 API 자동 연계 및 CHEMP 엑셀 서식 렌더링 엔진 고도화 외주 개발<br />
+          • <strong>마케팅/고객획득비 (1,000만 원 / 20%):</strong> 1인 브랜드 타깃 규제 교육 가이드 배포 및 전환 검색 광고<br />
+          • <strong>지재권 및 법률 자문비 (800만 원 / 16%):</strong> 행정사법 적법성 법률 의견서 확보 및 비즈니스 모델(BM) 특허 출원<br />
+          • <strong>지급 수수료 (700만 원 / 14%):</strong> Zero-Knowledge 보안 클라우드 서버 구축 및 상용 호스팅 운영
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footnote">
+      <span>모두의 창업 2기 예비창업자 지원금 집행 가이드라인 준수</span>
+      <span>10 / 11</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 11: 마무리 (Closing) -->
+  <section class="slide-page">
+    <div class="cover-layout">
+      <div>
+        <span class="pill pill-green" style="margin-bottom: 16px;">창작에만 몰입하도록</span>
+        <h1 class="cover-headline" style="font-size: 48px; margin-top: 12px;">
+          “배합표 한 장을,<br />
+          출시 가능한 제품으로.”
+        </h1>
+        <p class="cover-sub" style="margin-top: 16px;">
+          Formu(포뮤)는 1인 브랜드가 복잡한 규제 공포 없이 안전하게 제품을 세상에 내놓도록 돕는 가장 확실한 규제 테크 파트너가 되겠습니다.
+        </p>
+      </div>
+
+      <div class="cover-footer-box" style="flex-direction: column; align-items: flex-start; gap: 12px;">
+        <div style="font-size: 15px; font-weight: 800; color: var(--color-primary);">
+          Formu 프로젝트 실증 링크 및 문의
+        </div>
+        <div style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.7;">
+          • <strong>실증 MVP 라이브 사이트:</strong> <a href="https://formu-landing.onrender.com" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 700;">https://formu-landing.onrender.com</a> (실시간 연산 가동 중)<br />
+          • <strong>공식 GitHub 오픈 저장소:</strong> https://github.com/lita-lilith16/formu-landing<br />
+          • <strong>대표자:</strong> Formu 창업팀 (예비창업자) | 연락처 및 이메일: 신청서 기재 정보 참조
+        </div>
+      </div>
+    </div>
+    <div class="slide-footnote">
+      <span>Formu · 1인 브랜드의 규제 출시 소프트웨어</span>
+      <span>11 / 11</span>
+    </div>
+  </section>
+
+</body>
+</html>
