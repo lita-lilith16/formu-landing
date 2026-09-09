@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <title>Formu (포뮤) — 화장품·향료 행정 규제 자동화 & 원스톱 출시 OS</title>
-  <meta name="description" content="배합표 업로드 1초 만에 식약처 알레르기 25종 판정 및 환경부 CHEMP 배합비율표 자동 생성, 공인 시험검사부터 라벨 인쇄까지 원스톱으로 해결하는 B2B RegTech OS" />
+  <meta name="description" content="배합표 업로드 1초 만에 식약처 알레르기 유발성분 25종(2024 개정 기준 26종) 판정 및 환경부 CHEMP 배합비율표를 자동 생성하는 B2B RegTech OS" />
 
   <!-- Pretendard 폰트 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -894,10 +896,9 @@
         </h1>
 
         <p class="hero-subhead text-keep">
-          <span class="phrase">소규모 향수 브랜드와 조향 공방이 겪는</span>
-          <span class="phrase"><strong>식약처 25종 알레르기 표시 의무</strong>와</span>
-          <span class="phrase"><strong>환경부 CHEMP 배합비율표 작성</strong>을 자동 연산하고,</span>
-          <span class="phrase">공인 시험검사부터 라벨 인쇄까지 원스톱으로 해결합니다.</span>
+          <span class="phrase"><strong>향수(식약처 화장품법)</strong>와 <strong>디퓨저(환경부 생활화학법)</strong>를 함께 만드는 조향사를 위해 —</span>
+          <span class="phrase">원료 이름만 검색하면 CAS 번호와 알레르기 성분이 자동 매핑되고,</span>
+          <span class="phrase">이원화된 2개 부처의 규제 서류를 배합표 하나로 1초 만에 통합 해결합니다.</span>
         </p>
 
         <div class="hero-cta-wrap">
@@ -908,9 +909,9 @@
         </div>
 
         <div class="hero-metrics-row" aria-label="핵심 성과 지표">
-          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> 서류 작성 시간 8시간 → 1초</span>
-          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> 식약처 알레르기 표시 위반 0건</span>
-          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> 배합 레시피 영지식(Zero-Knowledge) 암호화</span>
+          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> CAS 번호 몰라도 원료명 검색 자동 매핑 (식약처 2.1만 개 DB)</span>
+          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> 중복 시험비 20~30만원 원천 절감 (파생제품 면제 자동 판정)</span>
+          <span class="metric-item"><span class="check" aria-hidden="true">✓</span> 행정 서류 소요 기간 약 2개월 → 1초 자동 완성</span>
         </div>
 
         <!-- 실시간 연산 시뮬레이터 프리뷰 카드 -->
@@ -936,11 +937,11 @@
               <div class="preview-col-label">1초 자동 연산 결과 (EXPORT READY)</div>
               <div class="preview-result-entry">
                 <span>리날룰 (Linalool) 2.4%</span>
-                <span class="tag-danger">식약처 25종 알레르기 표기 의무</span>
+                <span class="tag-danger">식약처 알레르기 유발성분 25종(2024 개정 기준 26종) 표기 의무</span>
               </div>
               <div class="preview-result-entry">
                 <span>리모넨 (Limonene) 0.8%</span>
-                <span class="tag-danger">식약처 25종 알레르기 표기 의무</span>
+                <span class="tag-danger">식약처 알레르기 유발성분 25종(2024 개정 기준 26종) 표기 의무</span>
               </div>
               <div class="preview-result-entry">
                 <span>환경부 CHEMP 안전기준</span>
@@ -962,15 +963,18 @@
             <br class="br-desktop" />
             <span class="phrase">왜 복잡한 행정 서류에 뺏기고 계신가요?</span>
           </h2>
-          <p class="section-desc text-keep">
-            독립 뷰티·향수 브랜드 10곳 중 7곳이 복잡한 화학 규제와 수작업 서식 작성에 막혀 신제품 출시를 미루고 있습니다.
+          <p class="section-desc text-keep" style="margin-bottom: 10px;">
+            향수·바디미스트는 <strong>식약처(화장품법)</strong>, 디퓨저·캔들은 <strong>환경부(생활화학법)</strong> — 관할 부처가 완전히 다릅니다.
+          </p>
+          <p class="section-desc text-keep" style="font-size: 0.92rem; color: var(--text-muted);">
+            소규모 브랜드는 두 제품군을 동시에 취급하며 2개의 전혀 다른 법령과 5~7개 분산된 파트너를 각각 조율해야 하는 극심한 이중고를 겪고 있습니다.
           </p>
         </div>
 
         <div class="grid-3">
           <article class="service-card">
             <div class="card-icon-emoji" aria-hidden="true">⚠️</div>
-            <h3 class="card-title-text text-keep">식약처 25종 알레르기 표시 위반 리스크</h3>
+            <h3 class="card-title-text text-keep">식약처 알레르기 유발성분 25종(2024 개정 기준 26종) 표시 위반 리스크</h3>
             <p class="card-desc-text text-keep">
               천연 오일에 포함된 알레르기 성분을 0.001% 단위까지 계산하지 못해 전량 회수, 판매정지 처분을 받는 리스크를 완벽 차단합니다.
             </p>
@@ -990,7 +994,7 @@
             <div class="card-icon-emoji" aria-hidden="true">🤝</div>
             <h3 class="card-title-text text-keep">시험기관·인쇄소 개별 섭외의 한계</h3>
             <p class="card-desc-text text-keep">
-              KTR, KCL 등 공인 시험기관 접수부터 라벨 법적 필수 표기사항 인쇄소 발주까지 한 플랫폼에서 파트너 오케스트레이션으로 연결합니다.
+              신고 서식 자동 연산은 Formu에서 직접 끝내고, 복합 인허가는 제휴 공인 행정사에게, 시험·인쇄는 검증된 파트너로 한 화면에서 안전하게 연결합니다.
             </p>
             <div class="card-footer-meta">검증된 전문 파트너 다이렉트 매칭</div>
           </article>
@@ -1013,30 +1017,57 @@
           </p>
         </div>
 
-        <div class="grid-3">
+        <div class="grid-3" style="margin-bottom: 24px;">
           <div class="step-card">
-            <span class="step-label">STEP 01</span>
-            <h3 class="step-title text-keep">배합표 원클릭 업로드</h3>
+            <span class="step-label">STEP 01 · 스마트 매핑</span>
+            <h3 class="step-title text-keep">원료명 검색으로 CAS 자동 매핑</h3>
             <p class="step-body text-keep">
-              원료명, CAS 번호, 함량(%)이 포함된 배합표를 드래그 앤 드롭하세요. 최고 등급 영지식(Zero-Knowledge) 암호화로 독점 레시피를 안전하게 보호합니다.
+              1인 공방은 원료사로부터 CAS 번호·MSDS를 받지 못하는 경우가 태반입니다. Formu는 식약처 공공데이터(약 2만 1천 건) 기반 화이트리스트 DB로, 원료 이름만 검색해도 CAS 번호·알레르기 해당 여부·사용제한 함량을 자동 매핑합니다.
             </p>
+            <div style="font-size: 0.75rem; color: var(--color-primary-text); margin-top: 10px; font-weight: 700;">
+              출처: 식품의약품안전처 화장품 원료성분정보 오픈 API
+            </div>
           </div>
 
           <div class="step-card">
-            <span class="step-label">STEP 02</span>
-            <h3 class="step-title text-keep">1초 만에 규제 자동 판정</h3>
+            <span class="step-label">STEP 02 · 1초 서식 연산</span>
+            <h3 class="step-title text-keep">부처별 규제 서식 자동 완성</h3>
             <p class="step-body text-keep">
-              식약처 25종 알레르기 성분 자동 분리, 환경부 CHEMP 배합비율표 엑셀 자동 렌더링, 라벨 필수 표기문안이 1초 만에 완성됩니다.
+              식약처 알레르기 유발성분 25종(2024 개정 기준 26종) 0.001% 초과 자동 분리 및 환경부 CHEMP 배합비율표 엑셀이 1초 만에 자동 렌더링됩니다. 대표·파생 관계를 자동 판정해 불필요한 중복 시험비를 막습니다.
             </p>
+            <div style="font-size: 0.75rem; color: var(--color-success); margin-top: 10px; font-weight: 700;">
+              환경부 CHEMP & 식약처 공식 고시 완벽 호환
+            </div>
           </div>
 
           <div class="step-card">
-            <span class="step-label">STEP 03</span>
-            <h3 class="step-title text-keep">공인 시험 & 인쇄 원스톱 발주</h3>
+            <span class="step-label">STEP 03 · 파트너 오케스트레이션</span>
+            <h3 class="step-title text-keep">시험기관 접수 & 인쇄 원스톱 연결</h3>
             <p class="step-body text-keep">
-              자가검사 적합 통지서 신청을 위한 공인시험기관(KTR/KCL) 접수 연동 및 라벨·단상자 패키지 인쇄소로 데이터를 다이렉트 전송합니다.
+              6대 공인시험기관(KTR/KCL 등) 시료 접수 전자 연동 및 라벨·단상자 패키지 인쇄소로 데이터를 다이렉트 전송합니다. 복잡한 인허가 대행이 필요할 경우 제휴된 공인 행정사에게 안전하게 연결됩니다.
+            </p>
+            <div style="font-size: 0.75rem; color: var(--color-primary-text); margin-top: 10px; font-weight: 700;">
+              법적 책임 분리: 셀프서브 연산 + 제휴 행정사 중개
+            </div>
+          </div>
+        </div>
+
+        <!-- 솔직한 한계 카드 (역설적 신뢰 구축) -->
+        <div style="background: var(--bg-card); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 14px;">
+          <span style="font-size: 1.4rem;" aria-hidden="true">💡</span>
+          <div>
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px;">
+              [솔직한 안내] 시험비는 실비라 못 깎지만, 중복 시험비는 확실히 아껴줍니다
+            </div>
+            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.6;">
+              공인시험기관의 시험 수수료는 정부 고시 요율이라 누구도 임의로 할인할 수 없습니다. Formu는 시험비를 깎아주겠다는 거짓말을 하지 않습니다. 대신 대표제품 시험 후 향만 바꾼 파생제품은 시험이 면제된다는 규정을 활용해, <strong>대표·파생 관계를 자동 판정하여 불필요한 중복 시험비(건당 20~30만원)를 원천 절감</strong>합니다.
             </p>
           </div>
+        </div>
+
+        <!-- 법적 안전성 배지 (행정사법 회피 & 삼쩜삼·로톡 판례) -->
+        <div style="text-align: center; padding: 12px 16px; background: var(--bg-subtle); border-radius: var(--radius-pill); font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">
+          ⚖️ 삼쩜삼·로톡 판례와 동일한 셀프서브 SaaS 구조 — Formu는 대행하지 않고 서식을 자동 연산하며, 복합 건은 제휴 행정사에게 연결합니다.
         </div>
       </div>
     </section>
@@ -1117,11 +1148,12 @@
                 주요 취급 제품군
               </label>
               <select id="productCategory" name="productCategory" class="select-box">
-                <option value="향수·디퓨저">향수 / 디퓨저 / 룸스프레이</option>
-                <option value="캔들·방향제">캔들 / 석고방향제</option>
-                <option value="스킨케어·화장품">스킨케어 / 바디 / 헤어</option>
-                <option value="조향공방·클래스">조향 공방 / 원데이 클래스 운영</option>
-                <option value="제조·OEM·ODM">화장품 OEM / ODM 제조사</option>
+                <option value="향수·코롱·바디미스트">향수 / 코롱 / 바디미스트 (식약처 화장품법 대상)</option>
+                <option value="디퓨저·룸스프레이·캔들">디퓨저 / 룸스프레이 / 캔들 (환경부 생활화학법 대상)</option>
+                <option value="향수+디퓨저(동시취급)">향수 + 디퓨저 둘 다 취급 (이원화 통합 관리)</option>
+                <option value="스킨케어·바디케어">스킨케어 / 바디 / 헤어 화장품</option>
+                <option value="조향공방·원데이클래스">조향 공방 / 조향 클래스 운영</option>
+                <option value="화장품제조·OEM·ODM">화장품 제조사 / OEM·ODM 기획</option>
                 <option value="기타">기타 신규 브랜드 준비 중</option>
               </select>
             </div>
@@ -1184,8 +1216,11 @@
       <p style="margin-bottom: 6px;">
         <strong>Formu (포뮤)</strong> — 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS
       </p>
-      <p style="font-size: 0.78rem;">
-        규제 기준: 식품의약품안전처 화장품 알레르기 유발성분 25종 고시 & 환경부 화학제품관리시스템(CHEMP)
+      <p style="font-size: 0.8rem; margin-bottom: 6px; color: var(--text-secondary);">
+        수익 모델: Formu는 서식 자동 연산(건당 1.9만원) 및 민간 파트너(라벨·단상자 인쇄 10~15%, 제휴 행정사 소개료) 연결 수수료로 운영됩니다. (공인시험기관은 공익기관 회계규정상 수수료를 받지 않으며, 시료 접수 및 전자 성적서 연동 파트너로만 협력합니다.)
+      </p>
+      <p style="font-size: 0.76rem;">
+        규제 기준: 식품의약품안전처 화장품 알레르기 유발성분 25종(2024 개정 기준 26종) 고시 & 환경부 화학제품관리시스템(CHEMP)
       </p>
       <p style="font-size: 0.75rem; margin-top: 10px; color: var(--text-muted);">
         © 2026 Formu. All rights reserved.

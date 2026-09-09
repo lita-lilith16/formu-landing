@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="formuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3182F6" />
+      <stop offset="100%" stop-color="#1B64DA" />
+    </linearGradient>
+  </defs>
+  <!-- 둥근 배경 스퀘어 (Apple / Toss 스타일) -->
+  <rect width="64" height="64" rx="16" fill="url(#formuGrad)" />
+  
+  <!-- F 모노그램과 규제 통과 체크가 결합된 Formu 심볼 -->
+  <path d="M20 16 H44 V24 H28 V30 H40 V38 H28 V48 H20 Z" fill="#FFFFFF" />
+  <circle cx="45" cy="45" r="5" fill="#03C75A" />
+</svg>
