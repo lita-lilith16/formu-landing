@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#151E2E" />
-  <path d="M32 14 C32 14, 18 30, 18 39 C18 46.7, 24.3 53, 32 53 C39.7 53, 46 46.7, 46 39 C46 30, 32 14, 32 14 Z" fill="#3182F6" />
-  <path d="M26 38 L30 42 L38 34" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- 후보 2: F + 배합표 셀형 (그리드 셀로 결합된 F) -->
+  <rect width="32" height="32" rx="7" fill="#3182F6" />
+  <!-- 기둥 세로 셀 3개 -->
+  <rect x="7" y="7" width="5" height="5" rx="1.2" fill="#FFFFFF" />
+  <rect x="7" y="13.5" width="5" height="5" rx="1.2" fill="#FFFFFF" />
+  <rect x="7" y="20" width="5" height="5" rx="1.2" fill="#FFFFFF" />
+  <!-- 상단 가로 셀 2개 -->
+  <rect x="13.5" y="7" width="5" height="5" rx="1.2" fill="#FFFFFF" />
+  <rect x="20" y="7" width="5" height="5" rx="1.2" fill="#FFFFFF" />
+  <!-- 중단 가로 셀 (그린 포인트) -->
+  <rect x="13.5" y="13.5" width="5" height="5" rx="1.2" fill="#03C75A" />
+  <!-- 우하단 은은한 통과 닷 -->
+  <circle cx="22.5" cy="22.5" r="2.5" fill="#03C75A" />
 </svg>

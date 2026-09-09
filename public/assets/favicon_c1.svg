@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#3182F6" />
-  <path d="M20 16 H44 V24 H28 V30 H40 V38 H28 V48 H20 Z" fill="#FFFFFF" />
-  <circle cx="45" cy="45" r="5" fill="#03C75A" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- 후보 1: 배합표 → 제품 변환형 (추천) -->
+  <rect width="32" height="32" rx="7" fill="#3182F6" />
+  <!-- 왼쪽: 배합표 그리드 셀 -->
+  <rect x="5" y="10" width="4" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="10" y="10" width="4" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="5" y="15" width="4" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="10" y="15" width="4" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="5" y="20" width="9" height="2" rx="1" fill="#A5C7F9" />
+  <!-- 중앙: 변환 화살표 (Naver Green #03C75A) -->
+  <path d="M16 14 L19 16 L16 18 V16.7 H14.5 V15.3 H16 Z" fill="#03C75A" />
+  <!-- 오른쪽: 디퓨저/보틀 실루엣 -->
+  <rect x="23" y="8" width="3" height="3" rx="0.8" fill="#A5C7F9" />
+  <path d="M22 12 H27 C28 12 28.5 12.8 28.5 13.8 L28 22 C28 23 27 24 26 24 H23 C22 24 21 23 21 22 L20.5 13.8 C20.5 12.8 21 12 22 12 Z" fill="#FFFFFF" />
 </svg>
