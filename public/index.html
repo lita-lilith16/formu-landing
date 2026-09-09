@@ -717,6 +717,297 @@
     }
 
     /* =============================================================
+       7.5. 비주얼라이징 컴포넌트 (수치 통계, 부처 이원화 인포그래픽, 비교표, 파이프라인)
+       ============================================================= */
+    /* 1) 수치 하이라이트 그리드 */
+    .impact-metrics-section {
+      margin-top: 36px;
+      margin-bottom: 20px;
+    }
+    .metrics-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .impact-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .impact-stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-primary);
+    }
+    .stat-badge-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .badge-blue {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-text);
+    }
+    .badge-green {
+      background: var(--color-success-subtle);
+      color: var(--color-success);
+    }
+    .badge-danger {
+      background: var(--color-danger-subtle);
+      color: var(--color-danger);
+    }
+    .stat-main-number {
+      font-size: 1.48rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.25;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-main-number .highlight-blue {
+      color: var(--color-primary);
+    }
+    .stat-main-number .highlight-green {
+      color: var(--color-success);
+    }
+    .stat-sub-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* 2) 식약처 vs 환경부 부처 이원화 듀얼 인포그래픽 카드 */
+    .dual-ministry-wrap {
+      margin: 28px 0 10px;
+    }
+    .dual-ministry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .ministry-box {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    .ministry-box.mfds {
+      border-top: 4px solid var(--color-primary);
+    }
+    .ministry-box.moe {
+      border-top: 4px solid #00B068;
+    }
+    .ministry-top-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .ministry-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .ministry-law {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .ministry-box.mfds .ministry-law {
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-text);
+    }
+    .ministry-box.moe .ministry-law {
+      background: #E6F8F0;
+      color: #00874E;
+    }
+    .ministry-details-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.84rem;
+    }
+    .ministry-details-list li {
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .ministry-details-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .detail-k {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .detail-v {
+      color: var(--text-primary);
+      font-weight: 700;
+      text-align: right;
+    }
+    .ministry-integration-bar {
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(49, 130, 246, 0.08) 0%, rgba(3, 199, 90, 0.08) 100%);
+      border: 1px solid rgba(49, 130, 246, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* 3) Before vs After 비교 매트릭스 도표 */
+    .comparison-section {
+      margin-top: 36px;
+      margin-bottom: 30px;
+    }
+    .comparison-table-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.86rem;
+    }
+    .comparison-table th {
+      padding: 16px 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid var(--border-strong);
+      background: var(--bg-subtle);
+    }
+    .comparison-table th.col-feature {
+      width: 24%;
+      color: var(--text-primary);
+    }
+    .comparison-table th.col-before {
+      width: 38%;
+      color: var(--text-muted);
+    }
+    .comparison-table th.col-after {
+      width: 38%;
+      background: var(--color-primary-subtle);
+      color: var(--color-primary-text);
+      border-left: 2px solid var(--color-primary);
+    }
+    .comparison-table td {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: middle;
+      line-height: 1.5;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .comparison-table td.cell-feature {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .comparison-table td.cell-before {
+      color: var(--text-muted);
+    }
+    .comparison-table td.cell-after {
+      background: rgba(49, 130, 246, 0.03);
+      color: var(--text-primary);
+      font-weight: 600;
+      border-left: 2px solid var(--color-primary);
+    }
+    .comparison-table td.cell-after strong {
+      color: var(--color-primary-text);
+    }
+    .table-tag-bad {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      background: var(--color-danger-subtle);
+      color: var(--color-danger);
+      border-radius: 4px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    .table-tag-good {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      background: var(--color-success-subtle);
+      color: var(--color-success);
+      border-radius: 4px;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    /* 4) 비주얼 워크플로우 파이프라인 */
+    .pipeline-visual-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 24px 0 28px;
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+    }
+    .pipeline-node {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .pipeline-node-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pipeline-node-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .pipeline-arrow {
+      color: var(--text-muted);
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* =============================================================
        8. 푸터
        ============================================================= */
     .footer-site {
@@ -963,6 +1254,51 @@
             </div>
           </div>
         </div>
+
+        <!-- 핵심 실증 수치 하이라이트 그리드 -->
+        <div class="impact-metrics-section" aria-label="주요 실증 수치 및 손실 방지 지표">
+          <div class="metrics-grid-4">
+            <div class="impact-stat-card">
+              <span class="stat-badge-tag badge-danger">손실 완벽 방지</span>
+              <div class="stat-main-number">
+                3,000장 <span class="highlight-blue">➔ 0건</span>
+              </div>
+              <div class="stat-sub-text">
+                소수점 오타로 인한 단상자 전량 폐기 및 재인쇄비(평균 240만 원) 원천 차단
+              </div>
+            </div>
+
+            <div class="impact-stat-card">
+              <span class="stat-badge-tag badge-blue">행정 시간 단축</span>
+              <div class="stat-main-number">
+                약 2개월 <span class="highlight-blue">➔ 1초</span>
+              </div>
+              <div class="stat-sub-text">
+                CHEMP 배합비율표(4~8시간) 및 식약처 라벨 서식을 배합표 하나로 즉시 연산
+              </div>
+            </div>
+
+            <div class="impact-stat-card">
+              <span class="stat-badge-tag badge-green">공공 DB 화이트리스트</span>
+              <div class="stat-main-number">
+                <span class="highlight-green">21,000+</span> 건
+              </div>
+              <div class="stat-sub-text">
+                CAS 번호 몰라도 원료명 검색 즉시 알레르기 25/26종·배합제한 자동 매핑
+              </div>
+            </div>
+
+            <div class="impact-stat-card">
+              <span class="stat-badge-tag badge-green">불필요 실비 절감</span>
+              <div class="stat-main-number">
+                건당 <span class="highlight-green">20~30만</span> 원
+              </div>
+              <div class="stat-sub-text">
+                대표제품 시험 후 파생제품 시험 면제 규정을 자동 판정해 중복 시험비 절감
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -979,6 +1315,68 @@
           <p class="section-desc text-keep">
             향수·바디미스트는 <strong>식약처(화장품법)</strong>, 디퓨저·캔들은 <strong>환경부(생활화학법)</strong> — 관할 부처가 다릅니다. 소규모 브랜드는 두 제품군을 동시에 취급하며 2개 법령을 각각 공부해야 하는 이중고를 겪습니다.
           </p>
+        </div>
+
+        <!-- 부처 이원화 인포그래픽 듀얼 카드 -->
+        <div class="dual-ministry-wrap" aria-label="식약처와 환경부 규제 이원화 비교 구조">
+          <div class="dual-ministry-grid">
+            <!-- 좌측: 식품의약품안전처 (MFDS) -->
+            <div class="ministry-box mfds">
+              <div class="ministry-top-badge">
+                <span class="ministry-name">식품의약품안전처 (MFDS)</span>
+                <span class="ministry-law">화장품법 적용</span>
+              </div>
+              <ul class="ministry-details-list">
+                <li>
+                  <span class="detail-k">적용 품목</span>
+                  <span class="detail-v">향수, 오드코롱, 바디미스트 등 인체 도포</span>
+                </li>
+                <li>
+                  <span class="detail-k">핵심 규제 기준</span>
+                  <span class="detail-v">식약처 알레르기 유발성분 25종(2024 개정 기준 26종)</span>
+                </li>
+                <li>
+                  <span class="detail-k">법정 표시 의무</span>
+                  <span class="detail-v">단상자 후면 전성분 라벨 도안 (0.001% 초과 시)</span>
+                </li>
+                <li>
+                  <span class="detail-k">위반 시 법적 위험</span>
+                  <span class="detail-v" style="color: var(--color-danger);">300만 원 이하 벌금 / 전량 회수·폐기</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 우측: 환경부 (MoE) -->
+            <div class="ministry-box moe">
+              <div class="ministry-top-badge">
+                <span class="ministry-name">환경부 (MoE)</span>
+                <span class="ministry-law">생활화학제품법 적용</span>
+              </div>
+              <ul class="ministry-details-list">
+                <li>
+                  <span class="detail-k">적용 품목</span>
+                  <span class="detail-v">디퓨저, 룸스프레이, 캔들, 석고방향제</span>
+                </li>
+                <li>
+                  <span class="detail-k">핵심 규제 기준</span>
+                  <span class="detail-v">안전확인대상생활화학제품 관리시스템 (CHEMP)</span>
+                </li>
+                <li>
+                  <span class="detail-k">법정 신고 서식</span>
+                  <span class="detail-v">CAS 번호 기준 100% 화학물질 배합비율표 (.xlsx)</span>
+                </li>
+                <li>
+                  <span class="detail-k">위반 시 법적 위험</span>
+                  <span class="detail-v" style="color: var(--color-danger);">최대 3년 이하 징역 또는 3천만 원 벌금</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ministry-integration-bar">
+            <span aria-hidden="true">⚡</span>
+            <span><strong>Formu 단일 인터페이스:</strong> 배합표 하나로 식약처 전성분 문구와 환경부 CHEMP 배합표를 1초 만에 자동 분기 연산합니다.</span>
+          </div>
         </div>
 
         <div class="grid-3">
@@ -1012,6 +1410,84 @@
       </div>
     </section>
 
+    <!-- 2.5. Before vs After 비교 매트릭스 도표 섹션 -->
+    <section class="section-wrap" style="background: var(--bg-body); padding-top: 10px; padding-bottom: 30px;" aria-labelledby="comparison-title">
+      <div class="container">
+        <div class="comparison-section" style="margin-top: 10px; margin-bottom: 10px;">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <div class="section-tagline">Comparison Matrix</div>
+            <h2 id="comparison-title" class="section-heading" style="font-size: clamp(1.4rem, 2.6vw, 2.0rem); margin-bottom: 8px;">
+              수작업의 리스크 vs Formu 1초 자동화
+            </h2>
+            <p class="section-desc text-keep" style="max-width: 600px; margin: 0 auto; font-size: 0.92rem;">
+              불안정한 수기 엑셀 작업에서 벗어나, 검증된 규제 자동화 엔진으로 손실을 0으로 만듭니다.
+            </p>
+          </div>
+
+          <div class="comparison-table-card">
+            <div class="comparison-table-wrap">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th class="col-feature">비교 영역</th>
+                    <th class="col-before">기존 방식 (수작업·개별 외주)</th>
+                    <th class="col-after">Formu (포뮤) 도입 시</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-feature">식약처 알레르기 25/26종 연산</td>
+                    <td class="cell-before">
+                      <span class="table-tag-bad">위험</span> 엑셀 소수점 수기 계산 (오타 1개에 단상자 3,000장 전량 폐기)
+                    </td>
+                    <td class="cell-after">
+                      <span class="table-tag-good">안심</span> <strong>1초 자동 연산</strong> (0.001% 초과 성분 오차율 0% 즉시 판정)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-feature">환경부 CHEMP 배합비율표</td>
+                    <td class="cell-before">
+                      <span class="table-tag-bad">지연</span> 화학물질 CAS 번호 구글링 & 수동 기재 (건당 4~8시간 노동)
+                    </td>
+                    <td class="cell-after">
+                      <span class="table-tag-good">혁신</span> <strong>원료명 검색으로 1초 완성</strong> (공공 2.1만 DB 1:1 매핑)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-feature">파생제품 시험 검사비</td>
+                    <td class="cell-before">
+                      <span class="table-tag-bad">낭비</span> 신제품 출시마다 시험원에 중복 검사 의뢰 (건당 20~30만 원)
+                    </td>
+                    <td class="cell-after">
+                      <span class="table-tag-good">절감</span> <strong>대표·파생 자동 판정</strong>으로 불필요한 중복 시험 면제 (0원)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-feature">식약처·환경부 부처 대응</td>
+                    <td class="cell-before">
+                      <span class="table-tag-bad">분산</span> 화장품법/생활화학법 2개 사이트 분리 접속 및 개별 서류 작성
+                    </td>
+                    <td class="cell-after">
+                      <span class="table-tag-good">통합</span> <strong>단일 배합표</strong>로 2개 부처 필수 서식 원스톱 분기 출력
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="cell-feature">단상자 패키지 인쇄 연계</td>
+                    <td class="cell-before">
+                      <span class="table-tag-bad">오류</span> 법정 필수 문구·폰트 규격 누락으로 인한 인쇄 사고·재출력
+                    </td>
+                    <td class="cell-after">
+                      <span class="table-tag-good">연결</span> <strong>검증 완료 단상자 도안</strong> 인쇄소 다이렉트 연계 전송
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 3. 원스톱 워크플로우 3단계 -->
     <section class="section-wrap" aria-labelledby="flow-title">
       <div class="container">
@@ -1028,6 +1504,29 @@
           <p class="section-desc text-keep" style="font-size: 0.88rem; color: var(--color-primary-text); margin-top: 6px; font-weight: 600;">
             Formu는 행정기관 제출 서류를 대행하지 않습니다. 이용자가 직접 신고하도록 서식을 자동 연산하고, 복잡한 건은 제휴 행정사에게 연결합니다.
           </p>
+        </div>
+
+        <!-- 비주얼 데이터 파이프라인 -->
+        <div class="pipeline-visual-wrap" aria-label="배합표부터 인쇄까지의 4단계 데이터 파이프라인">
+          <div class="pipeline-node">
+            <span class="pipeline-node-num">1</span>
+            <span class="pipeline-node-text">원료 배합표 입력</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">➔</span>
+          <div class="pipeline-node">
+            <span class="pipeline-node-num">2</span>
+            <span class="pipeline-node-text">2.1만 공공 DB 매핑</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">➔</span>
+          <div class="pipeline-node">
+            <span class="pipeline-node-num">3</span>
+            <span class="pipeline-node-text">1초 서식 자동 연산</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">➔</span>
+          <div class="pipeline-node">
+            <span class="pipeline-node-num">4</span>
+            <span class="pipeline-node-text">시험기관 & 인쇄소 연계</span>
+          </div>
         </div>
 
         <div class="grid-3" style="margin-bottom: 24px;">
