@@ -44,7 +44,7 @@ app.post('/api/visit', (req, res) => {
   const db = getDb();
   const newVisit = {
     id: db.visits.length + 1,
-    ip: ip.replace(/^.*:/, ''), // clean ipv6 localhost
+    ip: ip.replace(/^.*:/, ''),
     userAgent,
     referrer,
     path: pathName,
@@ -70,19 +70,22 @@ app.post('/api/signup', (req, res) => {
   }
 
   const db = getDb();
+  const normalizedEmail = email.trim().toLowerCase();
 
-  // Duplicate check
-  const existing = db.signups.find((s) => s.email.toLowerCase() === email.toLowerCase().trim());
+  // Check if already registered
+  const existing = db.signups.find((s) => s.email === normalizedEmail);
   if (existing) {
-    return res.status(409).json({
-      success: false,
-      error: '이미 사전신청이 완료된 이메일 계정입니다.'
+    return res.status(200).json({
+      success: true,
+      alreadyRegistered: true,
+      message: '이미 사전신청이 완료된 계정입니다. 가이드북을 바로 다운로드하세요!',
+      downloadUrl: '/downloads/formu_2026_regulatory_guide.pdf'
     });
   }
 
   const newSignup = {
     id: db.signups.length + 1,
-    email: email.trim().toLowerCase(),
+    email: normalizedEmail,
     name: (name || '').trim(),
     brandName: (brandName || '').trim(),
     productCategory: productCategory || '기타',
@@ -95,7 +98,8 @@ app.post('/api/signup', (req, res) => {
 
   return res.status(201).json({
     success: true,
-    message: '사전신청이 성공적으로 접수되었습니다. 오픈 시 가장 먼저 안내해 드리겠습니다!',
+    message: '사전신청이 성공적으로 접수되었습니다. 가이드북을 다운로드하세요!',
+    downloadUrl: '/downloads/formu_2026_regulatory_guide.pdf',
     data: { id: newSignup.id, email: newSignup.email }
   });
 });
@@ -107,13 +111,11 @@ app.get('/api/report', (req, res) => {
   const totalSignups = db.signups.length;
   const conversionRate = totalVisits > 0 ? ((totalSignups / totalVisits) * 100).toFixed(2) + '%' : '0.00%';
 
-  // Group by category
   const categoryCount = {};
   db.signups.forEach((s) => {
     categoryCount[s.productCategory] = (categoryCount[s.productCategory] || 0) + 1;
   });
 
-  // If CSV export requested
   if (req.query.format === 'csv') {
     const records = db.signups.map((s) => [
       s.id,
@@ -137,14 +139,12 @@ app.get('/api/report', (req, res) => {
         }
         res.setHeader('Content-Type', 'text/csv; charset=utf-8');
         res.setHeader('Content-Disposition', 'attachment; filename="formu_signups.csv"');
-        // Excel UTF-8 BOM
         res.send('\uFEFF' + output);
       }
     );
     return;
   }
 
-  // Return JSON summary
   return res.status(200).json({
     success: true,
     summary: {
@@ -157,7 +157,6 @@ app.get('/api/report', (req, res) => {
   });
 });
 
-// Fallback to index.html for SPA/root
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

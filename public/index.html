@@ -826,6 +826,31 @@
         padding: 20px 16px;
       }
     }
+
+    /* 가이드북 즉시 다운로드 버튼 */
+    .btn-download-guide {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 50px;
+      background: var(--color-success);
+      color: #FFFFFF !important;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(3, 152, 85, 0.25);
+      transition: background 0.15s ease, transform 0.1s ease;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn-download-guide:hover {
+      background: #027A48;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(3, 152, 85, 0.35);
+    }
   </style>
 </head>
 <body>
@@ -1298,10 +1323,21 @@
 
           if (res.ok && data.success) {
             feedback.className = 'form-feedback success';
-            feedback.textContent = '🎉 ' + data.message;
+            feedback.innerHTML = `
+              <div style="font-size: 1.08rem; font-weight: 800; margin-bottom: 6px; color: var(--color-success);">🎉 사전신청이 완료되었습니다!</div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5;">
+                얼리버드 3개월 무료 이용권이 등록되었습니다.<br />
+                약속드린 <strong>'2026 필수 규제 가이드북(PDF)'</strong>을 지금 바로 다운로드하세요!
+              </p>
+              <a href="${data.downloadUrl || '/downloads/formu_2026_regulatory_guide.pdf'}" download="Formu_2026_화장품_향료_필수규제가이드.pdf" class="btn-download-guide" id="guideDownloadLink">
+                📥 2026 규제 가이드북(PDF) 즉시 다운로드
+              </a>
+            `;
             feedback.style.display = 'block';
             form.reset();
             emailInput.removeAttribute('aria-invalid');
+            const downloadBtn = document.getElementById('guideDownloadLink');
+            if (downloadBtn) downloadBtn.focus();
           } else {
             feedback.className = 'form-feedback error';
             feedback.textContent = '⚠️ ' + (data.error || '접수 중 오류가 발생했습니다.');
