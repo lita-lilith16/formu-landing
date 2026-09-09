@@ -1,0 +1,13 @@
+{
+  "name": "formu-landing",
+  "version": "1.0.0",
+  "description": "Formu (포뮤) - B2B 규제 자동화 및 원스톱 출시 OS 랜딩페이지",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "csv-stringify": "^6.5.1"
+  }
+}
