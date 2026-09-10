@@ -248,9 +248,9 @@
       <div class="slide-body">
         <div class="hero-box">
           <div class="hero-badge">1인 디퓨저·방향제 브랜드용 규제 출시 SaaS</div>
-          <h1 class="hero-h1">배합표 입력만으로<br>신고 서식과 라벨 문구를 셀프 점검하다</h1>
+          <h1 class="hero-h1">원료 엑셀과 기본 정보 입력으로<br>신고 준비 서류와 라벨 초안을 정리하다</h1>
           <p class="hero-sub">
-            규제 서류 6~7곳 분산 접점을 배합표 입력 1곳으로 단축하여,<br>
+            원료 엑셀과 제품 정보를 입력하면 CHEMP 신고 준비 서류 초안과 라벨 표시 초안을 정리하여,<br>
             1인 브랜드가 겪는 시간 손실과 라벨·단상자 폐기 리스크를 줄여주는 셀프서브 소프트웨어
           </p>
           <div class="hero-meta">
@@ -336,39 +336,82 @@
     <section class="slide" id="slide-3">
       <div class="slide-header">
         <div>
-          <div class="slide-category">Solution & Scope · 해결 방안 및 서비스 범위</div>
-          <h2 class="slide-title">배합표 입력 1곳으로 서식과 라벨 초안을 정리</h2>
+          <div class="slide-category">Solution & Workflow · 해결 방안 및 제품 흐름</div>
+          <h2 class="slide-title">원료 엑셀과 기본 제품 정보 입력 ➔ 신고 준비 서류 초안 정리</h2>
         </div>
         <div class="slide-num">03 / 09</div>
       </div>
-      <div class="slide-body">
-        <div class="grid-3">
-          <div class="card highlight">
-            <div class="card-title">1. 배합표 기반 자동 정리</div>
-            <div class="card-desc">
-              원료 비율이 적힌 배합표 정보만 입력하면, 환경부 CHEMP 신고 서류 초안과 
-              필수 표기사항이 반영된 라벨 체크리스트를 소프트웨어가 자동으로 정리합니다.
-            </div>
+      <div class="slide-body" style="flex-direction:column; gap:16px; justify-content:center;">
+        <!-- 3-Step Input -> Process -> Output Pipeline -->
+        <div style="display:grid; grid-template-columns: 1fr auto 1.2fr auto 1fr; gap:12px; align-items:stretch;">
+          <!-- Step 1: Input -->
+          <div class="card" style="padding:16px;">
+            <div style="font-size:11px; font-weight:800; color:var(--primary); margin-bottom:4px;">STEP 1 · 사용자 입력</div>
+            <div class="card-title" style="font-size:15px; margin-bottom:8px;">입력 자료</div>
+            <ul style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:16px; margin:0;">
+              <li><strong>원료 엑셀:</strong> 성분명, CAS 번호, 배합비율</li>
+              <li><strong>기본 제품 정보:</strong> 제품명, 용량, 품목, 제조·판매자 정보</li>
+              <li><strong>공급사 자료:</strong> MSDS 보유 여부 체크</li>
+            </ul>
           </div>
-          <div class="card">
-            <div class="card-title">2. 첫 MVP 집중 범위</div>
-            <div class="card-desc">
-              첫 제품은 <strong>환경부 생활화학제품(디퓨저·방향제)</strong> 신고 준비에 집중합니다. 
-              향수·바디미스트(식약처 화장품법) 라벨 검토는 같은 고객군을 위한 <strong>확장 모듈</strong>로 둡니다.
-            </div>
+
+          <div style="display:flex; align-items:center; font-size:20px; color:var(--primary);">➔</div>
+
+          <!-- Step 2: Processing -->
+          <div class="card highlight" style="padding:16px;">
+            <div style="font-size:11px; font-weight:800; color:var(--primary); margin-bottom:4px;">STEP 2 · 시스템 자동 점검</div>
+            <div class="card-title" style="font-size:15px; margin-bottom:8px;">규제 기준 대조 점검</div>
+            <ul style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:16px; margin:0;">
+              <li><strong>필수 항목 점검:</strong> 성분 누락 및 배합비 100% 정합성 검토</li>
+              <li><strong>공공데이터 대조:</strong> 알레르기 유발성분 25종 및 CHEMP 필수 항목</li>
+              <li><strong>상태 표시:</strong> 확인 필요 / 자료 부족 / 전문가 확인 필요</li>
+            </ul>
+            <div style="font-size:11px; color:#EF4444; font-weight:700; margin-top:6px;">* 규제 적합/부적합 판정은 하지 않음 (사전 점검 보조)</div>
           </div>
-          <div class="card">
-            <div class="card-title">3. 안전한 셀프서브 구조</div>
-            <div class="card-desc">
-              Formu는 서류 작성을 사용자가 직접 하도록 돕는 소프트웨어입니다. 
-              사용자가 직접 신고하도록 돕는 셀프서브 소프트웨어이며, 복잡한 건은 제휴 행정사에게 연결합니다.
+
+          <div style="display:flex; align-items:center; font-size:20px; color:var(--primary);">➔</div>
+
+          <!-- Step 3: Output -->
+          <div class="card" style="padding:16px;">
+            <div style="font-size:11px; font-weight:800; color:var(--success); margin-bottom:4px;">STEP 3 · 사용자 획득 산출물</div>
+            <div class="card-title" style="font-size:15px; margin-bottom:8px;">신고 준비 리포트 초안</div>
+            <ul style="font-size:12px; color:var(--text-muted); line-height:1.6; padding-left:16px; margin:0;">
+              <li><strong>CHEMP 제출용:</strong> 배합비율표 초안 (.xlsx)</li>
+              <li><strong>패키지 인쇄용:</strong> 라벨 표시 항목 초안</li>
+              <li><strong>리스크 사전 안내:</strong> 누락 자료 및 확인 필요 항목 리스트</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Public Data Stack Table -->
+        <div style="background:var(--bg-alt); border:1px solid var(--border); border-radius:10px; padding:12px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span style="font-size:12px; font-weight:800; color:var(--text);">🏛️ 탑재 공공데이터 출처 및 적용 단계</span>
+            <span style="font-size:11px; color:var(--text-muted);">사용자가 자료 보완 ➔ 확인 후 실제 신고는 본인이 진행</span>
+          </div>
+          <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; font-size:11.5px;">
+            <div style="background:#FFFFFF; border:1px solid var(--border); padding:8px 10px; border-radius:6px;">
+              <strong style="color:var(--primary);">알레르기 성분 25종</strong><br>
+              <span style="color:var(--text-muted);">첫 MVP 탑재 (식약처 고시)</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--border); padding:8px 10px; border-radius:6px;">
+              <strong style="color:var(--primary);">CHEMP 필수 항목</strong><br>
+              <span style="color:var(--text-muted);">첫 MVP 탑재 (환경부 기준)</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--border); padding:8px 10px; border-radius:6px;">
+              <strong>화장품 원료 DB (2만건)</strong><br>
+              <span style="color:var(--text-muted);">2단계 공공 API 연동 (data.go.kr)</span>
+            </div>
+            <div style="background:#FFFFFF; border:1px solid var(--border); padding:8px 10px; border-radius:6px;">
+              <strong>지정 시험기관 6곳</strong><br>
+              <span style="color:var(--text-muted);">참고 정보 제공 (KEITI 안내)</span>
             </div>
           </div>
         </div>
       </div>
       <div class="slide-footer">
-        <span>접점 6~7곳 ➔ 배합표 입력 1곳으로 단축</span>
-        <span>유사 셀프서브 플랫폼의 책임 분리 선례 참고 (합법적 구조 설계)</span>
+        <span>원료 엑셀 + 제품 정보 ➔ CHEMP 제출용 배합비율표 초안 & 라벨 표시 항목 초안</span>
+        <span>규제 적합성 판정이 아닌 사전 서류 준비 자동화</span>
       </div>
     </section>
 
@@ -511,7 +554,7 @@
               <td><strong>서비스 모델</strong></td>
               <td>사람 수작업 의뢰 (기본검토 15만)</td>
               <td>엔터프라이즈 SaaS (고가)</td>
-              <td class="td-formu">셀프서브 소프트웨어 (3만원대 리포트)</td>
+              <td class="td-formu">신고 준비 리포트 (단일 9.9만 / 3종 19.9만)</td>
             </tr>
             <tr>
               <td><strong>접점 수</strong></td>
@@ -532,39 +575,63 @@
     <section class="slide" id="slide-7">
       <div class="slide-header">
         <div>
-          <div class="slide-category">Business Model · 3단계 수익 모델</div>
-          <h2 class="slide-title">유료 리포트에서 구독 및 파트너 연결로 확장</h2>
+          <div class="slide-category">Business Model · 수익 모델</div>
+          <h2 class="slide-title">수익모델 — 신고 준비 리포트 중심</h2>
         </div>
         <div class="slide-num">07 / 09</div>
       </div>
-      <div class="slide-body">
-        <div class="grid-3">
-          <div class="card highlight">
-            <div style="font-size:12px; font-weight:800; color:var(--primary);">1단계 · 초기 (현재~8주)</div>
-            <div class="card-title">건당 유료 리포트 (3만원대)</div>
-            <div class="card-desc">
-              배합표 입력 시 신고 서류 초안과 라벨 문구 체크리스트를 정리해 주는 유료 리포트로 초기 진입 장벽을 낮추고 결제 의사를 검증합니다.
-            </div>
-          </div>
-          <div class="card">
-            <div style="font-size:12px; font-weight:800; color:var(--text-muted);">2단계 · 반복 증가 (8주~6개월)</div>
-            <div class="card-title">셀프서브 SaaS 구독 (월 3~5만원)</div>
-            <div class="card-desc">
-              다수 제품(SKU)을 운영하는 브랜드를 대상으로 원료 DB 자동 매핑과 서식 최신 업데이트를 제공하는 월 정기 구독 모델로 전환합니다.
-            </div>
-          </div>
-          <div class="card">
-            <div style="font-size:12px; font-weight:800; color:var(--text-muted);">3단계 · 파트너 연결 (6개월~)</div>
-            <div class="card-title">인쇄 파트너 연결 수수료 (10~15%)</div>
-            <div class="card-desc">
-              라벨·단상자 인쇄 파트너사 연결을 통해 파트너 결제액의 10~15% 수수료를 확보합니다. (행정사 연결은 법률 검토 후 입점료 등 합법 설계)
-            </div>
+      <div class="slide-body" style="flex-direction:column; gap:14px; justify-content:center;">
+        <!-- 3-Tier Pricing Table -->
+        <table class="comp-table" style="font-size:12.5px;">
+          <thead>
+            <tr>
+              <th style="width:22%;">상품명</th>
+              <th style="width:16%; text-align:right;">정가</th>
+              <th style="width:20%; text-align:right;">베타가 (검증 예정)</th>
+              <th style="width:42%;">포함 내용 및 범위 명세</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>단일 제품 준비팩</strong></td>
+              <td style="text-align:right; text-decoration:line-through; color:var(--text-muted);">129,000원</td>
+              <td style="text-align:right; font-weight:900; color:var(--primary);">99,000원</td>
+              <td>원료 엑셀 점검 + 누락 자료 표시 + CHEMP 제출용 배합비율표 초안 + 라벨 표시 항목 초안</td>
+            </tr>
+            <tr style="background:var(--primary-light);">
+              <td><strong>3종 라인업팩 (추천)</strong></td>
+              <td style="text-align:right; text-decoration:line-through; color:var(--text-muted);">249,000원</td>
+              <td style="text-align:right; font-weight:900; color:var(--primary);">199,000원</td>
+              <td>동일 베이스 또는 향 변경 3종까지 정리 (개당 약 66,000원 · 다품종 묶음)</td>
+            </tr>
+            <tr>
+              <td><strong>전문가 검토 연계형</strong></td>
+              <td style="text-align:right; color:var(--text-muted);">—</td>
+              <td style="text-align:right; font-weight:800; color:var(--text-muted);">출시 예정 / 별도 견적</td>
+              <td>행정사 파트너 확정 전까지 고정가 표시 금지 (전문가 검토 메모 옵션)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Positioning Note -->
+        <div style="background:#FFFFFF; border:1.5px solid var(--border); border-left:4px solid var(--primary); padding:10px 16px; border-radius:6px; font-size:12.5px; line-height:1.45;">
+          <strong>포지셔닝:</strong> "전문가(행정사) 의뢰 전, 신고 준비 자료를 빠르게 정리해주는 합리적 사전 점검 비용"
+          <span style="font-size:11px; color:var(--text-muted); margin-left:8px;">* 모든 가격은 검증 예정 가격이며 현재 결제 불가</span>
+        </div>
+
+        <!-- Benchmark Table with Citations -->
+        <div style="background:var(--bg-alt); border:1px solid var(--border); border-radius:8px; padding:10px 16px; font-size:11.5px;">
+          <div style="font-weight:800; margin-bottom:4px; color:var(--text);">대안 대비 비용 및 고객 페인 (참고 지표)</div>
+          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; color:var(--text-muted);">
+            <div>· <strong>행정사 직접 의뢰:</strong> 건당 35만~60만원 (출처: 인증쏙 injeungssok.com 기본검토 15만 / 파생 5만 / MSDS 10만) ➔ 피드백 1~2주 소요</div>
+            <div>· <strong>CHEMP 반려 시:</strong> 출시 지연 3~4주 ➔ 시즌 놓침 및 완제품 재고 적체 리스크</div>
+            <div>· <strong>라벨 오기재 폐기:</strong> 150만~300만원 손실 (내부 추정 참고 지표, 확정 수치 아님) ➔ 재인쇄비·동판비 이중 지출</div>
           </div>
         </div>
       </div>
       <div class="slide-footer">
-        <span>* 수수료 제외 원칙: 공인시험기관(KTR 등 6곳)은 공익기관으로 중개 수수료 수취 불가 (시료 접수·성적서 연동 파트너로만 협력)</span>
-        <span>단위 경제성 개선 계획</span>
+        <span>단일 9.9만 / 3종 19.9만 (검증 예정 가격) · 출처 명시 (인증쏙 공개 가격안내 기준)</span>
+        <span>행정사 의뢰 전 사전 점검 비용으로 포지셔닝</span>
       </div>
     </section>
 
@@ -594,7 +661,7 @@
           <div class="timeline-row">
             <span class="t-step">3단계 (4~8주)</span>
             <span class="t-task">수작업 유료 진단 리포트</span>
-            <span class="t-desc">3만원대 서식 정리 리포트 수작업 제공으로 첫 결제 검증</span>
+            <span class="t-desc">신고 준비 리포트(단일 9.9만/3종 19.9만) 수작업 초안 정리로 첫 결제 검증</span>
             <span class="t-status">○ 목표: 첫 매출 1~3건</span>
           </div>
           <div class="timeline-row">
