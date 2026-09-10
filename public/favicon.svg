@@ -1,14 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="7" fill="#3182F6" />
-  <!-- 왼쪽: 배합표 2x2 셀 그리드 -->
-  <rect x="4.5" y="9.5" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
-  <rect x="10" y="9.5" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
-  <rect x="4.5" y="15" width="4.5" height="4.5" rx="1" fill="#FFFFFF" />
-  <rect x="10" y="15" width="4.5" height="4.5" rx="1" fill="#03C75A" />
-  <rect x="4.5" y="21" width="10" height="2" rx="1" fill="#A5C7F9" />
-  <!-- 중앙: 변환 화살표 -->
-  <path d="M16 16.5 H19.5 M18 14.5 L20 16.5 L18 18.5" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-  <!-- 오른쪽: 디퓨저/보틀 실루엣 -->
-  <rect x="23.5" y="8" width="3" height="3" rx="0.8" fill="#A5C7F9" />
-  <path d="M22.5 12 H27.5 C28.5 12 29 12.8 29 13.8 L28.5 21.5 C28.5 22.8 27.5 23.5 26.5 23.5 H23.5 C22.5 23.5 21.5 22.8 21.5 21.5 L21 13.8 C21 12.8 21.5 12 22.5 12 Z" fill="#FFFFFF" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+  <!-- Background Squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" />
+  <rect width="64" height="64" rx="16" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+  
+  <!-- Modern Geometric Monogram 'F' -->
+  <!-- Vertical Stem -->
+  <rect x="15" y="15" width="8" height="34" rx="4" fill="#FFFFFF" />
+  
+  <!-- Top Horizontal Bar -->
+  <rect x="15" y="15" width="22" height="8" rx="4" fill="#FFFFFF" />
+  
+  <!-- Middle Horizontal Bar -->
+  <rect x="15" y="28" width="16" height="7" rx="3.5" fill="#93C5FD" />
+  
+  <!-- Precision Inspection Spark (✦) at Top Right -->
+  <path d="M47 13 C47 17 49 19 53 19 C49 19 47 21 47 25 C47 21 45 19 41 19 C45 19 47 17 47 13 Z" fill="url(#sparkGrad)" />
 </svg>
