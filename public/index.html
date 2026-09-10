@@ -7,7 +7,7 @@
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <title>Formu (포뮤) — B2B 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS</title>
-  <meta name="description" content="배합표 업로드 1초 만에, 법적 규제 서식 완성. 식약처 알레르기 25/26종 함량 계산부터 환경부 CHEMP 100% 배합비율표까지 즉시 확인하세요." />
+  <meta name="description" content="배합표 업로드 1초 만에, 신고·라벨 입력값 초안 정리. 식약처 알레르기 25/26종 함량 계산부터 환경부 CHEMP 100% 배합비율표까지 즉시 확인하세요." />
 
   <!-- Pretendard 폰트 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -188,7 +188,7 @@
     }
     .floating-card.top { top: 20px; left: -20px; }
     .floating-card.bottom { bottom: 20px; right: -10px; }
-    .floating-card .val { font-size: 20px; font-weight: 900; color: var(--primary); line-height: 1; }
+    .floating-card .val { font-size: 16px; font-weight: 900; color: var(--primary); line-height: 1.2; }
     .floating-card .lbl { font-size: 11px; font-weight: 700; color: var(--text-muted); }
 
     /* =========================================================================
@@ -217,7 +217,7 @@
     .stats-section { padding: 70px 0; background: #FFFFFF; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; text-align: center; }
     .stat-item { padding: 10px; }
-    .stat-num { font-size: 46px; font-weight: 900; letter-spacing: -1px; color: var(--text-main); line-height: 1.1; margin-bottom: 8px; }
+    .stat-num { font-size: 38px; font-weight: 900; letter-spacing: -1px; color: var(--text-main); line-height: 1.1; margin-bottom: 8px; }
     .stat-num.accent { color: var(--primary); }
     .stat-lbl { font-size: 13.5px; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .stat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
@@ -317,7 +317,7 @@
     }
     .plan-name { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
     .plan-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; min-height: 40px; }
-    .plan-price { font-size: 38px; font-weight: 900; color: var(--text-main); margin-bottom: 24px; line-height: 1; }
+    .plan-price { font-size: 38px; font-weight: 900; color: var(--text-main); margin-bottom: 24px; line-height: 1.1; }
     .plan-price span { font-size: 14px; font-weight: 600; color: var(--text-muted); }
     
     .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; flex: 1; }
@@ -421,18 +421,18 @@
         </div>
         <h1 class="hero-headline">
           배합표 업로드 1초 만에,<br />
-          <span>법적 규제 서식 완성.</span>
+          <span>신고·라벨 입력값 초안 정리.</span>
         </h1>
         <p class="hero-subhead">
-          식약처 알레르기 25종(2024 개정 26종) 함량 계산부터 환경부 CHEMP 100% 화학 배합비율표까지 즉시 완성하고, 공인시험기관과 패키지 인쇄 파트너를 단 하나의 화면에서 연결합니다.
+          식약처 알레르기 25종(2024 개정 26종) 함량 계산부터 환경부 CHEMP 100% 화학 배합비율표까지 즉시 확인하고, 공인시험기관과 패키지 인쇄 파트너를 단 하나의 화면에서 연결합니다.
         </p>
         <div class="hero-ctas">
           <a href="#simulator" class="btn-hero-primary">무료 배합표 진단 시작 ↗</a>
           <a href="#features" class="btn-hero-secondary">핵심 기능 살펴보기</a>
         </div>
         <div class="hero-trust-chips">
-          <div class="trust-chip"><span class="dot"></span> 식약처 2.1만 공공 DB 실시간 매핑</div>
-          <div class="trust-chip"><span class="dot"></span> 삼쩜삼·로톡 판례 기반 Self-Serve 적법성 검증</div>
+          <div class="trust-chip"><span class="dot"></span> 식약처 약 2만 건 공공 DB 실시간 매핑</div>
+          <div class="trust-chip"><span class="dot"></span> 유사 셀프서브 플랫폼 선례 참고 & 책임분리 설계</div>
         </div>
       </div>
 
@@ -442,14 +442,14 @@
         
         <!-- Floating Micro Pills -->
         <div class="floating-card top">
-          <div class="val">100% 규제 통과</div>
-          <div class="lbl">식약처 26종 알레르기 유발성분 검증</div>
+          <div class="val">배합비 합계 100% 자동 검산</div>
+          <div class="lbl">식약처 26종 알레르기 유발성분 사전 점검</div>
         </div>
         <div class="floating-card bottom">
-          <div class="val" style="color: #000000;">0건</div>
+          <div class="val" style="color: #000000;">사전 점검</div>
           <div>
-            <div class="lbl">단상자 전량 폐기 손실</div>
-            <div style="font-size: 10px; color: #94A3B8;">소수점 오타 사전 차단</div>
+            <div class="lbl">폐기·수정 리스크 사전 점검</div>
+            <div style="font-size: 10px; color: #94A3B8;">표기 오류 가능성 감소</div>
           </div>
         </div>
       </div>
@@ -484,19 +484,19 @@
         <div class="stat-desc">단일 배합표로 2개 부처 서식 렌더링</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">98%</div>
-        <div class="stat-lbl">소요 시간 단축</div>
-        <div class="stat-desc">2~4주 걸리던 규제 서류를 즉시 처리</div>
+        <div class="stat-num">단축 목표</div>
+        <div class="stat-lbl">서류 준비 시간 단축</div>
+        <div class="stat-desc">반복 입력 시간을 줄이는 것을 목표로 합니다</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num accent">2.1만+</div>
+        <div class="stat-num accent">약 2만 건</div>
         <div class="stat-lbl">공공 DB 실시간 연동</div>
         <div class="stat-desc">원료명 검색 즉시 CAS 번호 1:1 매칭</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">0건</div>
-        <div class="stat-lbl">패키지 폐기 위험</div>
-        <div class="stat-desc">소수점 오타로 인한 과태료 원천 방지</div>
+        <div class="stat-num">사전 점검</div>
+        <div class="stat-lbl">폐기·수정 리스크 사전 점검</div>
+        <div class="stat-desc">표기 오류 가능성 감소</div>
       </div>
     </div>
   </section>
@@ -519,7 +519,7 @@
             <img src="assets/glass_bottle.jpg" alt="3D Glass Flask" class="bento-icon-img" />
             <h3 class="bento-card-title">화이트리스트 자동 매핑</h3>
             <p class="bento-card-desc">
-              CAS 번호를 몰라도 원료명만 검색하면 식약처 2.1만 DB와 1:1 대조하여 알레르기 25/26종 해당 여부와 법정 배합한도를 즉시 판정합니다.
+              CAS 번호를 몰라도 원료명만 검색하면 식약처 약 2만 건 DB와 1:1 대조하여 알레르기 25/26종 해당 여부와 법정 배합한도를 즉시 판정합니다.
             </p>
           </div>
           <div class="bento-visual-pill">
@@ -547,11 +547,11 @@
             <img src="assets/glass_cart.jpg" alt="3D Glass Cart" class="bento-icon-img" />
             <h3 class="bento-card-title">원클릭 파트너 오케스트레이션</h3>
             <p class="bento-card-desc">
-              검증 완료 도안을 제휴 패키지 인쇄소로 즉시 전송하고, 공인시험기관 시료 접수 및 복잡 건 행정사 매칭까지 단일 보드에서 관리합니다.
+              자가 점검 도안을 제휴 패키지 인쇄소로 즉시 전송하고, 공인시험기관 시료 접수 및 복잡 건 행정사 매칭까지 단일 보드에서 관리합니다.
             </p>
           </div>
           <div class="bento-visual-pill">
-            <span>● 연계 혜택:</span> 제휴 단상자 인쇄 10~15% 할인 혜택
+            <span>● 연계 혜택:</span> 제휴 인쇄 파트너 연결 (수수료 10~15%)
           </div>
         </div>
       </div>
@@ -565,14 +565,14 @@
     <div class="container">
       <div class="section-header">
         <span class="section-tag">LIVE ENGINE DEMO</span>
-        <h2 class="section-title">배합표를 넣는 즉시 검증되는 1초 엔진</h2>
-        <p class="section-subhead">아래 샘플 레시피 버튼을 눌러 Formu의 실시간 규제 감사 엔진을 직접 테스트해 보세요.</p>
+        <h2 class="section-title">배합표를 넣는 즉시 점검되는 1초 엔진</h2>
+        <p class="section-subhead">아래 샘플 레시피 버튼을 눌러 Formu의 규제 점검 프로토타입 데모를 직접 테스트해 보세요.</p>
       </div>
 
       <div class="sim-container">
         <div class="sim-topbar">
           <div class="sim-topbar-title">
-            <span class="dot"></span> FORMU REGULATION ENGINE v2.4 (LIVE AUDIT)
+            <span class="dot"></span> Formu 규제 점검 프로토타입 데모
           </div>
           <div class="sim-actions">
             <button class="btn-sample active" onclick="loadSample('perfume')">향수 (식약처)</button>
@@ -610,7 +610,7 @@
                 <span style="font-weight: 800;">PASS (100%)</span>
               </div>
               <div style="font-size: 11.5px; line-height: 1.5;">
-                ➔ CAS 번호 기준 정합성 검증 완료 · 안전기준 적합 · 공식 CHEMP 엑셀 서식 다운로드 준비
+                ➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비
               </div>
             </div>
 
@@ -631,7 +631,7 @@
       <div class="section-header">
         <span class="section-tag">PRICING PLANS</span>
         <h2 class="section-title">단 한 건의 결제도 부담 없는 합리적 과금</h2>
-        <p class="section-subhead">월 수백만 원의 대행료 대신, 신제품을 출시할 때마다 건당 1.9만 원으로 해결하세요.</p>
+        <p class="section-subhead">외부 의뢰 비용 대신, 신제품을 출시할 때마다 합리적인 비용(베타 19,000원 / 정식 3만원대 예정)으로 해결하세요.</p>
       </div>
 
       <div class="pricing-grid">
@@ -643,8 +643,8 @@
             <div class="plan-price">0원 <span>/ 평생 무료</span></div>
             <ul class="plan-features">
               <li><span class="check">✓</span> 배합표 기본 알레르기 성분 스캔</li>
-              <li><span class="check">✓</span> 식약처 2.1만 원료명 DB 검색</li>
-              <li><span class="check">✓</span> 100% 배합비율 합계 검산</li>
+              <li><span class="check">✓</span> 식약처 약 2만 건 원료명 DB 검색</li>
+              <li><span class="check">✓</span> 배합비 합계 100% 자동 검산</li>
             </ul>
           </div>
           <a href="#simulator" class="btn-plan outline">무료로 시작하기</a>
@@ -656,12 +656,12 @@
           <div>
             <h3 class="plan-name">서식 다운로드 (Pro)</h3>
             <p class="plan-desc">식약처 라벨 문구 및 CHEMP 엑셀 즉시 완성 다운로드</p>
-            <div class="plan-price">19,000원 <span>/ 건당</span></div>
+            <div class="plan-price" style="font-size: 26px;">베타 19,000원 <span style="font-size: 13px; display: block; margin-top: 4px;">/ 건당 (정식 3만원대 예정)</span></div>
             <ul class="plan-features">
               <li><span class="check">✓</span> 식약처 단상자 필수 기재 라벨 문구 완성</li>
               <li><span class="check">✓</span> 환경부 CHEMP 100% 배합비율표 (.xlsx)</li>
               <li><span class="check">✓</span> 법정 면제 요건 사전 판정 및 검토서</li>
-              <li><span class="check">✓</span> 소수점 오타 방지 3단계 무결성 검증</li>
+              <li><span class="check">✓</span> 표기 오류 및 배합비 오차 사전 점검</li>
             </ul>
           </div>
           <a href="#simulator" class="btn-plan solid">건당 결제 시작하기 ↗</a>
@@ -675,7 +675,7 @@
             <div class="plan-price">맞춤 견적 <span>/ 프로젝트당</span></div>
             <ul class="plan-features">
               <li><span class="check">✓</span> Pro 서식 다운로드 전 기능 포함</li>
-              <li><span class="check">✓</span> 제휴 단상자·라벨 인쇄 10~15% 할인 연계</li>
+              <li><span class="check">✓</span> 제휴 인쇄 파트너 연결 (수수료 10~15%)</li>
               <li><span class="check">✓</span> 공인시험원 시료 접수 전자 성적서 연동</li>
               <li><span class="check">✓</span> 복잡 건 제휴 공인 행정사 1:1 매칭</li>
             </ul>
@@ -704,7 +704,7 @@
             <span>+</span>
           </div>
           <div class="faq-answer">
-            삼쩜삼·로톡의 대법원 및 검찰 무혐의 판례와 동일하게, Formu는 사용자가 입력한 데이터를 알고리즘으로 자동 연산하여 표준 서식을 렌더링하는 순수 셀프서브 소프트웨어(SaaS)입니다. 개별 법적 대리나 유권해석이 필요한 복잡 건은 제휴된 공인 행정사에게 적법하게 연결합니다.
+            유사 셀프서브 플랫폼의 불기소 사례와 책임분리 원칙을 참고하며, 법률 검토를 진행 중입니다. Formu는 사용자가 직접 입력한 데이터를 바탕으로 표준 서식을 정리하는 순수 셀프서브 소프트웨어(SaaS)를 지향합니다. 개별 법적 대리나 유권해석이 필요한 복잡 건은 제휴된 공인 행정사에게 적법하게 연결합니다.
           </div>
         </div>
 
@@ -724,7 +724,7 @@
             <span>+</span>
           </div>
           <div class="faq-answer">
-            모든 배합 데이터는 금융권 수준의 AES-256 종단간 암호화로 보호됩니다. 서식 다운로드 완료 후 서버에 원본 배합표가 영구 저장되지 않으며, 고객의 배합 기밀은 제3자에게 절대 공유되지 않습니다.
+            현재 배합 데이터 보호 정책 설계 중이며, 서식 다운로드 완료 후 서버에 원본 배합표가 영구 저장되지 않도록 안전하게 처리할 예정입니다. 고객의 배합 기밀은 제3자에게 절대 공유되지 않습니다.
           </div>
         </div>
       </div>
@@ -775,11 +775,11 @@
         event.target.classList.add('active');
         formulaBox.innerText = "• 라벤더 오일 (CAS 8000-28-0): 12.50%\n• 리날룰 (Linalool, CAS 78-70-6): 2.40%\n• 리모넨 (Limonene, CAS 5989-27-5): 0.80%\n• 발효주정 에탄올 (CAS 64-17-5): 84.30%\n총 배합비: 100.00% (정합성 일치)";
         kdaResult.innerHTML = '<div class="result-card-hdr"><span>[식약처] 화장품 알레르기 25/26종 결과</span><span style="color: var(--primary); font-weight: 800;">검출 2건</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ 리날룰 2.40%, 리모넨 0.80% (0.001% 초과 검출 ➔ 라벨 필수 기재 문구 즉시 추출 완료)</div>';
-        chempResult.innerHTML = '<div class="result-card-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800;">PASS (100%)</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ CAS 번호 기준 정합성 검증 완료 · 안전기준 적합 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
+        chempResult.innerHTML = '<div class="result-card-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800;">PASS (100%)</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
       } else {
         event.target.classList.add('active');
         formulaBox.innerText = "• 유칼립투스 오일 (CAS 8000-48-4): 8.00%\n• 디프로필렌 글리콜 (DPG, CAS 25265-71-8): 20.00%\n• 발효 에탄올 (CAS 64-17-5): 72.00%\n총 배합비: 100.00% (정합성 일치)";
-        kdaResult.innerHTML = '<div class="result-card-hdr"><span>[환경부 CHEMP] 방향제 품목 유해물질 사전 진단</span><span style="color: #10B981; font-weight: 800;">안전기준 적합</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ 폼알데하이드, 메탄올 등 금지물질 0% 검출 · 안전확인대상 생활화학제품 신고 대상 판정</div>';
+        kdaResult.innerHTML = '<div class="result-card-hdr"><span>[환경부 CHEMP] 방향제 품목 유해물질 사전 진단</span><span style="color: #10B981; font-weight: 800;">검토 필요 항목 표시</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ 폼알데하이드, 메탄올 등 주요 항목 사전 점검 · 안전확인대상 생활화학제품 신고 대상 여부 확인</div>';
         chempResult.innerHTML = '<div class="result-card-hdr"><span>[서식 분기] CHEMP 100% 배합비율표 (.xlsx)</span><span style="font-weight: 800;">즉시 다운로드 가능</span></div><div style="font-size: 11.5px; line-height: 1.5;">➔ 용도(실내용), 제형(액체형) 자동 매핑 완료 · KTR/KCL 시험 접수용 서류 1초 완성</div>';
       }
     }
