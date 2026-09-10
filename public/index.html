@@ -9,886 +9,477 @@
   <title>Formu (포뮤) — B2B 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS</title>
   <meta name="description" content="배합표 업로드 1초 만에, 신고·라벨 입력값 초안 정리. 식약처 알레르기 25/26종 함량 계산부터 환경부 CHEMP 100% 배합비율표까지 즉시 확인하세요." />
 
-  <!-- Pretendard & JetBrains Mono Fonts -->
+  <!-- Pretendard Modern Sans-Serif Font -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Synth AI Design Tokens (Tailgrids Demo Style) */
-      --synth-bg: #F4F4F6;
-      --synth-card: #FFFFFF;
-      --synth-card-subtle: #F9F9FB;
-      --synth-card-tint: #F4F5FF;
-      --synth-card-lilac: #EBEBFC;
+      /* Premium 3D Glass & Luminous Palette (Toss Blue + Vivid Violet + Crystal White) */
+      --primary: #3182F6;
+      --primary-hover: #1b6cd9;
+      --primary-glow: rgba(49, 130, 246, 0.25);
+      --primary-light: #EEF4FF;
       
-      --synth-primary: #585ECE;
-      --synth-primary-hover: #484EBE;
-      --synth-primary-light: #EEF0FF;
-      --synth-primary-tint: #DCDEFF;
+      --purple: #7C3AED;
+      --purple-light: #F5F3FF;
+      --purple-glow: rgba(124, 58, 237, 0.2);
       
-      --synth-black: #0A0A0A;
-      --synth-black-hover: #222222;
-      --synth-text-main: #0A0A0A;
-      --synth-text-body: #52525B;
-      --synth-text-muted: #71717A;
-      --synth-text-light: #A1A1AA;
+      --text-main: #0F172A;
+      --text-body: #475569;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
       
-      --synth-border: rgba(0, 0, 0, 0.08);
-      --synth-border-light: rgba(0, 0, 0, 0.04);
-      --synth-border-focus: rgba(88, 94, 206, 0.35);
+      --bg: #FFFFFF;
+      --bg-subtle: #F8FAFC;
       
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --radius-xl: 26px;
-      --radius-2xl: 32px;
+      /* 3D Glassmorphism Spec */
+      --glass-bg: rgba(255, 255, 255, 0.75);
+      --glass-bg-hover: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-border-subtle: rgba(226, 232, 240, 0.8);
+      --glass-shadow: 0 20px 45px -10px rgba(49, 130, 246, 0.12), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+      --glass-shadow-hover: 0 30px 60px -12px rgba(124, 58, 237, 0.18), 0 0 1px 1.5px rgba(255, 255, 255, 1) inset;
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
       --radius-pill: 9999px;
       
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03);
-      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
-      --shadow-glow: 0 10px 40px -10px rgba(88, 94, 206, 0.15);
-      
-      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --container-max: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
     body {
-      background-color: var(--synth-bg);
-      color: var(--synth-text-main);
-      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-main);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      padding: 12px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 8%, rgba(238, 244, 255, 0.9) 0%, rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 90% 18%, rgba(245, 243, 255, 0.8) 0%, rgba(255, 255, 255, 0) 50%),
+        radial-gradient(circle at 50% 60%, rgba(238, 244, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
+      background-attachment: fixed;
     }
 
-    @media (min-width: 768px) {
-      body { padding: 16px; }
-    }
-
-    /* Outer Modular Canvas (Synth AI Layout Wrapper) */
-    .synth-wrapper {
-      max-width: 1320px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    /* Reusable Modular Section Card */
-    .synth-section {
-      background: var(--synth-card);
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Common Typography */
-    .mono-tag {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--synth-text-main);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .mono-tag .spark {
-      color: var(--synth-primary);
-      font-size: 13px;
-    }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
 
     /* =========================================================================
-       1. SYNTH AI NAVIGATION BAR
+       1. NAVIGATION BAR (Floating Frosted Glass Header)
        ========================================================================= */
-    .synth-nav {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-xl);
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 14px;
-      z-index: 100;
-      box-shadow: var(--shadow-sm);
+    .navbar {
+      position: sticky; top: 16px; z-index: 100;
+      margin: 16px auto 0 auto;
+      max-width: var(--container-max);
+      padding: 0 24px;
     }
-    .brand-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--synth-text-main);
+    .navbar-inner {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+      border-radius: var(--radius-pill);
+      height: 68px;
+      padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main);
     }
     .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: #0A0A0A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-      font-family: var(--font-mono);
-      font-size: 15px;
-      font-weight: 800;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      width: 32px; height: 32px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; font-size: 16px; font-weight: 900;
+      box-shadow: 0 4px 12px var(--primary-glow);
     }
     .brand-title {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+      font-size: 20px; font-weight: 900; letter-spacing: -0.5px;
     }
     .brand-badge {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      color: var(--synth-primary);
-      background: var(--synth-card-tint);
-      border: 1px solid rgba(88, 94, 206, 0.2);
-      padding: 3px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
+      font-size: 11px; font-weight: 800; color: var(--primary);
+      background: var(--primary-light); padding: 3px 9px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(49, 130, 246, 0.2);
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
+    .nav-menu {
+      display: flex; align-items: center; gap: 32px; list-style: none;
     }
     .nav-link {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--synth-text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
+      font-size: 14px; font-weight: 700; color: var(--text-body);
+      text-decoration: none; transition: color 0.2s ease;
     }
-    .nav-link:hover { color: var(--synth-primary); }
+    .nav-link:hover { color: var(--primary); }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-glass-outline {
+      font-size: 13.5px; font-weight: 700; color: var(--text-main);
+      background: rgba(255, 255, 255, 0.85); border: 1px solid var(--glass-border-subtle);
+      padding: 9px 20px; border-radius: var(--radius-pill); text-decoration: none;
+      transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-    .btn-mono-outline {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--synth-text-main);
-      background: #FFFFFF;
-      border: 1px solid var(--synth-text-main);
-      padding: 9px 18px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: all 0.2s ease;
+    .btn-glass-outline:hover {
+      background: #FFFFFF; border-color: var(--primary); color: var(--primary);
+      transform: translateY(-1px); box-shadow: 0 6px 16px var(--primary-glow);
     }
-    .btn-mono-outline:hover {
-      background: #F4F4F5;
-      transform: translateY(-1px);
+    .btn-gradient-pill {
+      font-size: 13.5px; font-weight: 800; color: #FFFFFF;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      border: none; padding: 10px 22px; border-radius: var(--radius-pill);
+      text-decoration: none; transition: all 0.2s ease;
+      box-shadow: 0 6px 18px var(--primary-glow);
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .btn-mono-black {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #FFFFFF;
-      background: var(--synth-black);
-      border: none;
-      padding: 9px 20px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-mono-black:hover {
-      background: var(--synth-black-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    .btn-gradient-pill:hover {
+      transform: translateY(-2px); box-shadow: 0 10px 24px var(--purple-glow);
     }
 
     /* =========================================================================
-       2. SYNTH AI HERO SECTION
+       2. HERO SECTION (Spacious, Clean, 3D Glass Tiles)
        ========================================================================= */
-    .hero-card {
-      padding: 70px 48px;
-      background: radial-gradient(circle at 85% 25%, rgba(220, 222, 255, 0.45) 0%, rgba(255, 255, 255, 0) 55%),
-                  linear-gradient(180deg, #FAF8F5 0%, #FFFFFF 100%);
+    .hero-section {
+      padding: 80px 0 100px 0;
+      position: relative;
     }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 50px;
-      align-items: center;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center;
     }
     .hero-eyebrow {
-      margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(49, 130, 246, 0.25);
+      box-shadow: 0 4px 12px rgba(49, 130, 246, 0.08);
+      font-size: 12.5px; font-weight: 800; color: var(--primary);
+      margin-bottom: 24px;
     }
-    .hero-title {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1.16;
-      letter-spacing: -2px;
-      color: var(--synth-text-main);
-      margin-bottom: 22px;
+    .hero-headline {
+      font-size: 54px; font-weight: 900; line-height: 1.18; letter-spacing: -2px;
+      color: var(--text-main); margin-bottom: 24px;
     }
-    .hero-title span {
-      color: var(--synth-primary);
-      position: relative;
+    .hero-headline span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-subhead {
-      font-size: 16.5px;
-      line-height: 1.65;
-      color: var(--synth-text-body);
-      max-width: 580px;
-      margin-bottom: 36px;
-      word-break: keep-all;
+      font-size: 17px; line-height: 1.7; color: var(--text-body); font-weight: 500;
+      margin-bottom: 38px; max-width: 580px; word-break: keep-all;
     }
     .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 32px;
+      display: flex; align-items: center; gap: 16px; margin-bottom: 36px;
     }
     .btn-hero-primary {
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #FFFFFF;
-      background: var(--synth-black);
-      padding: 14px 26px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      font-size: 15.5px; font-weight: 800; color: #FFFFFF;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      padding: 16px 32px; border-radius: var(--radius-pill); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.25s ease;
+      box-shadow: 0 10px 25px var(--primary-glow);
     }
     .btn-hero-primary:hover {
-      background: var(--synth-black-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.16);
+      transform: translateY(-2px); box-shadow: 0 15px 35px var(--purple-glow);
     }
     .btn-hero-secondary {
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--synth-text-main);
-      background: #FFFFFF;
-      padding: 13px 24px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      border: 1px solid var(--synth-text-main);
-      transition: all 0.2s ease;
+      font-size: 15.5px; font-weight: 700; color: var(--text-main);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 15px 28px; border-radius: var(--radius-pill); text-decoration: none;
+      border: 1px solid var(--glass-border-subtle); transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     }
     .btn-hero-secondary:hover {
-      background: #F4F4F5;
-      transform: translateY(-1px);
+      background: #FFFFFF; border-color: var(--text-main); transform: translateY(-1px);
     }
 
-    .hero-trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .hero-trust-chips {
+      display: flex; flex-wrap: wrap; gap: 12px;
     }
     .trust-chip {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--synth-text-muted);
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      padding: 6px 12px;
-      border-radius: var(--radius-pill);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 12.5px; font-weight: 700; color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);
+      border: 1px solid rgba(226, 232, 240, 0.8); padding: 7px 14px; border-radius: var(--radius-pill);
+      display: inline-flex; align-items: center; gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
-    .trust-chip .sparkle { color: var(--synth-primary); }
+    .trust-chip .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+    }
 
-    /* Right 3D Visual in Synth AI Hero */
-    .hero-visual-wrapper {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    /* Right 3D Visual (Frosted Glass Tiles Artwork) */
+    .hero-visual {
+      position: relative; display: flex; justify-content: center; align-items: center;
     }
-    .hero-3d-img {
-      width: 100%;
-      max-width: 440px;
+    .hero-glass-img {
+      width: 100%; max-width: 480px; height: auto;
       border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-glow);
-      filter: drop-shadow(0 20px 35px rgba(88, 94, 206, 0.16));
-      animation: synthFloat 6s ease-in-out infinite;
+      box-shadow: 0 25px 60px -15px rgba(49, 130, 246, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      animation: float 6s ease-in-out infinite;
     }
-    @keyframes synthFloat {
+    @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-10px); }
     }
 
-    .floating-badge {
+    /* Luminous Glass Badges */
+    .floating-glass-card {
       position: absolute;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--synth-border);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
       border-radius: var(--radius-md);
-      padding: 10px 16px;
-      box-shadow: var(--shadow-card);
+      padding: 14px 20px;
+      box-shadow: 0 15px 35px -5px rgba(49, 130, 246, 0.16), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
       z-index: 10;
     }
-    .floating-badge.top { top: 16px; left: -14px; }
-    .floating-badge.bottom { bottom: 16px; right: -10px; }
-    .floating-badge .val {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--synth-primary);
-      margin-bottom: 2px;
+    .floating-glass-card.top { top: 16px; left: -24px; }
+    .floating-glass-card.bottom { bottom: 16px; right: -16px; }
+    .floating-glass-card .val {
+      font-size: 15px; font-weight: 900; color: var(--primary); margin-bottom: 2px;
     }
-    .floating-badge .lbl {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      color: var(--synth-text-muted);
+    .floating-glass-card .lbl {
+      font-size: 11.5px; font-weight: 700; color: var(--text-muted);
     }
 
     /* =========================================================================
-       3. SOCIAL PROOF / LOGO STRIP
+       3. SOCIAL PROOF / LOGO CLOUD
        ========================================================================= */
-    .social-strip {
-      padding: 32px 48px;
-      background: #FFFFFF;
-      text-align: center;
+    .social-proof-section {
+      padding: 40px 0 60px 0; text-align: center;
     }
-    .social-hdr {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--synth-text-muted);
-      margin-bottom: 20px;
+    .social-proof-title {
+      font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+      color: var(--text-muted); margin-bottom: 24px; text-transform: uppercase;
     }
-    .logo-chips {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 18px;
+    .logo-cloud {
+      display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px;
     }
-    .logo-chip {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--synth-text-main);
-      background: var(--synth-card-subtle);
-      border: 1px solid var(--synth-border);
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      letter-spacing: 0.5px;
+    .logo-item {
+      font-size: 13px; font-weight: 800; color: var(--text-body);
+      background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border-subtle); padding: 8px 18px; border-radius: var(--radius-pill);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+    .logo-item:hover {
+      border-color: var(--primary); color: var(--primary); transform: translateY(-1px);
     }
 
     /* =========================================================================
-       4. METRICS STRIP (4 Synth AI Stat Blocks)
+       4. METRICS STRIP (4 Glass Pill Blocks)
        ========================================================================= */
-    .metrics-card {
-      padding: 48px;
-      background: #FFFFFF;
+    .stats-section { padding: 40px 0 80px 0; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;
     }
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      text-align: center;
+    .stat-card {
+      background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+      padding: 32px 20px; box-shadow: var(--glass-shadow); transition: all 0.25s ease;
     }
-    .metric-box {
-      padding: 16px;
-      border-right: 1px solid var(--synth-border);
+    .stat-card:hover {
+      transform: translateY(-4px); box-shadow: var(--glass-shadow-hover);
     }
-    .metric-box:last-child { border-right: none; }
-    .metric-val {
-      font-size: 36px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--synth-text-main);
-      line-height: 1.1;
-      margin-bottom: 8px;
+    .stat-num {
+      font-size: 42px; font-weight: 900; letter-spacing: -1.5px;
+      color: var(--text-main); line-height: 1.1; margin-bottom: 8px;
     }
-    .metric-val.accent { color: var(--synth-primary); }
-    .metric-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--synth-text-main);
-      margin-bottom: 4px;
+    .stat-num.accent {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .metric-desc {
-      font-size: 12.5px;
-      color: var(--synth-text-muted);
-      line-height: 1.4;
-      word-break: keep-all;
-    }
+    .stat-lbl { font-size: 14px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+    .stat-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; word-break: keep-all; }
 
     /* =========================================================================
-       5. BENTO GRID FEATURES (Synth AI Style Modular Cards)
+       5. BENTO GRID FEATURES (3D Glass Tiles Layering)
        ========================================================================= */
-    .features-card {
-      padding: 70px 48px;
-      background: var(--synth-card-subtle);
-    }
-    .section-header-center {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 50px auto;
+    .features-section { padding: 90px 0; }
+    .section-header { text-align: center; max-width: 680px; margin: 0 auto 60px auto; }
+    .section-tag {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--primary); background: var(--primary-light); padding: 5px 14px; border-radius: var(--radius-pill);
+      margin-bottom: 14px; display: inline-block; border: 1px solid rgba(49,130,246,0.2);
     }
     .section-title {
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -1.2px;
-      color: var(--synth-text-main);
-      margin: 12px 0 10px 0;
+      font-size: 38px; font-weight: 900; line-height: 1.25; letter-spacing: -1.2px;
+      color: var(--text-main); margin-bottom: 14px;
     }
-    .section-subhead {
-      font-size: 15.5px;
-      color: var(--synth-text-body);
-      word-break: keep-all;
-    }
+    .section-subhead { font-size: 16.5px; color: var(--text-body); line-height: 1.65; word-break: keep-all; }
 
     .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
     }
-    .bento-item {
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-lg);
-      padding: 34px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
+    .bento-card {
+      background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--glass-border); border-radius: var(--radius-xl);
+      padding: 38px 30px; box-shadow: var(--glass-shadow); display: flex; flex-direction: column;
+      justify-content: space-between; transition: all 0.3s ease; position: relative; overflow: hidden;
     }
-    .bento-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card);
-      border-color: var(--synth-border-focus);
+    .bento-card:hover {
+      transform: translateY(-6px); box-shadow: var(--glass-shadow-hover);
+      border-color: rgba(124, 58, 237, 0.4);
     }
-    .bento-step {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--synth-primary);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .bento-icon-img {
+      width: 68px; height: 68px; border-radius: 18px; object-fit: cover; margin-bottom: 24px;
+      box-shadow: 0 10px 20px -5px rgba(49, 130, 246, 0.2); border: 1.5px solid rgba(255, 255, 255, 0.9);
     }
-    .bento-img {
-      width: 58px;
-      height: 58px;
-      border-radius: 14px;
-      object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--synth-border);
-    }
-    .bento-title {
-      font-size: 18.5px;
-      font-weight: 800;
-      color: var(--synth-text-main);
-      margin-bottom: 10px;
-    }
-    .bento-desc {
-      font-size: 13.5px;
-      color: var(--synth-text-body);
-      line-height: 1.6;
-      margin-bottom: 24px;
-      flex: 1;
-      word-break: keep-all;
-    }
-    .bento-tag-pill {
-      background: var(--synth-card-tint);
-      border: 1px solid rgba(88, 94, 206, 0.2);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--synth-primary);
+    .bento-card-title { font-size: 20px; font-weight: 900; color: var(--text-main); margin-bottom: 10px; }
+    .bento-card-desc { font-size: 14px; color: var(--text-body); line-height: 1.65; margin-bottom: 24px; flex: 1; word-break: keep-all; }
+    
+    .bento-visual-pill {
+      background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(49, 130, 246, 0.25);
+      border-radius: var(--radius-md); padding: 12px 16px; font-size: 12px; font-weight: 700;
+      color: var(--primary); box-shadow: 0 4px 12px rgba(49, 130, 246, 0.06);
     }
 
     /* =========================================================================
-       6. INTERACTIVE SIMULATOR (Synth AI Console/Terminal Card)
+       6. INTERACTIVE SIMULATOR (Sleek Glass Product Demo)
        ========================================================================= */
-    .simulator-card {
-      padding: 70px 48px;
-      background: #FFFFFF;
+    .sim-section { padding: 90px 0; }
+    .sim-container {
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95); border-radius: var(--radius-xl);
+      box-shadow: var(--glass-shadow); overflow: hidden; max-width: 980px; margin: 0 auto;
     }
-    .console-box {
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-card);
-      overflow: hidden;
-      max-width: 980px;
-      margin: 0 auto;
+    .sim-topbar {
+      background: rgba(248, 250, 252, 0.8); padding: 16px 28px; border-bottom: 1px solid var(--glass-border-subtle);
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .console-topbar {
-      background: #0A0A0A;
-      color: #FFFFFF;
-      padding: 14px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .console-title {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .console-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 8px #10B981;
-    }
-    .console-samples {
-      display: flex;
-      gap: 6px;
-    }
+    .sim-topbar-title { font-size: 13.5px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+    .sim-topbar-title .dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; box-shadow: 0 0 8px #10B981; }
+    .sim-actions { display: flex; gap: 8px; }
     .btn-sample {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 5px 12px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: transparent;
-      color: #E4E4E7;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      font-size: 12px; font-weight: 800; padding: 7px 16px; border-radius: var(--radius-pill);
+      border: 1px solid var(--glass-border-subtle); background: #FFFFFF; cursor: pointer; transition: all 0.2s ease;
+      color: var(--text-body);
     }
     .btn-sample.active {
-      background: var(--synth-primary);
-      color: #FFFFFF;
-      border-color: var(--synth-primary);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      color: #FFFFFF; border-color: transparent; box-shadow: 0 4px 12px var(--primary-glow);
     }
 
-    .console-body {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      background: #FAF8F5;
+    .sim-body { padding: 32px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .sim-col-title { font-size: 12.5px; font-weight: 800; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sim-formula-box {
+      background: #FFFFFF; border: 1px solid var(--glass-border-subtle); border-radius: var(--radius-md);
+      padding: 20px; font-size: 13px; line-height: 1.8; color: var(--text-main);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-    .console-col-title {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      color: var(--synth-text-muted);
-      margin-bottom: 12px;
-      text-transform: uppercase;
+    .sim-result-box { display: flex; flex-direction: column; gap: 14px; }
+    .result-card {
+      border-radius: var(--radius-md); padding: 18px 20px; font-size: 13px;
     }
-    .formula-editor {
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      line-height: 1.8;
-      color: var(--synth-text-main);
+    .result-card.blue { background: var(--primary-light); border: 1px solid rgba(49, 130, 246, 0.25); color: var(--text-main); }
+    .result-card.green { background: #ECFDF5; border: 1px solid rgba(16, 185, 129, 0.25); color: #065F46; }
+    .result-card-hdr { font-weight: 900; margin-bottom: 6px; display: flex; justify-content: space-between; font-size: 13px; }
+
+    /* =========================================================================
+       7. PRICING SECTION (Glass Cards with Glowing Badges)
+       ========================================================================= */
+    .pricing-section { padding: 100px 0; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .pricing-card {
+      background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--glass-border); border-radius: var(--radius-xl);
+      padding: 42px 34px; display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; transition: all 0.3s ease; box-shadow: var(--glass-shadow);
     }
-    .result-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--glass-shadow-hover); }
+    .pricing-card.popular {
+      border: 2px solid var(--primary); box-shadow: 0 25px 60px -10px rgba(49, 130, 246, 0.25);
     }
-    .audit-result-card {
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-md);
-      padding: 15px 18px;
-      font-size: 12px;
+    .pricing-badge {
+      position: absolute; top: -14px; left: 34px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      color: #FFFFFF; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: var(--radius-pill);
+      box-shadow: 0 4px 12px var(--primary-glow);
     }
-    .audit-result-card.violet {
-      background: var(--synth-card-tint);
-      border-color: rgba(88, 94, 206, 0.25);
+    .plan-name { font-size: 18px; font-weight: 900; color: var(--text-main); margin-bottom: 6px; }
+    .plan-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; min-height: 40px; word-break: keep-all; }
+    .plan-price { font-size: 38px; font-weight: 900; color: var(--text-main); margin-bottom: 26px; line-height: 1.1; letter-spacing: -1px; }
+    .plan-price span { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+    
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 34px; flex: 1; }
+    .plan-features li { font-size: 13.5px; color: var(--text-body); display: flex; align-items: center; gap: 10px; }
+    .plan-features li .check { color: var(--primary); font-weight: 900; font-size: 15px; }
+
+    .btn-plan {
+      width: 100%; padding: 15px; border-radius: var(--radius-pill); font-size: 14px; font-weight: 800;
+      text-align: center; text-decoration: none; transition: all 0.2s ease; display: block;
     }
-    .audit-result-card.green {
-      background: #ECFDF5;
-      border-color: rgba(16, 185, 129, 0.25);
+    .btn-plan.outline {
+      border: 1.5px solid var(--glass-border-subtle); color: var(--text-main); background: #FFFFFF;
     }
-    .audit-result-hdr {
-      font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: 11.5px;
-      margin-bottom: 5px;
-      display: flex;
-      justify-content: space-between;
+    .btn-plan.outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+    .btn-plan.solid {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
+      color: #FFFFFF; border: none; box-shadow: 0 6px 18px var(--primary-glow);
+    }
+    .btn-plan.solid:hover { transform: translateY(-2px); box-shadow: 0 10px 24px var(--purple-glow); }
+
+    /* =========================================================================
+       8. FAQ SECTION (Minimalist Frosted Accordion)
+       ========================================================================= */
+    .faq-section { padding: 90px 0; }
+    .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px);
+      border: 1.5px solid var(--glass-border); border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02); transition: all 0.2s;
+    }
+    .faq-item:hover { border-color: var(--primary); box-shadow: 0 8px 24px var(--primary-glow); }
+    .faq-question {
+      padding: 22px 26px; font-size: 16px; font-weight: 800; color: var(--text-main);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-answer {
+      padding: 0 26px 22px 26px; font-size: 14px; color: var(--text-body); line-height: 1.7; word-break: keep-all;
     }
 
     /* =========================================================================
-       7. PRICING SECTION (Synth AI 3-Tier Grid)
+       9. FOOTER (Deep Midnight Blue Glass Card)
        ========================================================================= */
-    .pricing-card-section {
-      padding: 70px 48px;
-      background: var(--synth-card-subtle);
+    .footer {
+      background: #0B1120; color: #94A3B8; padding: 70px 0 40px 0; font-size: 13px;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      box-shadow: 0 -20px 50px rgba(11, 17, 32, 0.15);
     }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px;
     }
-    .pricing-tier {
-      background: #FFFFFF;
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-lg);
-      padding: 38px 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: all 0.2s ease;
-    }
-    .pricing-tier:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-card);
-    }
-    .pricing-tier.popular {
-      border: 2px solid var(--synth-primary);
-      box-shadow: var(--shadow-glow);
-    }
-    .popular-pill {
-      position: absolute;
-      top: -12px;
-      left: 28px;
-      background: var(--synth-primary);
-      color: #FFFFFF;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: var(--radius-pill);
-    }
-    .tier-header .tier-name {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--synth-text-main);
-      margin-bottom: 6px;
-    }
-    .tier-header .tier-desc {
-      font-size: 13px;
-      color: var(--synth-text-muted);
-      margin-bottom: 22px;
-      min-height: 40px;
-      word-break: keep-all;
-    }
-    .tier-price {
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--synth-text-main);
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-    .tier-price span {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--synth-text-muted);
-    }
-    .tier-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 30px;
-      flex: 1;
-    }
-    .tier-features li {
-      font-size: 13px;
-      color: var(--synth-text-body);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      word-break: keep-all;
-    }
-    .tier-features li .chk {
-      color: var(--synth-primary);
-      font-weight: 800;
-    }
-
-    /* =========================================================================
-       8. FAQ SECTION (Accordion)
-       ========================================================================= */
-    .faq-card-section {
-      padding: 70px 48px;
-      background: #FFFFFF;
-    }
-    .faq-list {
-      max-width: 820px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .faq-row {
-      border: 1px solid var(--synth-border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: #FFFFFF;
-      transition: border-color 0.2s;
-    }
-    .faq-row:hover {
-      border-color: var(--synth-primary);
-    }
-    .faq-q {
-      padding: 20px 24px;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--synth-text-main);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-    .faq-a {
-      padding: 0 24px 20px 24px;
-      font-size: 13.5px;
-      color: var(--synth-text-body);
-      line-height: 1.65;
-      word-break: keep-all;
-    }
-
-    /* =========================================================================
-       9. SYNTH AI FOOTER (Deep Black Modular Box)
-       ========================================================================= */
-    .synth-footer {
-      background: #0A0A0A;
-      color: #A1A1AA;
-      border-radius: var(--radius-xl);
-      padding: 56px 48px 36px 48px;
-      border: 1px solid #18181B;
-    }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 40px;
-    }
-    .footer-brand-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-brand-desc {
-      font-size: 13px;
-      line-height: 1.65;
-      max-width: 440px;
-      color: #71717A;
-      word-break: keep-all;
-    }
-    .footer-nav {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-    .footer-nav a {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #A1A1AA;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-nav a:hover { color: #FFFFFF; }
+    .footer-brand .name { font-size: 22px; font-weight: 900; color: #FFFFFF; margin-bottom: 8px; }
+    .footer-brand .desc { max-width: 440px; line-height: 1.65; color: #64748B; font-size: 13px; }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-link { color: #CBD5E1; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-link:hover { color: #FFFFFF; }
     .footer-bottom {
-      border-top: 1px solid #27272A;
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: #52525B;
+      border-top: 1px solid #1E293B; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748B;
     }
 
-    /* Responsive */
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-      .hero-ctas { justify-content: center; }
-      .hero-trust-row { justify-content: center; }
-      .metrics-grid { grid-template-columns: 1fr 1fr; }
-      .metric-box { border-right: none; border-bottom: 1px solid var(--synth-border); }
-      .bento-grid, .pricing-grid { grid-template-columns: 1fr; }
-      .console-body { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .footer-top { flex-direction: column; gap: 28px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .hero-ctas, .hero-trust-chips { justify-content: center; }
+      .bento-grid, .pricing-grid, .stats-grid { grid-template-columns: 1fr; }
+      .sim-body { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+      .footer-inner { flex-direction: column; gap: 30px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="synth-wrapper">
-
-    <!-- =======================================================================
-         1. NAVBAR
-         ======================================================================= -->
-    <header class="synth-nav">
-      <a href="/" class="brand-group">
+  <!-- =========================================================================
+       1. NAVIGATION
+       ========================================================================= -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="/" class="brand">
         <div class="brand-icon">F</div>
-        <div>
-          <span class="brand-title">Formu</span>
-          <span class="brand-badge">REGTECH OS</span>
-        </div>
+        <span class="brand-title">Formu</span>
+        <span class="brand-badge">REGTECH OS</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-menu">
         <a href="#features" class="nav-link">특징</a>
         <a href="#simulator" class="nav-link">실시간 진단</a>
         <a href="#pricing" class="nav-link">요금 안내</a>
@@ -896,179 +487,182 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="/pitch_deck.html" class="btn-mono-outline">피치덱 보기 ↗</a>
-        <a href="#simulator" class="btn-mono-black">무료 점검 시작 ↗</a>
+        <a href="/pitch_deck.html" class="btn-glass-outline">피치덱 보기 ↗</a>
+        <a href="#simulator" class="btn-gradient-pill">무료 진단 시작 ↗</a>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- =======================================================================
-         2. HERO SECTION
-         ======================================================================= -->
-    <section class="synth-section hero-card">
-      <div class="hero-grid">
-        <div>
-          <div class="mono-tag hero-eyebrow">
-            <span class="spark">✦</span> B2B 화학·화장품 규제 자동화 및 파트너 OS
-          </div>
-          <h1 class="hero-title">
-            배합표 업로드 1초 만에,<br />
-            <span>신고·라벨 입력값 초안 정리.</span>
-          </h1>
-          <p class="hero-subhead">
-            식약처 알레르기 25종(2024 개정 26종) 함량 계산부터 환경부 CHEMP 100% 화학 배합비율표까지 즉시 확인하고, 공인시험기관과 패키지 인쇄 파트너를 단 하나의 화면에서 연결합니다.
-          </p>
-          <div class="hero-ctas">
-            <a href="#simulator" class="btn-hero-primary">무료 배합표 점검 시작 ↗</a>
-            <a href="#features" class="btn-hero-secondary">핵심 기능 살펴보기</a>
-          </div>
-          <div class="hero-trust-row">
-            <div class="trust-chip"><span class="sparkle">✦</span> 식약처 약 2만 건 공공 DB 실시간 매핑</div>
-            <div class="trust-chip"><span class="sparkle">✦</span> 유사 셀프서브 플랫폼 선례 참고 & 책임분리 설계</div>
-          </div>
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          ✦ B2B 화학·화장품 규제 자동화 및 파트너 OS
         </div>
-
-        <!-- Right 3D Visual -->
-        <div class="hero-visual-wrapper">
-          <img src="assets/formu_glass_inspect.jpg" alt="Formu 3D Inspection Glass" class="hero-3d-img" />
-          
-          <div class="floating-badge top">
-            <div class="val">배합비 합계 100% 자동 검산</div>
-            <div class="lbl">식약처 26종 알레르기 유발성분 사전 점검</div>
-          </div>
-          <div class="floating-badge bottom">
-            <div class="val" style="color: #0A0A0A;">사전 점검</div>
-            <div class="lbl">폐기·수정 리스크 사전 점검 (표기 오류 가능성 감소)</div>
-          </div>
+        <h1 class="hero-headline">
+          배합표 업로드 1초 만에,<br />
+          <span>신고·라벨 입력값 초안 정리.</span>
+        </h1>
+        <p class="hero-subhead">
+          식약처 알레르기 25종(2024 개정 26종) 함량 계산부터 환경부 CHEMP 100% 화학 배합비율표까지 즉시 확인하고, 공인시험기관과 패키지 인쇄 파트너를 단 하나의 화면에서 연결합니다.
+        </p>
+        <div class="hero-ctas">
+          <a href="#simulator" class="btn-hero-primary">무료 배합표 진단 시작 ↗</a>
+          <a href="#features" class="btn-hero-secondary">핵심 기능 살펴보기</a>
+        </div>
+        <div class="hero-trust-chips">
+          <div class="trust-chip"><span class="dot"></span> 식약처 약 2만 건 공공 DB 실시간 매핑</div>
+          <div class="trust-chip"><span class="dot"></span> 유사 셀프서브 플랫폼 선례 참고 & 책임분리 설계</div>
         </div>
       </div>
-    </section>
 
-    <!-- =======================================================================
-         3. SOCIAL PROOF / LOGO STRIP
-         ======================================================================= -->
-    <section class="synth-section social-strip">
-      <div class="social-hdr">식약처 공공 DB 화이트리스트 & 공인시험기관 전자성적서 연동 협력</div>
-      <div class="logo-chips">
-        <span class="logo-chip">KTR 한국화학융합시험연구원</span>
-        <span class="logo-chip">KCL 한국건설생활환경시험연구원</span>
-        <span class="logo-chip">KATRI 시험연구원</span>
-        <span class="logo-chip">KTC 한국기계전기전자시험연구원</span>
-        <span class="logo-chip">FITI 시험연구원</span>
-        <span class="logo-chip">KOTITI 시험연구원</span>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         4. METRICS STRIP
-         ======================================================================= -->
-    <section class="synth-section metrics-card">
-      <div class="metrics-grid">
-        <div class="metric-box">
-          <div class="metric-val accent">1초</div>
-          <div class="metric-title">서식 자동 분기</div>
-          <div class="metric-desc">단일 배합표로 2개 부처 서식 동시 렌더링</div>
+      <!-- Right 3D Visual Artwork -->
+      <div class="hero-visual">
+        <img src="assets/formu_glass_inspect.jpg" alt="Formu 3D Glass Artwork" class="hero-glass-img" />
+        
+        <div class="floating-glass-card top">
+          <div class="val">배합비 합계 100% 자동 검산</div>
+          <div class="lbl">식약처 26종 알레르기 유발성분 사전 점검</div>
         </div>
-        <div class="metric-box">
-          <div class="metric-val">단축 목표</div>
-          <div class="metric-title">서류 준비 시간 단축</div>
-          <div class="metric-desc">반복 입력 시간을 줄이는 것을 목표로 합니다</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-val accent">약 2만 건</div>
-          <div class="metric-title">공공 DB 실시간 연동</div>
-          <div class="metric-desc">원료명 검색 즉시 CAS 번호 1:1 매칭</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-val">사전 점검</div>
-          <div class="metric-title">폐기·수정 리스크 사전 점검</div>
-          <div class="metric-desc">표기 오류 가능성 감소</div>
+        <div class="floating-glass-card bottom">
+          <div class="val" style="color: var(--text-main);">사전 점검</div>
+          <div class="lbl">폐기·수정 리스크 사전 점검 (표기 오류 가능성 감소)</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =======================================================================
-         5. BENTO GRID FEATURES
-         ======================================================================= -->
-    <section class="synth-section features-card" id="features">
-      <div class="section-header-center">
-        <div class="mono-tag"><span class="spark">✦</span> CORE CAPABILITIES</div>
+  <!-- =========================================================================
+       3. SOCIAL PROOF / LOGO STRIP
+       ========================================================================= -->
+  <section class="social-proof-section">
+    <div class="container">
+      <div class="social-proof-title">식약처 공공 DB 화이트리스트 & 공인시험기관 전자성적서 연동 협력</div>
+      <div class="logo-cloud">
+        <span class="logo-item">KTR 한국화학융합시험연구원</span>
+        <span class="logo-item">KCL 한국건설생활환경시험연구원</span>
+        <span class="logo-item">KATRI 시험연구원</span>
+        <span class="logo-item">KTC 한국기계전기전자시험연구원</span>
+        <span class="logo-item">FITI 시험연구원</span>
+        <span class="logo-item">KOTITI 시험연구원</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. METRICS STRIP (4 Clean Numbers)
+       ========================================================================= -->
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <div class="stat-num accent">1초</div>
+        <div class="stat-lbl">서식 자동 분기</div>
+        <div class="stat-desc">단일 배합표로 2개 부처 서식 렌더링</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">단축 목표</div>
+        <div class="stat-lbl">서류 준비 시간 단축</div>
+        <div class="stat-desc">반복 입력 시간을 줄이는 것을 목표로 합니다</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num accent">약 2만 건</div>
+        <div class="stat-lbl">공공 DB 실시간 연동</div>
+        <div class="stat-desc">원료명 검색 즉시 CAS 번호 1:1 매칭</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">사전 점검</div>
+        <div class="stat-lbl">폐기·수정 리스크 사전 점검</div>
+        <div class="stat-desc">표기 오류 가능성 감소</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. BENTO GRID FEATURES
+       ========================================================================= -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CORE CAPABILITIES</span>
         <h2 class="section-title">출시까지 이어지는 가장 손쉬운 3단계</h2>
         <p class="section-subhead">복잡한 행정 사이트를 찾아다닐 필요 없이, Formu 단 하나의 화면에서 모든 규제와 파트너를 연결합니다.</p>
       </div>
 
       <div class="bento-grid">
         <!-- Bento 1 -->
-        <div class="bento-item">
+        <div class="bento-card">
           <div>
-            <div class="bento-step"><span class="spark">✦</span> STEP 01 // DB MAPPING</div>
-            <img src="assets/glass_bottle.jpg" alt="3D Glass Flask" class="bento-img" />
-            <h3 class="bento-title">화이트리스트 자동 매핑</h3>
-            <p class="bento-desc">
+            <img src="assets/glass_bottle.jpg" alt="3D Glass Flask" class="bento-icon-img" />
+            <h3 class="bento-card-title">화이트리스트 자동 매핑</h3>
+            <p class="bento-card-desc">
               CAS 번호를 몰라도 원료명만 검색하면 식약처 약 2만 건 DB와 1:1 대조하여 알레르기 25/26종 해당 여부와 법정 배합한도를 즉시 판정합니다.
             </p>
           </div>
-          <div class="bento-tag-pill">
+          <div class="bento-visual-pill">
             ● 매핑 결과: 리날룰 2.40% (0.001% 초과 표기 필수)
           </div>
         </div>
 
         <!-- Bento 2 -->
-        <div class="bento-item">
+        <div class="bento-card">
           <div>
-            <div class="bento-step"><span class="spark">✦</span> STEP 02 // 1-SEC EXPORT</div>
-            <img src="assets/glass_growth.jpg" alt="3D Glass Chart" class="bento-img" />
-            <h3 class="bento-title">2개 부처 서식 1초 분기</h3>
-            <p class="bento-desc">
+            <img src="assets/glass_growth.jpg" alt="3D Glass Chart" class="bento-icon-img" />
+            <h3 class="bento-card-title">2개 부처 서식 1초 분기</h3>
+            <p class="bento-card-desc">
               단 한 번의 업로드로 식약처 단상자 라벨 표기 문구와 환경부 CHEMP 100% 배합비율표(.xlsx)를 동시에 다운로드할 수 있습니다.
             </p>
           </div>
-          <div class="bento-tag-pill">
+          <div class="bento-visual-pill">
             ● 산출물: 단상자 라벨 문구 + CHEMP 엑셀 서식
           </div>
         </div>
 
         <!-- Bento 3 -->
-        <div class="bento-item">
+        <div class="bento-card">
           <div>
-            <div class="bento-step"><span class="spark">✦</span> STEP 03 // ORCHESTRATION</div>
-            <img src="assets/glass_cart.jpg" alt="3D Glass Cart" class="bento-img" />
-            <h3 class="bento-title">원클릭 파트너 오케스트레이션</h3>
-            <p class="bento-desc">
+            <img src="assets/glass_cart.jpg" alt="3D Glass Cart" class="bento-icon-img" />
+            <h3 class="bento-card-title">원클릭 파트너 오케스트레이션</h3>
+            <p class="bento-card-desc">
               자가 점검 도안을 제휴 패키지 인쇄소로 즉시 전송하고, 공인시험기관 시료 접수 및 복잡 건 행정사 매칭까지 단일 보드에서 관리합니다.
             </p>
           </div>
-          <div class="bento-tag-pill">
+          <div class="bento-visual-pill">
             ● 연계 혜택: 제휴 인쇄 파트너 연결 (수수료 10~15%)
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =======================================================================
-         6. INTERACTIVE SIMULATOR (Synth AI Console)
-         ======================================================================= -->
-    <section class="synth-section simulator-card" id="simulator">
-      <div class="section-header-center">
-        <div class="mono-tag"><span class="spark">✦</span> LIVE ENGINE DEMO</div>
+  <!-- =========================================================================
+       6. INTERACTIVE SIMULATOR (Light Glass Demo UI)
+       ========================================================================= -->
+  <section class="sim-section" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">LIVE ENGINE DEMO</span>
         <h2 class="section-title">배합표를 넣는 즉시 점검되는 1초 엔진</h2>
         <p class="section-subhead">아래 샘플 레시피 버튼을 눌러 Formu의 규제 점검 프로토타입 데모를 직접 테스트해 보세요.</p>
       </div>
 
-      <div class="console-box">
-        <div class="console-topbar">
-          <div class="console-title">
-            <span class="console-dot"></span> Formu 규제 점검 프로토타입 데모
+      <div class="sim-container">
+        <div class="sim-topbar">
+          <div class="sim-topbar-title">
+            <span class="dot"></span> Formu 규제 점검 프로토타입 데모
           </div>
-          <div class="console-samples">
+          <div class="sim-actions">
             <button class="btn-sample active" onclick="loadSample('perfume')">향수 (식약처)</button>
             <button class="btn-sample" onclick="loadSample('diffuser')">디퓨저 (환경부 CHEMP)</button>
           </div>
         </div>
 
-        <div class="console-body">
+        <div class="sim-body">
           <div>
-            <div class="console-col-title">INPUT FORMULA (배합 원료 데이터)</div>
-            <div class="formula-editor" id="formula-input">
+            <div class="sim-col-title">INPUT FORMULA (배합 원료 데이터)</div>
+            <div class="sim-formula-box" id="formula-input">
 • 라벤더 오일 (CAS 8000-28-0): 12.50%
 • 리날룰 (Linalool, CAS 78-70-6): 2.40%
 • 리모넨 (Limonene, CAS 5989-27-5): 0.80%
@@ -1077,174 +671,171 @@
             </div>
           </div>
 
-          <div class="result-stack">
-            <div class="console-col-title">OUTPUT COMPLIANCE (1초 자동 감사 결과)</div>
-            <div class="audit-result-card violet" id="result-kda">
-              <div class="audit-result-hdr">
+          <div class="sim-result-box">
+            <div class="sim-col-title">OUTPUT COMPLIANCE (1초 자동 감사 결과)</div>
+            <div class="result-card blue" id="result-kda">
+              <div class="result-card-hdr">
                 <span>[식약처] 화장품 알레르기 25/26종 결과</span>
-                <span style="color: var(--synth-primary); font-weight: 800;">검출 2건</span>
+                <span style="color: var(--primary); font-weight: 800;">검출 2건</span>
               </div>
-              <div style="font-size: 11.5px; line-height: 1.5; color: var(--synth-text-body);">
+              <div style="font-size: 12px; line-height: 1.5;">
                 ➔ 리날룰 2.40%, 리모넨 0.80% (0.001% 초과 검출 ➔ 라벨 필수 기재 문구 즉시 추출 완료)
               </div>
             </div>
 
-            <div class="audit-result-card green" id="result-chemp">
-              <div class="audit-result-hdr">
+            <div class="result-card green" id="result-chemp">
+              <div class="result-card-hdr">
                 <span>[환경부] CHEMP 안전확인대상 배합비율표</span>
-                <span style="font-weight: 800; color: #065F46;">PASS (100%)</span>
+                <span style="font-weight: 800;">PASS (100%)</span>
               </div>
-              <div style="font-size: 11.5px; line-height: 1.5; color: #065F46;">
+              <div style="font-size: 12px; line-height: 1.5;">
                 ➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비
               </div>
             </div>
 
-            <a href="/pitch_deck.html" class="btn-mono-black" style="justify-content: center; padding: 13px; font-size: 13px;">
+            <a href="/pitch_deck.html" class="btn-hero-primary" style="justify-content: center; padding: 13px; font-size: 14px;">
               정식 서식 다운로드 신청하기 ↗
             </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =======================================================================
-         7. PRICING SECTION
-         ======================================================================= -->
-    <section class="synth-section pricing-card-section" id="pricing">
-      <div class="section-header-center">
-        <div class="mono-tag"><span class="spark">✦</span> PRICING PLANS</div>
+  <!-- =========================================================================
+       7. PRICING SECTION
+       ========================================================================= -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">PRICING PLANS</span>
         <h2 class="section-title">단 한 건의 결제도 부담 없는 합리적 과금</h2>
         <p class="section-subhead">외부 의뢰 비용 대신, 신제품을 출시할 때마다 합리적인 비용(베타 19,000원 / 정식 3만원대 예정)으로 해결하세요.</p>
       </div>
 
       <div class="pricing-grid">
         <!-- Plan 1 -->
-        <div class="pricing-tier">
+        <div class="pricing-card">
           <div>
-            <div class="tier-header">
-              <div class="tier-name">무료 진단</div>
-              <p class="tier-desc">배합표 기본 알레르기 성분 유무 스캔 및 원료명 검색</p>
-            </div>
-            <div class="tier-price">0원 <span>/ 평생 무료</span></div>
-            <ul class="tier-features">
-              <li><span class="chk">✓</span> 배합표 기본 알레르기 성분 스캔</li>
-              <li><span class="chk">✓</span> 식약처 약 2만 건 원료명 DB 검색</li>
-              <li><span class="chk">✓</span> 배합비 합계 100% 자동 검산</li>
+            <h3 class="plan-name">무료 진단</h3>
+            <p class="plan-desc">배합표 기본 알레르기 성분 유무 스캔 및 원료명 검색</p>
+            <div class="plan-price">0원 <span>/ 평생 무료</span></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> 배합표 기본 알레르기 성분 스캔</li>
+              <li><span class="check">✓</span> 식약처 약 2만 건 원료명 DB 검색</li>
+              <li><span class="check">✓</span> 배합비 합계 100% 자동 검산</li>
             </ul>
           </div>
-          <a href="#simulator" class="btn-mono-outline" style="text-align: center;">무료로 시작하기</a>
+          <a href="#simulator" class="btn-plan outline">무료로 시작하기</a>
         </div>
 
         <!-- Plan 2 -->
-        <div class="pricing-tier popular">
-          <div class="popular-pill">MOST POPULAR</div>
+        <div class="pricing-card popular">
+          <div class="pricing-badge">MOST POPULAR</div>
           <div>
-            <div class="tier-header">
-              <div class="tier-name">서식 다운로드 (Pro)</div>
-              <p class="tier-desc">식약처 라벨 문구 및 CHEMP 엑셀 즉시 완성 다운로드</p>
-            </div>
-            <div class="tier-price" style="font-size: 26px;">베타 19,000원 <span style="font-size: 13px; display: block; margin-top: 4px;">/ 건당 (정식 3만원대 예정)</span></div>
-            <ul class="tier-features">
-              <li><span class="chk">✓</span> 식약처 단상자 필수 기재 라벨 문구 완성</li>
-              <li><span class="chk">✓</span> 환경부 CHEMP 100% 배합비율표 (.xlsx)</li>
-              <li><span class="chk">✓</span> 법정 면제 요건 사전 판정 및 검토서</li>
-              <li><span class="chk">✓</span> 표기 오류 및 배합비 오차 사전 점검</li>
+            <h3 class="plan-name">서식 다운로드 (Pro)</h3>
+            <p class="plan-desc">식약처 라벨 문구 및 CHEMP 엑셀 즉시 완성 다운로드</p>
+            <div class="plan-price" style="font-size: 28px;">베타 19,000원 <span style="font-size: 13px; display: block; margin-top: 4px;">/ 건당 (정식 3만원대 예정)</span></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> 식약처 단상자 필수 기재 라벨 문구 완성</li>
+              <li><span class="check">✓</span> 환경부 CHEMP 100% 배합비율표 (.xlsx)</li>
+              <li><span class="check">✓</span> 법정 면제 요건 사전 판정 및 검토서</li>
+              <li><span class="check">✓</span> 표기 오류 및 배합비 오차 사전 점검</li>
             </ul>
           </div>
-          <a href="#simulator" class="btn-mono-black" style="justify-content: center;">건당 결제 시작하기 ↗</a>
+          <a href="#simulator" class="btn-plan solid">건당 결제 시작하기 ↗</a>
         </div>
 
         <!-- Plan 3 -->
-        <div class="pricing-tier">
+        <div class="pricing-card">
           <div>
-            <div class="tier-header">
-              <div class="tier-name">원스톱 파트너 패키지</div>
-              <p class="tier-desc">공인시험원 접수 연계 및 제휴 패키지 인쇄 원스톱 발주</p>
-            </div>
-            <div class="tier-price">맞춤 견적 <span>/ 프로젝트당</span></div>
-            <ul class="tier-features">
-              <li><span class="chk">✓</span> Pro 서식 다운로드 전 기능 포함</li>
-              <li><span class="chk">✓</span> 제휴 인쇄 파트너 연결 (수수료 10~15%)</li>
-              <li><span class="chk">✓</span> 공인시험원 시료 접수 전자 성적서 연동</li>
-              <li><span class="chk">✓</span> 복잡 건 제휴 공인 행정사 1:1 매칭</li>
+            <h3 class="plan-name">원스톱 파트너 패키지</h3>
+            <p class="plan-desc">공인시험원 접수 연계 및 제휴 패키지 인쇄 원스톱 발주</p>
+            <div class="plan-price">맞춤 견적 <span>/ 프로젝트당</span></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Pro 서식 다운로드 전 기능 포함</li>
+              <li><span class="check">✓</span> 제휴 인쇄 파트너 연결 (수수료 10~15%)</li>
+              <li><span class="check">✓</span> 공인시험원 시료 접수 전자 성적서 연동</li>
+              <li><span class="check">✓</span> 복잡 건 제휴 공인 행정사 1:1 매칭</li>
             </ul>
           </div>
-          <a href="/pitch_deck.html" class="btn-mono-outline" style="text-align: center;">도입 문의하기</a>
+          <a href="/pitch_deck.html" class="btn-plan outline">도입 문의하기</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =======================================================================
-         8. FAQ SECTION
-         ======================================================================= -->
-    <section class="synth-section faq-card-section" id="faq">
-      <div class="section-header-center">
-        <div class="mono-tag"><span class="spark">✦</span> FAQ // COMPLIANCE</div>
+  <!-- =========================================================================
+       8. FAQ SECTION
+       ========================================================================= -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAQ</span>
         <h2 class="section-title">자주 묻는 질문</h2>
         <p class="section-subhead">규제 적법성 및 서비스 운영 방식에 대해 명확한 팩트를 안내드립니다.</p>
       </div>
 
       <div class="faq-list">
-        <div class="faq-row">
-          <div class="faq-q">
+        <div class="faq-item">
+          <div class="faq-question">
             <span>행정사법 위반 소지는 없나요?</span>
-            <span style="font-family: var(--font-mono); font-size: 16px;">+</span>
+            <span style="font-weight: 800; font-size: 18px; color: var(--primary);">+</span>
           </div>
-          <div class="faq-a">
+          <div class="faq-answer">
             유사 셀프서브 플랫폼의 불기소 사례와 책임분리 원칙을 참고하며, 법률 검토를 진행 중입니다. Formu는 사용자가 직접 입력한 데이터를 바탕으로 표준 서식을 정리하는 순수 셀프서브 소프트웨어(SaaS)를 지향합니다. 개별 법적 대리나 유권해석이 필요한 복잡 건은 제휴된 공인 행정사에게 적법하게 연결합니다.
           </div>
         </div>
 
-        <div class="faq-row">
-          <div class="faq-q">
+        <div class="faq-item">
+          <div class="faq-question">
             <span>공인시험기관(KTR, KCL 등)과의 협력 원칙은 무엇인가요?</span>
-            <span style="font-family: var(--font-mono); font-size: 16px;">+</span>
+            <span style="font-weight: 800; font-size: 18px; color: var(--primary);">+</span>
           </div>
-          <div class="faq-a">
+          <div class="faq-answer">
             공익기관 회계규정에 따라 Formu는 공인시험기관으로부터 일체의 중개 수수료를 수취하지 않습니다. 창작자가 시험 성적서를 편리하게 발급받을 수 있도록 시료 접수 안내 및 전자 성적서 API 연동 파트너로만 투명하게 협력합니다.
           </div>
         </div>
 
-        <div class="faq-row">
-          <div class="faq-q">
+        <div class="faq-item">
+          <div class="faq-question">
             <span>브랜드의 핵심 배합 레시피는 안전하게 보호되나요?</span>
-            <span style="font-family: var(--font-mono); font-size: 16px;">+</span>
+            <span style="font-weight: 800; font-size: 18px; color: var(--primary);">+</span>
           </div>
-          <div class="faq-a">
+          <div class="faq-answer">
             현재 배합 데이터 보호 정책 설계 중이며, 서식 다운로드 완료 후 서버에 원본 배합표가 영구 저장되지 않도록 안전하게 처리할 예정입니다. 고객의 배합 기밀은 제3자에게 절대 공유되지 않습니다.
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- =======================================================================
-         9. FOOTER (Deep Black Modular Box)
-         ======================================================================= -->
-    <footer class="synth-footer">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand-title">
-            <span class="spark" style="color: var(--synth-primary);">✦</span> Formu (포뮤)
-          </div>
-          <div class="footer-brand-desc">
+  <!-- =========================================================================
+       9. FOOTER (Deep Midnight Glass)
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="name">Formu (포뮤)</div>
+          <div class="desc">
             “창작은 당신이, 규제는 포뮤가.”<br />
             배합표 한 장을 법적 출시 가능한 완제품으로 변환하는 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS
           </div>
         </div>
-        <ul class="footer-nav">
-          <li><a href="#features">기능 소개</a></li>
-          <li><a href="#simulator">실시간 진단</a></li>
-          <li><a href="#pricing">요금 안내</a></li>
-          <li><a href="#faq">자주 묻는 질문</a></li>
+        <ul class="footer-links">
+          <li><a href="#features" class="footer-link">기능 소개</a></li>
+          <li><a href="#simulator" class="footer-link">실시간 진단</a></li>
+          <li><a href="#pricing" class="footer-link">요금 안내</a></li>
+          <li><a href="#faq" class="footer-link">자주 묻는 질문</a></li>
         </ul>
       </div>
       <div class="footer-bottom">
         <div>© 2026 Formu Technologies Inc. All rights reserved.</div>
         <div>식약처 화장품법 & 환경부 화학제품관리시스템(CHEMP) 고시 기준 준수</div>
       </div>
-    </footer>
-
-  </div>
+    </div>
+  </footer>
 
   <script>
     function loadSample(type) {
@@ -1258,13 +849,13 @@
       if (type === 'perfume') {
         event.target.classList.add('active');
         formulaBox.innerText = "• 라벤더 오일 (CAS 8000-28-0): 12.50%\n• 리날룰 (Linalool, CAS 78-70-6): 2.40%\n• 리모넨 (Limonene, CAS 5989-27-5): 0.80%\n• 발효주정 에탄올 (CAS 64-17-5): 84.30%\n총 배합비: 100.00% (정합성 일치)";
-        kdaResult.innerHTML = '<div class="audit-result-hdr"><span>[식약처] 화장품 알레르기 25/26종 결과</span><span style="color: var(--synth-primary); font-weight: 800;">검출 2건</span></div><div style="font-size: 11.5px; line-height: 1.5; color: var(--synth-text-body);">➔ 리날룰 2.40%, 리모넨 0.80% (0.001% 초과 검출 ➔ 라벨 필수 기재 문구 즉시 추출 완료)</div>';
-        chempResult.innerHTML = '<div class="audit-result-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800; color: #065F46;">PASS (100%)</span></div><div style="font-size: 11.5px; line-height: 1.5; color: #065F46;">➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
+        kdaResult.innerHTML = '<div class="result-card-hdr"><span>[식약처] 화장품 알레르기 25/26종 결과</span><span style="color: var(--primary); font-weight: 800;">검출 2건</span></div><div style="font-size: 12px; line-height: 1.5;">➔ 리날룰 2.40%, 리모넨 0.80% (0.001% 초과 검출 ➔ 라벨 필수 기재 문구 즉시 추출 완료)</div>';
+        chempResult.innerHTML = '<div class="result-card-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800;">PASS (100%)</span></div><div style="font-size: 12px; line-height: 1.5;">➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
       } else {
         event.target.classList.add('active');
         formulaBox.innerText = "• 유칼립투스 오일 (CAS 8000-48-4): 8.00%\n• 디프로필렌 글리콜 (DPG, CAS 25265-71-8): 20.00%\n• 발효 에탄올 (CAS 64-17-5): 72.00%\n총 배합비: 100.00% (정합성 일치)";
-        kdaResult.innerHTML = '<div class="audit-result-hdr"><span>[환경부 CHEMP] 방향제 품목 유해물질 사전 진단</span><span style="color: #10B981; font-weight: 800;">검토 필요 항목 표시</span></div><div style="font-size: 11.5px; line-height: 1.5; color: var(--synth-text-body);">➔ 폼알데하이드, 메탄올 등 주요 항목 사전 점검 · 안전확인대상 생활화학제품 신고 대상 여부 확인</div>';
-        chempResult.innerHTML = '<div class="audit-result-hdr"><span>[서식 분기] CHEMP 100% 배합비율표 (.xlsx)</span><span style="font-weight: 800; color: #065F46;">즉시 다운로드 가능</span></div><div style="font-size: 11.5px; line-height: 1.5; color: #065F46;">➔ 용도(실내용), 제형(액체형) 자동 매핑 완료 · KTR/KCL 시험 접수용 서류 1초 완성</div>';
+        kdaResult.innerHTML = '<div class="result-card-hdr"><span>[환경부 CHEMP] 방향제 품목 유해물질 사전 진단</span><span style="color: #10B981; font-weight: 800;">검토 필요 항목 표시</span></div><div style="font-size: 12px; line-height: 1.5;">➔ 폼알데하이드, 메탄올 등 주요 항목 사전 점검 · 안전확인대상 생활화학제품 신고 대상 여부 확인</div>';
+        chempResult.innerHTML = '<div class="result-card-hdr"><span>[서식 분기] CHEMP 100% 배합비율표 (.xlsx)</span><span style="font-weight: 800;">즉시 다운로드 가능</span></div><div style="font-size: 12px; line-height: 1.5;">➔ 용도(실내용), 제형(액체형) 자동 매핑 완료 · KTR/KCL 시험 접수용 서류 1초 완성</div>';
       }
     }
   </script>
