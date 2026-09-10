@@ -416,9 +416,153 @@
       .scenario-control-bar { flex-direction: column; align-items: flex-start; }
       .demo-actions { width: 100%; justify-content: flex-end; }
     }
+  
+    /* =========================================================================
+       UX V2 Styles: Excel Dropzone, In-line Field Tags & Big Verdict Banner
+       ========================================================================= */
+    .version-top-bar {
+      background: #0F172A; color: #FFFFFF; padding: 10px 0; font-size: 13px;
+      border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 1000;
+    }
+    .version-top-bar-inner {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .version-tag-pill {
+      background: #3B82F6; color: #FFFFFF; font-size: 11px; font-weight: 800;
+      padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .version-switch-btn {
+      background: rgba(255, 255, 255, 0.15); color: #FFFFFF; border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .version-switch-btn:hover { background: #FFFFFF; color: #0F172A; }
+
+    /* Excel Dropzone Component */
+    .excel-dropzone {
+      border: 2px dashed #94A3B8; background: #F8FAFC; border-radius: 8px;
+      padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s;
+      margin-bottom: 14px; position: relative;
+    }
+    .excel-dropzone:hover, .excel-dropzone.dragover {
+      border-color: var(--primary); background: #EFF6FF;
+    }
+    .dropzone-icon { font-size: 26px; margin-bottom: 4px; }
+    .dropzone-title { font-size: 13.5px; font-weight: 800; color: var(--text-main); margin-bottom: 3px; }
+    .dropzone-sub { font-size: 11.5px; color: var(--text-muted); margin-bottom: 10px; }
+    .dropzone-actions { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .btn-dz-action {
+      font-size: 11.5px; font-weight: 700; padding: 5px 10px; border-radius: 4px;
+      border: 1px solid var(--border-subtle); background: #FFFFFF; color: var(--text-body);
+      cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .btn-dz-action:hover { background: var(--bg-subtle); border-color: #94A3B8; }
+    .btn-dz-action.primary { background: #EFF6FF; border-color: #BFDBFE; color: var(--primary); font-weight: 800; }
+    .btn-dz-action.primary:hover { background: #DBEAFE; }
+    .file-loaded-pill {
+      display: none; align-items: center; justify-content: space-between;
+      background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46;
+      padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; margin-bottom: 14px;
+    }
+    .file-loaded-pill.show { display: flex; }
+
+    /* Label Quick Presets */
+    .quick-presets-wrap {
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;
+      background: #F8FAFC; border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: 6px;
+    }
+    .quick-presets-label { font-size: 11.5px; font-weight: 800; color: var(--text-muted); }
+    .btn-preset {
+      font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+      border: 1px solid var(--border-subtle); background: #FFFFFF; color: var(--text-body);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .btn-preset:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* In-line Field Status Badges & Input Borders */
+    .field-label-row { display: flex; justify-content: space-between; align-items: center; }
+    .field-status-badge {
+      font-size: 10.5px; font-weight: 800; padding: 2px 7px; border-radius: 4px; display: none;
+    }
+    .field-status-badge.show { display: inline-flex; }
+    .field-status-badge.tag-match { background: #DCFCE7; color: #15803D; }
+    .field-status-badge.tag-mismatch { background: #FEE2E2; color: #B91C1C; }
+    .field-status-badge.tag-missing { background: #FEF3C7; color: #B45309; }
+    .field-status-badge.tag-insufficient { background: #F1F5F9; color: #475569; }
+    .field-status-badge.tag-invalid { background: #FEE2E2; color: #B91C1C; }
+
+    .input-text.field-mismatched, .textarea-notice.field-mismatched {
+      border-color: #EF4444 !important; background: #FFF5F5 !important;
+    }
+    .input-text.field-matched, .textarea-notice.field-matched {
+      border-color: #10B981 !important; background: #F0FDF4 !important;
+    }
+    .input-text.field-missing, .textarea-notice.field-missing {
+      border-color: #F59E0B !important; background: #FFFBEB !important;
+    }
+
+    /* Overall Verdict Hero Card */
+    .verdict-hero-card {
+      border-radius: 8px; padding: 18px 22px; margin-bottom: 22px;
+      display: flex; gap: 16px; align-items: flex-start; transition: all 0.3s ease;
+    }
+    .verdict-hero-card.mismatch {
+      background: #FEF2F2; border: 2px solid #F87171; color: #991B1B;
+      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.12);
+    }
+    .verdict-hero-card.match {
+      background: #F0FDF4; border: 2px solid #4ADE80; color: #166534;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.12);
+    }
+    .verdict-hero-card.missing {
+      background: #FFFBEB; border: 2px solid #FCD34D; color: #92400E;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.12);
+    }
+    .verdict-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+    .verdict-content { flex: 1; }
+    .verdict-title { font-size: 17px; font-weight: 900; margin-bottom: 5px; line-height: 1.3; }
+    .verdict-subtitle { font-size: 13px; font-weight: 500; line-height: 1.45; opacity: 0.95; }
+    .verdict-pills-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .verdict-pill {
+      font-size: 11.5px; font-weight: 800; padding: 3px 9px; border-radius: 4px;
+      background: #FFFFFF; border: 1px solid currentColor; display: inline-flex; align-items: center; gap: 4px;
+    }
+
+    /* Enhanced Result Rows */
+    .tr-mismatch { background: #FEF2F2 !important; border-left: 5px solid #EF4444 !important; }
+    .tr-missing { background: #FFFBEB !important; border-left: 5px solid #F59E0B !important; }
+    .tr-insufficient { background: #F8FAFC !important; border-left: 5px solid #94A3B8 !important; }
+    .tr-match { background: #F0FDF4 !important; border-left: 5px solid #10B981 !important; }
+
+    .diff-box { display: flex; flex-direction: column; gap: 3px; }
+    .diff-val-old { font-weight: 700; color: #475569; }
+    .diff-val-new { font-weight: 800; color: #B91C1C; }
+    .diff-val-new.diff-match { color: #15803D; }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.01); }
+      100% { transform: scale(1); }
+    }
+    .pulse-run { animation: pulseGlow 0.35s ease-out; }
+
   </style>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
+
+  <!-- Top Version Switcher Bar -->
+  <div class="version-top-bar">
+    <div class="container version-top-bar-inner">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="version-tag-pill">✨ UX 개편 v2</span>
+        <span><strong>엑셀 사양서 드래그 앤 드롭 & 즉시 진단 모드</strong> (비교용 별도 페이지)</span>
+      </div>
+      <div>
+        <a href="/" class="version-switch-btn">이전 버전(기본형) 보기 ➔</a>
+      </div>
+    </div>
+  </div>
 
   <a href="#compare-demo" class="skip-link">본문 비교 체험으로 바로가기</a>
 
@@ -514,7 +658,6 @@
             </div>
 
             <div class="demo-actions">
-              <a href="/compare_v2.html" class="btn-reset" style="text-decoration:none; background:#EFF6FF; border-color:#BFDBFE; color:var(--primary); font-weight:800;">✨ v2 엑셀 드롭 버전 ➔</a>
               <button type="button" class="btn-reset" onclick="resetDemoInputs()">초기화</button>
               <button type="button" class="btn-compare" id="btnRunCompare" onclick="runComparison()">
                 비교 실행하기 ➔
@@ -538,13 +681,33 @@
                 <span class="col-pill">사내 기준표 / 기획서</span>
               </div>
 
+              <!-- Excel Dropzone for Spec File -->
+              <div class="excel-dropzone" id="excelDropzone" onclick="document.getElementById('excelFileInput').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDropFile(event)">
+                <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display:none" onchange="handleFileInput(event)" />
+                <div class="dropzone-icon">📊</div>
+                <div class="dropzone-title">사내 엑셀 사양서(.xlsx, .csv)를 여기에 끌어다 놓으세요</div>
+                <div class="dropzone-sub">파일은 서버로 전송되지 않고 브라우저에서 안전하게 파싱됩니다</div>
+                <div class="dropzone-actions" onclick="event.stopPropagation()">
+                  <button type="button" class="btn-dz-action primary" onclick="loadSampleExcelPreset()">⚡ 샘플 엑셀 1초 적용</button>
+                  <button type="button" class="btn-dz-action" onclick="document.getElementById('excelFileInput').click()">📂 내 파일 선택</button>
+                  <a href="/downloads/formu_sample_spec_standard.xlsx" download class="btn-dz-action" title="테스트용 엑셀 다운로드">📥 샘플 .xlsx 받기</a>
+                </div>
+              </div>
+              <div class="file-loaded-pill" id="fileLoadedPill">
+                <span id="fileLoadedName">📄 파일명: modu_spec.xlsx</span>
+                <span style="font-size:11px; opacity:0.8;">✓ 파싱 완료</span>
+              </div>
+
               <div class="form-group">
-                <label for="refProduct" class="field-label">제품명</label>
+                <div class="field-label-row">
+                  <label for="refProduct" class="field-label">제품명</label>
+                  <span id="badgeRefProduct" class="field-status-badge"></span>
+                </div>
                 <input type="text" id="refProduct" class="input-text" value="포레스트 A" oninput="markInputsStale()" />
               </div>
 
               <div class="form-group">
-                <label for="refVolume" class="field-label">용량 (예: 200mL, 0.2L)</label>
+                <div class="field-label-row"><label for="refVolume" class="field-label">용량 (예: 200mL, 0.2L)</label><span id="badgeRefVolume" class="field-status-badge"></span></div>
                 <input type="text" id="refVolume" class="input-text" value="200mL" oninput="markInputsStale()" />
               </div>
 
@@ -560,7 +723,7 @@
               </div>
 
               <div class="form-group">
-                <label for="refRevision" class="field-label">문서 버전 (선택)</label>
+                <div class="field-label-row"><label for="refRevision" class="field-label">문서 버전 (선택)</label><span id="badgeRefRevision" class="field-status-badge"></span></div>
                 <input type="text" id="refRevision" class="input-text" value="v2" oninput="markInputsStale()" />
                 <div class="field-helper">* 문서 버전은 내부 비교 정보이며 제품 라벨의 법정 필수 항목이 아닙니다.</div>
               </div>
@@ -575,13 +738,25 @@
                 <span class="col-pill">인쇄 파일 / 패키지 표기</span>
               </div>
 
+              <!-- Right Pane Quick Presets -->
+              <div class="quick-presets-wrap">
+                <span class="quick-presets-label">라벨 시안 프리셋:</span>
+                <button type="button" class="btn-preset" onclick="applyLabelPreset('match')">✓ 정상 (200mL)</button>
+                <button type="button" class="btn-preset" onclick="applyLabelPreset('vol_mismatch')">✕ 150mL 오표기</button>
+                <button type="button" class="btn-preset" onclick="applyLabelPreset('prod_mismatch')">✕ 제품명 불일치</button>
+                <button type="button" class="btn-preset" onclick="applyLabelPreset('missing_notice')">⚠ 문구 누락</button>
+              </div>
+
               <div class="form-group">
-                <label for="labelProduct" class="field-label">제품명</label>
+                <div class="field-label-row">
+                  <label for="labelProduct" class="field-label">제품명</label>
+                  <span id="badgeLabelProduct" class="field-status-badge"></span>
+                </div>
                 <input type="text" id="labelProduct" class="input-text" value="포레스트 A" oninput="markInputsStale()" />
               </div>
 
               <div class="form-group">
-                <label for="labelVolume" class="field-label">용량 (예: 200mL, 0.2L)</label>
+                <div class="field-label-row"><label for="labelVolume" class="field-label">용량 (예: 200mL, 0.2L)</label><span id="badgeLabelVolume" class="field-status-badge"></span></div>
                 <input type="text" id="labelVolume" class="input-text" value="200mL" oninput="markInputsStale()" />
               </div>
 
@@ -594,7 +769,7 @@
               </div>
 
               <div class="form-group">
-                <label for="labelRevision" class="field-label">문서 버전</label>
+                <div class="field-label-row"><label for="labelRevision" class="field-label">문서 버전</label><span id="badgeLabelRevision" class="field-status-badge"></span></div>
                 <input type="text" id="labelRevision" class="input-text" value="v2" oninput="markInputsStale()" />
                 <div class="field-helper">* 라벨 시안에 표기된 작업 버전 코드</div>
               </div>
@@ -603,6 +778,16 @@
 
           <!-- Results View Area -->
           <div class="results-area" id="resultsArea">
+            <!-- Big Overall Verdict Banner -->
+            <div id="verdictHeroCard" class="verdict-hero-card match">
+              <div class="verdict-icon" id="verdictIcon">✓</div>
+              <div class="verdict-content">
+                <div class="verdict-title" id="verdictTitle">진단 결과 대기 중</div>
+                <div class="verdict-subtitle" id="verdictSubtitle">사양서 엑셀 파일을 넣거나 비교 실행하기를 누르면 0.1초 만에 종합 판정이 출력됩니다.</div>
+                <div class="verdict-pills-row" id="verdictPillsRow"></div>
+              </div>
+            </div>
+
             <div class="results-header">
               <div class="results-title">
                 <span>항목별 비교 결과</span>
@@ -949,12 +1134,10 @@
       const s = String(valStr).trim();
       if (s === '') return { valid: false, empty: true, raw: '' };
 
-      // Simulated unreadable handling
       if (['판독 불가', '판독불가', 'UNKNOWN', 'unknown'].includes(s)) {
         return { valid: false, unreadable: true, raw: s, reason: '판독 불가 (가정 입력)' };
       }
 
-      // Separate number and unit
       const m = s.match(/^([+-]?[0-9]*\.?[0-9]+)\s*([a-zA-Z가-힣]+)?$/);
       if (!m) {
         return { valid: false, invalidNumber: true, raw: s, reason: '유효한 숫자 형식이 아닙니다.' };
@@ -970,13 +1153,11 @@
 
       const unit = unitStr.toLowerCase();
 
-      // Supported volume units (dimension: volume in mL)
       if (['ml', '㎖', '밀리리터'].includes(unit) || unit === '') {
         return { valid: true, dimension: 'volume', ml: num, unit: 'mL', raw: s };
       } else if (['l', 'ℓ', '리터'].includes(unit)) {
         return { valid: true, dimension: 'volume', ml: num * 1000.0, unit: 'L', raw: s };
       } else if (['g', 'kg', '그램', '킬로그램'].includes(unit)) {
-        // Mass unit dimension
         const gVal = (unit === 'kg' || unit === '킬로그램') ? num * 1000.0 : num;
         return { valid: true, dimension: 'mass', g: gVal, unit: unitStr, raw: s };
       } else {
@@ -1006,7 +1187,6 @@
         return { status: '입력 해석 불가', reason: `라벨 용량 해석 오류: ${pLabel.reason || '형식 오류'}` };
       }
 
-      // Dimension mismatch (Mass vs Volume)
       if (pBase.dimension !== pLabel.dimension) {
         return {
           status: '자료 부족',
@@ -1014,7 +1194,6 @@
         };
       }
 
-      // Volume dimension precision check
       if (pBase.dimension === 'volume') {
         const diff = Math.abs(pBase.ml - pLabel.ml);
         if (diff < 0.0001) {
@@ -1027,7 +1206,6 @@
         }
       }
 
-      // Mass dimension precision check
       if (pBase.dimension === 'mass') {
         const diff = Math.abs(pBase.g - pLabel.g);
         if (diff < 0.0001) {
@@ -1064,29 +1242,7 @@
       }
     }
 
-    // 3. UI Controller Logic
-    function getBadgeClass(status) {
-      switch (status) {
-        case '일치': return 'match';
-        case '불일치': return 'mismatch';
-        case '누락': return 'missing';
-        case '자료 부족': return 'insufficient';
-        case '입력 해석 불가': return 'invalid';
-        default: return 'insufficient';
-      }
-    }
-
-    function getStatusIcon(status) {
-      switch (status) {
-        case '일치': return '✓';
-        case '불일치': return '✕';
-        case '누락': return '⚠';
-        case '자료 부족': return '?';
-        case '입력 해석 불가': return '⊘';
-        default: return '•';
-      }
-    }
-
+    // 3. UI Controller & Excel Drag & Drop Parser Logic
     function markInputsStale() {
       const notice = document.getElementById('staleNotice');
       if (notice) notice.classList.add('show');
@@ -1128,13 +1284,208 @@
       document.getElementById('labelNotice').value = s.label.notice;
       document.getElementById('labelRevision').value = s.label.revision;
 
-      // Automatically run comparison when scenario changes
+      // Auto run comparison
       runComparison();
     }
 
     function resetDemoInputs() {
       document.getElementById('scenarioSelect').value = 'S01';
+      document.getElementById('fileLoadedPill').classList.remove('show');
       onScenarioChange('S01');
+    }
+
+    // Drag and Drop handlers
+    function onDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('excelDropzone').classList.add('dragover');
+    }
+
+    function onDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('excelDropzone').classList.remove('dragover');
+    }
+
+    function onDropFile(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('excelDropzone').classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files && files.length > 0) {
+        processExcelFile(files[0]);
+      }
+    }
+
+    function handleFileInput(e) {
+      const files = e.target.files;
+      if (files && files.length > 0) {
+        processExcelFile(files[0]);
+      }
+    }
+
+    // Robust Excel / CSV parser
+    function processExcelFile(file) {
+      const fileName = file.name;
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const data = e.target.result;
+        let parsedRows = [];
+
+        // Check if SheetJS XLSX is available
+        if (typeof XLSX !== 'undefined') {
+          try {
+            const workbook = XLSX.read(data, { type: 'binary' });
+            const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+            parsedRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+          } catch (err) {
+            console.warn('XLSX parse fallback to raw CSV:', err);
+          }
+        }
+
+        // Fallback for CSV if XLSX didn't produce rows
+        if (!parsedRows || parsedRows.length === 0) {
+          const text = new TextDecoder('utf-8').decode(new Uint8Array(data));
+          parsedRows = text.split(/\r?\n/).map(line => line.split(',').map(cell => cell.trim().replace(/^["']|["']$/g, '')));
+        }
+
+        if (parsedRows.length > 1) {
+          applyParsedExcelData(parsedRows, fileName);
+        } else {
+          alert('엑셀 파일에서 유효한 데이터 행을 찾을 수 없습니다. 헤더와 데이터가 포함되어 있는지 확인해 주세요.');
+        }
+      };
+
+      if (typeof XLSX !== 'undefined') {
+        reader.readAsBinaryString(file);
+      } else {
+        reader.readAsArrayBuffer(file);
+      }
+    }
+
+    // Header Fuzzy Matching
+    function applyParsedExcelData(rows, fileName) {
+      const headers = rows[0].map(h => String(h || '').trim().toLowerCase());
+      const firstRow = rows[1];
+
+      let prodVal = '', volVal = '', noticeVal = '', revVal = '';
+
+      headers.forEach((h, idx) => {
+        const val = firstRow[idx] !== undefined ? String(firstRow[idx]).trim() : '';
+        if (/제품|상품|품명|product|name/.test(h) && !prodVal) prodVal = val;
+        else if (/용량|중량|규격|volume|size|ml/.test(h) && !volVal) volVal = val;
+        else if (/주의|경고|보관|notice|caution/.test(h) && !noticeVal) noticeVal = val;
+        else if (/버전|개정|rev|version/.test(h) && !revVal) revVal = val;
+      });
+
+      // Default fallbacks if header matching missed
+      if (!prodVal && firstRow[0]) prodVal = firstRow[0];
+      if (!volVal && firstRow[1]) volVal = firstRow[1];
+
+      document.getElementById('refProduct').value = prodVal || '포레스트 A';
+      document.getElementById('refVolume').value = volVal || '200mL';
+      document.getElementById('refRevision').value = revVal || 'v2';
+
+      const noticeArea = document.getElementById('refNotice');
+      const noDataCheck = document.getElementById('refNoticeNoData');
+      if (noticeVal) {
+        noDataCheck.checked = false;
+        noticeArea.disabled = false;
+        noticeArea.value = noticeVal;
+      }
+
+      // Show loaded pill
+      const pill = document.getElementById('fileLoadedPill');
+      document.getElementById('fileLoadedName').textContent = `📄 ${fileName} (로드 완료)`;
+      pill.classList.add('show');
+
+      // Run comparison immediately!
+      runComparison();
+    }
+
+    // Quick Sample Excel Loader
+    function loadSampleExcelPreset() {
+      applyParsedExcelData([
+        ['제품명', '용량', '주의문구', '문서버전'],
+        ['포레스트 A', '200mL', '사용 후 용기를 밀폐하여 보관하세요.', 'v2']
+      ], '포레스트_사양서_샘플.xlsx');
+    }
+
+    // Quick Label Presets
+    function applyLabelPreset(type) {
+      const p = document.getElementById('labelProduct');
+      const v = document.getElementById('labelVolume');
+      const n = document.getElementById('labelNotice');
+      const r = document.getElementById('labelRevision');
+
+      if (type === 'match') {
+        p.value = '포레스트 A';
+        v.value = '200mL';
+        n.value = '사용 후 용기를 밀폐하여 보관하세요.';
+        r.value = 'v2';
+      } else if (type === 'vol_mismatch') {
+        p.value = '포레스트 A';
+        v.value = '150mL'; // Mismatch!
+        n.value = '사용 후 용기를 밀폐하여 보관하세요.';
+        r.value = 'v2';
+      } else if (type === 'prod_mismatch') {
+        p.value = '포레스트 B'; // Mismatch!
+        v.value = '200mL';
+        n.value = '사용 후 용기를 밀폐하여 보관하세요.';
+        r.value = 'v2';
+      } else if (type === 'missing_notice') {
+        p.value = '포레스트 A';
+        v.value = '200mL';
+        n.value = ''; // Missing!
+        r.value = 'v2';
+      }
+      runComparison();
+    }
+
+    // Helpers for In-line field status
+    function setFieldStatus(baseElemId, labelElemId, badgeBaseId, badgeLabelId, status, isMissing) {
+      const baseEl = document.getElementById(baseElemId);
+      const labelEl = document.getElementById(labelElemId);
+      const bBadge = document.getElementById(badgeBaseId);
+      const lBadge = document.getElementById(badgeLabelId);
+
+      // Clean classes
+      const cleanClasses = (el) => {
+        if (!el) return;
+        el.classList.remove('field-matched', 'field-mismatched', 'field-missing');
+      };
+      cleanClasses(baseEl);
+      cleanClasses(labelEl);
+
+      const applyBadge = (badgeEl, tagClass, text) => {
+        if (!badgeEl) return;
+        badgeEl.className = 'field-status-badge show ' + tagClass;
+        badgeEl.textContent = text;
+      };
+
+      if (status === '일치') {
+        if (baseEl) baseEl.classList.add('field-matched');
+        if (labelEl) labelEl.classList.add('field-matched');
+        applyBadge(bBadge, 'tag-match', '✓ 일치');
+        applyBadge(lBadge, 'tag-match', '✓ 일치');
+      } else if (status === '불일치') {
+        if (baseEl) baseEl.classList.add('field-mismatched');
+        if (labelEl) labelEl.classList.add('field-mismatched');
+        applyBadge(bBadge, 'tag-mismatch', '✕ 기준');
+        applyBadge(lBadge, 'tag-mismatch', '✕ 불일치');
+      } else if (status === '누락') {
+        if (baseEl) baseEl.classList.add('field-missing');
+        if (labelEl) labelEl.classList.add('field-missing');
+        applyBadge(bBadge, 'tag-missing', '⚠ 기준 존재');
+        applyBadge(lBadge, 'tag-missing', '⚠ 누락됨');
+      } else if (status === '자료 부족') {
+        applyBadge(bBadge, 'tag-insufficient', '? 자료 부족');
+        applyBadge(lBadge, 'tag-insufficient', '? 판정 보류');
+      } else if (status === '입력 해석 불가') {
+        if (labelEl) labelEl.classList.add('field-mismatched');
+        applyBadge(lBadge, 'tag-invalid', '⊘ 형식 오류');
+      }
     }
 
     function runComparison() {
@@ -1161,15 +1512,60 @@
       const resRev = compareTextField(refRev, labelRev, '문서 버전', false);
 
       const items = [
-        { name: '제품명', baseVal: refProd, labelVal: labelProd, res: resProd },
-        { name: '용량', baseVal: refVol, labelVal: labelVol, res: resVol },
-        { name: '주의 문구', baseVal: refNoticeNoData ? '[자료 없음]' : refNotice, labelVal: labelNotice, res: resNotice },
-        { name: '문서 버전', baseVal: refRev, labelVal: labelRev, res: resRev }
+        { name: '제품명', baseVal: refProd, labelVal: labelProd, res: resProd, baseId: 'refProduct', labelId: 'labelProduct', bBadgeId: 'badgeRefProduct', lBadgeId: 'badgeLabelProduct' },
+        { name: '용량', baseVal: refVol, labelVal: labelVol, res: resVol, baseId: 'refVolume', labelId: 'labelVolume', bBadgeId: 'badgeRefVolume', lBadgeId: 'badgeLabelVolume' },
+        { name: '주의 문구', baseVal: refNoticeNoData ? '[자료 없음]' : refNotice, labelVal: labelNotice, res: resNotice, baseId: 'refNotice', labelId: 'labelNotice', bBadgeId: null, lBadgeId: null },
+        { name: '문서 버전', baseVal: refRev, labelVal: labelRev, res: resRev, baseId: 'refRevision', labelId: 'labelRevision', bBadgeId: 'badgeRefRevision', lBadgeId: 'badgeLabelRevision' }
       ];
+
+      // Update Field In-line States
+      items.forEach(it => {
+        setFieldStatus(it.baseId, it.labelId, it.bBadgeId, it.lBadgeId, it.res.status);
+      });
 
       // Tally statuses
       const counts = { '일치': 0, '불일치': 0, '누락': 0, '자료 부족': 0, '입력 해석 불가': 0 };
-      items.forEach(it => { counts[it.res.status] = (counts[it.res.status] || 0) + 1; });
+      const mismatches = [];
+      items.forEach(it => {
+        counts[it.res.status] = (counts[it.res.status] || 0) + 1;
+        if (it.res.status === '불일치') mismatches.push(`${it.name} (${it.baseVal} ≠ ${it.labelVal || '빈값'})`);
+        else if (it.res.status === '누락') mismatches.push(`${it.name} (라벨 누락)`);
+      });
+
+      // Update Verdict Hero Card
+      const vCard = document.getElementById('verdictHeroCard');
+      const vIcon = document.getElementById('verdictIcon');
+      const vTitle = document.getElementById('verdictTitle');
+      const vSub = document.getElementById('verdictSubtitle');
+      const vPills = document.getElementById('verdictPillsRow');
+
+      vCard.className = 'verdict-hero-card';
+      let pillsHtml = '';
+
+      if (counts['불일치'] > 0 || counts['누락'] > 0) {
+        const totalIssues = counts['불일치'] + counts['누락'];
+        vCard.classList.add(counts['불일치'] > 0 ? 'mismatch' : 'missing');
+        vIcon.textContent = '⚠️';
+        vTitle.textContent = `[진단 결과] 총 4개 항목 중 ${totalIssues}건의 불일치·누락이 감지되었습니다!`;
+        vSub.textContent = '라벨 인쇄 또는 최종 출고 전 다음 상이한 항목의 수정이 필요합니다:';
+        mismatches.forEach(m => {
+          pillsHtml += `<span class="verdict-pill">✕ ${escapeHtml(m)}</span>`;
+        });
+      } else if (counts['자료 부족'] > 0 || counts['입력 해석 불가'] > 0) {
+        vCard.classList.add('missing');
+        vIcon.textContent = 'ℹ️';
+        vTitle.textContent = `[진단 결과] 기준 자료 부족 또는 형식 확인이 필요한 항목이 있습니다.`;
+        vSub.textContent = '기준표가 비어 있거나 단위 형식이 불분명하여 판정이 보류된 항목이 존재합니다.';
+        pillsHtml += `<span class="verdict-pill">자료 부족 ${counts['자료 부족']}건</span>`;
+        if (counts['입력 해석 불가'] > 0) pillsHtml += `<span class="verdict-pill">형식 오류 ${counts['입력 해석 불가']}건</span>`;
+      } else {
+        vCard.classList.add('match');
+        vIcon.textContent = '✓';
+        vTitle.textContent = `[진단 결과] 4개 항목(제품명·용량·주의문구·버전) 모두 정확히 일치합니다!`;
+        vSub.textContent = '사내 엑셀 사양서와 라벨 시안 표기 간 텍스트 정합성이 100% 확인되었습니다.';
+        pillsHtml += `<span class="verdict-pill" style="border-color:#166534; color:#166534;">✓ 전 항목 정합성 정상</span>`;
+      }
+      vPills.innerHTML = pillsHtml;
 
       // Render Summary Chips
       const chipsContainer = document.getElementById('summaryChips');
@@ -1181,21 +1577,28 @@
       if (counts['입력 해석 불가'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-invalid-bg); color:var(--status-invalid-text);">⊘ 해석 불가 ${counts['입력 해석 불가']}</span>`;
       chipsContainer.innerHTML = chipsHtml;
 
-      // Render Table Rows
+      // Render Enhanced Table Rows
       const tbody = document.getElementById('resultsTableBody');
       let rowsHtml = '';
 
       items.forEach(it => {
         const bText = it.baseVal ? escapeHtml(it.baseVal).replace(/\n/g, '<br/>') : '<span class="cell-val empty">(비어 있음)</span>';
         const lText = it.labelVal ? escapeHtml(it.labelVal).replace(/\n/g, '<br/>') : '<span class="cell-val empty">(비어 있음)</span>';
-        const badgeClass = getBadgeClass(it.res.status);
-        const icon = getStatusIcon(it.res.status);
+        
+        let rowClass = 'tr-match';
+        if (it.res.status === '불일치') rowClass = 'tr-mismatch';
+        else if (it.res.status === '누락') rowClass = 'tr-missing';
+        else if (it.res.status === '자료 부족') rowClass = 'tr-insufficient';
+        else if (it.res.status === '입력 해석 불가') rowClass = 'tr-mismatch';
+
+        const badgeClass = it.res.status === '일치' ? 'match' : (it.res.status === '불일치' ? 'mismatch' : (it.res.status === '누락' ? 'missing' : 'insufficient'));
+        const icon = it.res.status === '일치' ? '✓' : (it.res.status === '불일치' ? '✕' : (it.res.status === '누락' ? '⚠' : '?'));
 
         rowsHtml += `
-          <tr>
+          <tr class="${rowClass}">
             <td><strong>${escapeHtml(it.name)}</strong></td>
-            <td><div class="cell-val">${bText}</div></td>
-            <td><div class="cell-val">${lText}</div></td>
+            <td><div class="cell-val diff-val-old">${bText}</div></td>
+            <td><div class="cell-val diff-val-new ${it.res.status === '일치' ? 'diff-match' : ''}">${lText}</div></td>
             <td>
               <span class="badge-status ${badgeClass}">${icon} ${escapeHtml(it.res.status)}</span>
             </td>
@@ -1207,9 +1610,14 @@
       });
 
       tbody.innerHTML = rowsHtml;
+
+      // Add visual pulse effect
+      vCard.classList.remove('pulse-run');
+      void vCard.offsetWidth; // trigger reflow
+      vCard.classList.add('pulse-run');
     }
 
-    // 4. Signup Form Handler (/api/signup AJAX)
+    // Signup form handler
     async function handleSignup(e) {
       e.preventDefault();
       const btn = document.getElementById('btnSubmitSignup');
@@ -1234,25 +1642,28 @@
           body: JSON.stringify(payload)
         });
         const data = await res.json();
+        btn.disabled = false;
+        btn.innerText = '대기자 등록 및 가이드북 신청하기';
 
         if (res.ok && data.success) {
           msg.className = 'signup-msg success';
-          msg.innerText = '사전 신청이 정상적으로 접수되었습니다. 새로운 기능이 출시되면 가장 먼저 안내해 드리겠습니다.';
-          document.getElementById('signupForm').reset();
+          msg.innerHTML = `<strong>신청 완료:</strong> ${escapeHtml(data.message)} <a href="${data.downloadUrl}" download style="text-decoration:underline; font-weight:800; color:inherit; margin-left:8px;">[가이드북 PDF 다운로드]</a>`;
+          msg.style.display = 'block';
         } else {
           msg.className = 'signup-msg error';
-          msg.innerText = data.error || '접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+          msg.textContent = `신청 실패: ${data.error || '잠시 후 다시 시도해 주세요.'}`;
+          msg.style.display = 'block';
         }
       } catch (err) {
-        msg.className = 'signup-msg error';
-        msg.innerText = '네트워크 연결 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
-      } finally {
         btn.disabled = false;
-        btn.innerText = '출시 알림 사전 신청하기';
+        btn.innerText = '대기자 등록 및 가이드북 신청하기';
+        msg.className = 'signup-msg error';
+        msg.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+        msg.style.display = 'block';
       }
     }
 
-    // Run initial comparison on page load
+    // Auto run on DOM ready
     window.addEventListener('DOMContentLoaded', () => {
       runComparison();
     });
