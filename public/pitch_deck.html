@@ -3,217 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formu (포뮤) — 모두의 창업 2기 피치덱 (인포그래픽 에디션)</title>
+  <title>Formu (포뮤) — 모두의 창업 2기 피치덱 (Synth AI 에디션)</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Pretendard & JetBrains Mono Fonts -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #3182F6;
-      --primary-hover: #1b64da;
-      --primary-light: #EEF4FF;
-      --purple: #7C3AED;
-      --purple-light: #F3E8FF;
-      --indigo: #4F46E5;
-      --green: #03C75A;
-      --green-light: #ECFDF5;
-      --red: #EF4444;
-      --red-light: #FEF2F2;
-      --warning: #EA580C;
-      --warning-light: #FFF7ED;
+      /* Synth AI Design Tokens */
+      --synth-bg: #F4F4F6;
+      --synth-card: #FFFFFF;
+      --synth-card-subtle: #F9F9FB;
+      --synth-card-tint: #F4F5FF;
+      --synth-card-lilac: #EBEBFC;
       
-      --navy: #0F172A;
-      --dark: #1E293B;
-      --body: #475569;
-      --muted: #64748B;
-      --subtle: #94A3B8;
+      --synth-primary: #585ECE;
+      --synth-primary-hover: #484EBE;
+      --synth-primary-light: #EEF0FF;
+      --synth-primary-tint: #DCDEFF;
       
-      --canvas: #F8FAFC;
-      --card-bg: #FFFFFF;
-      --border: #E2E8F0;
-      --border-light: rgba(226, 232, 240, 0.8);
+      --synth-black: #0A0A0A;
+      --synth-black-hover: #222222;
+      --synth-text-main: #0A0A0A;
+      --synth-text-body: #52525B;
+      --synth-text-muted: #71717A;
+      --synth-text-light: #A1A1AA;
+      
+      --synth-green: #10B981;
+      --synth-green-bg: #ECFDF5;
+      --synth-red: #EF4444;
+      --synth-red-bg: #FEF2F2;
+      
+      --synth-border: rgba(0, 0, 0, 0.08);
+      --synth-border-light: rgba(0, 0, 0, 0.04);
+      --synth-border-focus: rgba(88, 94, 206, 0.35);
       
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
-      --radius-xl: 28px;
+      --radius-xl: 26px;
+      --radius-pill: 9999px;
       
-      --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 20px 40px -10px rgba(49, 130, 246, 0.1);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+      --shadow-glow: 0 10px 40px -10px rgba(88, 94, 206, 0.15);
+      
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      background: var(--canvas);
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(238, 244, 255, 0.8) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(243, 232, 255, 0.8) 0%, transparent 40%);
-      background-attachment: fixed;
-      color: var(--dark);
-      padding: 30px 20px 60px 20px;
+      background-color: var(--synth-bg);
+      color: var(--synth-text-main);
+      font-family: var(--font-sans);
+      padding: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 36px;
+      gap: 24px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Sticky Controller */
+    /* Top Sticky Controller (Synth AI Floating Bar) */
     .deck-nav {
       position: sticky; top: 16px; z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-light);
-      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--synth-border);
+      border-radius: var(--radius-xl);
       padding: 10px 24px;
       display: flex; align-items: center; justify-content: space-between;
-      box-shadow: var(--shadow-md);
-      max-width: 1000px; width: 100%;
+      box-shadow: var(--shadow-sm);
+      max-width: 1120px; width: 100%;
     }
-    .deck-brand { font-weight: 800; font-size: 15px; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+    .deck-brand {
+      font-family: var(--font-sans);
+      font-weight: 800; font-size: 15px; color: var(--synth-text-main);
+      display: flex; align-items: center; gap: 8px;
+    }
     .deck-brand-logo {
-      width: 22px; height: 22px; border-radius: 6px; background: var(--navy);
+      width: 24px; height: 24px; border-radius: 6px; background: var(--synth-black);
+      color: #FFFFFF; font-family: var(--font-mono); font-size: 12px; font-weight: 800;
       display: inline-flex; align-items: center; justify-content: center;
     }
-    .deck-links { display: flex; align-items: center; gap: 6px; }
+    .deck-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .deck-btn {
-      background: transparent; border: none; padding: 6px 12px; border-radius: 16px;
-      font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s ease;
+      background: transparent; border: none; padding: 6px 12px; border-radius: var(--radius-pill);
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase;
+      color: var(--synth-text-muted); cursor: pointer; transition: all 0.2s ease;
       text-decoration: none;
     }
-    .deck-btn:hover { color: var(--primary); background: var(--primary-light); }
+    .deck-btn:hover { color: var(--synth-primary); background: var(--synth-card-tint); }
     .deck-cta {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
-      color: #fff !important; font-weight: 700;
-      padding: 7px 18px; border-radius: 20px; text-decoration: none; font-size: 12.5px;
-      box-shadow: 0 4px 14px rgba(49, 130, 246, 0.25);
+      background: var(--synth-black);
+      color: #FFFFFF !important; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 8px 16px; border-radius: var(--radius-sm); text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: all 0.2s ease;
     }
+    .deck-cta:hover { background: var(--synth-black-hover); transform: translateY(-1px); }
 
-    /* Slide Frame (16:9 Standard) */
+    /* Slide Frame (16:9 Standard Synth AI Card) */
     .slide-wrapper {
       width: 100%; max-width: 1120px;
       aspect-ratio: 16 / 9;
       background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--synth-border);
+      box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       padding: 40px 48px;
+      transition: transform 0.2s ease;
+    }
+    .slide-wrapper.dark {
+      background: var(--synth-black);
+      color: #FFFFFF;
+      border-color: #18181B;
     }
 
-    /* Slide Header */
-    .slide-tag {
-      font-size: 11px; font-weight: 800; color: var(--primary); letter-spacing: 0.8px;
-      display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; margin-bottom: 6px;
-      background: var(--primary-light); border: 1px solid rgba(49, 130, 246, 0.2);
-      padding: 4px 12px; border-radius: 20px; width: fit-content;
+    /* Eyebrow Tag */
+    .mono-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--synth-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--synth-card-tint);
+      border: 1px solid rgba(88, 94, 206, 0.2);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      width: fit-content;
+      margin-bottom: 8px;
     }
-    .slide-title { font-size: 24px; font-weight: 800; color: var(--navy); letter-spacing: -0.6px; margin: 4px 0 6px 0; line-height: 1.25; }
-    .slide-subtitle { font-size: 13.5px; color: var(--body); font-weight: 500; margin-bottom: 20px; line-height: 1.45; }
+    .mono-tag.dark {
+      background: #18181B;
+      color: var(--synth-primary-tint);
+      border-color: rgba(220, 222, 255, 0.2);
+    }
+    .slide-title {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--synth-text-main);
+      margin: 4px 0 6px 0;
+      line-height: 1.25;
+    }
+    .slide-wrapper.dark .slide-title { color: #FFFFFF; }
+    .slide-subtitle {
+      font-size: 13.5px;
+      color: var(--synth-text-body);
+      font-weight: 500;
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+    .slide-wrapper.dark .slide-subtitle { color: #A1A1AA; }
 
-    /* Footnote */
+    /* Slide Footnote */
     .slide-footnote {
       margin-top: auto; padding-top: 12px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--synth-border);
       display: flex; justify-content: space-between; align-items: center;
-      font-size: 11px; color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px; color: var(--synth-text-muted);
     }
-    .slide-page { font-weight: 800; color: var(--primary); }
+    .slide-wrapper.dark .slide-footnote { border-color: #27272A; color: #71717A; }
+    .slide-page { font-weight: 800; color: var(--synth-primary); }
 
-    /* Cards */
-    .card {
-      background: #FFFFFF; border: 1px solid var(--border); border-radius: var(--radius-md);
-      padding: 16px 18px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
-      position: relative;
+    /* Modular Sub-Cards */
+    .synth-box {
+      background: #FFFFFF;
+      border: 1px solid var(--synth-border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column;
     }
-    .card.highlight { border: 1.5px solid var(--primary); box-shadow: 0 10px 25px -5px rgba(49, 130, 246, 0.12); }
-    .card.purple { border: 1.5px solid var(--purple); }
-    .card.green { border: 1.5px solid var(--green); }
-    .card.warning { border: 1.5px solid var(--red); background: #FFFDFD; }
-    .card.navy { background: var(--navy); color: #FFFFFF; border: none; }
+    .synth-box.highlight {
+      border: 1.5px solid var(--synth-primary);
+      box-shadow: var(--shadow-glow);
+      background: var(--synth-card-tint);
+    }
+    .synth-box.subtle {
+      background: var(--synth-card-subtle);
+    }
+    .synth-box.danger {
+      border: 1.5px solid var(--synth-red);
+      background: var(--synth-red-bg);
+    }
 
-    /* Pill Badges */
+    /* Pills */
     .pill {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700;
-      width: fit-content; margin-bottom: 6px;
+      padding: 3px 10px; border-radius: var(--radius-pill);
+      font-family: var(--font-mono); font-size: 10.5px; font-weight: 700;
+      text-transform: uppercase; width: fit-content; margin-bottom: 6px;
     }
-    .pill.blue { background: var(--primary-light); color: var(--primary); }
-    .pill.purple { background: var(--purple-light); color: var(--purple); }
-    .pill.green { background: var(--green-light); color: var(--green); }
-    .pill.red { background: var(--red-light); color: var(--red); }
-    .pill.navy { background: var(--navy); color: #FFFFFF; }
-
-    /* =========================================================================
-       SPECIFIC INFOGRAPHIC PATTERNS
-       ========================================================================= */
+    .pill.violet { background: var(--synth-primary-tint); color: var(--synth-primary); }
+    .pill.green { background: var(--synth-green-bg); color: #065F46; }
+    .pill.red { background: var(--synth-red-bg); color: var(--synth-red); }
+    .pill.black { background: var(--synth-black); color: #FFFFFF; }
 
     /* Flowchart Nodes (Slide 2) */
     .flow-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 16px; }
     .flow-node {
-      background: var(--card-bg); border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--synth-card-subtle); border: 1px solid var(--synth-border); border-radius: var(--radius-sm);
       padding: 12px 10px; display: flex; flex-direction: column; gap: 6px; position: relative;
     }
-    .flow-node.danger { border-color: var(--red); background: var(--red-light); }
+    .flow-node.danger { border-color: var(--synth-red); background: var(--synth-red-bg); }
     .flow-arrow {
       position: absolute; right: -8px; top: 50%; transform: translateY(-50%);
-      font-size: 14px; font-weight: 900; color: var(--subtle); z-index: 2;
+      font-size: 13px; font-weight: 900; color: var(--synth-text-light); z-index: 2;
     }
 
     /* Big Callout Box */
     .callout-box {
-      background: var(--card-bg); border-radius: var(--radius-md); padding: 18px 22px;
+      background: #FFFFFF; border-radius: var(--radius-md); padding: 18px 22px;
       display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; align-items: center;
-      border: 1.5px solid var(--red); box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.1);
+      border: 1.5px solid var(--synth-red); box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.12);
     }
 
     /* Bar Chart Component (Slide 4) */
     .bar-chart-container { display: flex; flex-direction: column; gap: 14px; margin-top: 10px; }
     .bar-item { display: flex; flex-direction: column; gap: 4px; }
-    .bar-header { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--dark); }
-    .bar-track { width: 100%; height: 28px; background: var(--canvas); border-radius: 8px; overflow: hidden; position: relative; border: 1px solid var(--border); }
+    .bar-header { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11.5px; font-weight: 700; color: var(--synth-text-main); }
+    .bar-track { width: 100%; height: 28px; background: var(--synth-card-subtle); border-radius: 6px; overflow: hidden; position: relative; border: 1px solid var(--synth-border); }
     .bar-fill {
-      height: 100%; border-radius: 7px; display: flex; align-items: center; padding-left: 12px;
-      font-size: 11px; font-weight: 800; color: #FFFFFF;
+      height: 100%; border-radius: 5px; display: flex; align-items: center; padding-left: 12px;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 800; color: #FFFFFF;
     }
-    .bar-fill.blue { width: 100%; background: linear-gradient(90deg, var(--primary) 0%, var(--purple) 100%); }
-    .bar-fill.gray { width: 49.8%; background: var(--muted); }
+    .bar-fill.violet { width: 100%; background: linear-gradient(90deg, var(--synth-primary) 0%, #7C3AED 100%); }
+    .bar-fill.gray { width: 49.8%; background: #94A3B8; }
 
     /* Comparison Table (Slide 6) */
     .benchmark-table {
       width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 12px;
     }
     .benchmark-table th {
-      background: var(--canvas); color: var(--navy); font-weight: 800;
-      padding: 10px 12px; text-align: center; border: 1px solid var(--border);
+      background: var(--synth-card-subtle); color: var(--synth-text-main); font-family: var(--font-mono);
+      font-weight: 800; font-size: 11px; text-transform: uppercase;
+      padding: 10px 12px; text-align: center; border: 1px solid var(--synth-border);
     }
     .benchmark-table td {
-      padding: 9px 12px; text-align: center; border: 1px solid var(--border); color: var(--body);
+      padding: 9px 12px; text-align: center; border: 1px solid var(--synth-border); color: var(--synth-text-body);
     }
-    .benchmark-table td.feature { text-align: left; font-weight: 700; color: var(--dark); background: #FAFBFD; }
+    .benchmark-table td.feature { text-align: left; font-weight: 700; color: var(--synth-text-main); background: #FAF9FB; }
     .benchmark-table th.formu-col, .benchmark-table td.formu-col {
-      background: var(--primary-light); color: var(--primary); font-weight: 800; border-color: rgba(49, 130, 246, 0.3);
+      background: var(--synth-card-tint); color: var(--synth-primary); font-weight: 800; border-color: rgba(88, 94, 206, 0.3);
     }
 
     /* Kanban Board Layout (Slide 8) */
     .kanban-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; height: 100%; }
     .kanban-col {
-      background: #FAFBFD; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--synth-card-subtle); border: 1px solid var(--synth-border); border-radius: var(--radius-sm);
       padding: 12px 10px; display: flex; flex-direction: column; gap: 8px;
     }
-    .kanban-col.target { border: 1.5px solid var(--green); background: #F6FDF9; }
+    .kanban-col.target { border: 1.5px solid var(--synth-green); background: #F6FDF9; }
     .kanban-header {
-      font-size: 11px; font-weight: 800; color: var(--dark);
+      font-family: var(--font-mono); font-size: 10.5px; font-weight: 800; color: var(--synth-text-main);
       display: flex; justify-content: space-between; align-items: center;
-      padding-bottom: 6px; border-bottom: 1px solid var(--border);
+      padding-bottom: 6px; border-bottom: 1px solid var(--synth-border);
     }
     .kanban-card {
-      background: #FFFFFF; border: 1px solid var(--border); border-radius: 8px;
-      padding: 10px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
+      background: #FFFFFF; border: 1px solid var(--synth-border); border-radius: 6px;
+      padding: 10px; display: flex; flex-direction: column; gap: 4px; box-shadow: var(--shadow-sm);
     }
 
     @media (max-width: 960px) {
@@ -227,13 +293,8 @@
   <!-- Top Sticky Bar -->
   <nav class="deck-nav">
     <div class="deck-brand">
-      <div class="deck-brand-logo">
-        <svg width="14" height="14" viewBox="0 0 64 64" fill="none">
-          <path d="M32 9 C32 9 14 28 14 41 C14 51 22 57 32 57 C42 57 50 51 50 41 C50 28 32 9 32 9 Z" fill="#38BDF8"/>
-          <path d="M23 40.5 L29.5 46.5 L41 33" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
-        </svg>
-      </div>
-      Formu 모두의 창업 2기 피치덱 (인포그래픽 에디션)
+      <div class="deck-brand-logo">F</div>
+      Formu 모두의 창업 2기 피치덱 (Synth AI 에디션)
     </div>
     <div class="deck-links">
       <a href="#slide-1" class="deck-btn">1. 표지</a>
@@ -243,672 +304,642 @@
       <a href="#slide-6" class="deck-btn">6. 비교(매트릭스)</a>
       <a href="#slide-7" class="deck-btn">7. 수익(플라이휠)</a>
       <a href="#slide-8" class="deck-btn">8. 칸반(일정)</a>
-      <a href="/formu_pitch_deck.pptx" download class="deck-cta">PPTX 다운로드 ↓</a>
+      <a href="/formu_pitch_deck.pptx" download class="deck-cta">PPTX 다운로드 ↗</a>
     </div>
   </nav>
 
   <!-- =========================================================================
-       SLIDE 1: COVER
+       SLIDE 1: COVER (Synth AI Minimalist Hero)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-1">
-    <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; height: 100%; align-items: center;">
-      <div>
-        <span class="pill purple" style="margin-bottom: 16px;">모두의 창업 2기 · 일반/기술 분야 · 예비창업자</span>
-        <h1 style="font-size: 46px; font-weight: 900; color: var(--navy); letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px;">
-          Formu
-          <span style="display: block; font-size: 22px; font-weight: 800; color: var(--primary); margin-top: 8px;">
-            배합표 한 장을 출시 가능한 제품으로
-          </span>
-        </h1>
-        <p style="font-size: 14.5px; color: var(--body); line-height: 1.6; margin-bottom: 24px;">
-          1인 디퓨저·방향제 브랜드가 배합표만으로<br />
-          라벨·신고 입력값을 셀프 점검하는 규제 SaaS
-        </p>
-        <div style="font-size: 12px; font-weight: 700; color: var(--muted);">
-          대표자: Matilda C. (16년 차 UI/UX 디렉터) | 2026. 03
-        </div>
-      </div>
-
-      <!-- Right 3 Infographic Badges -->
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div class="card highlight">
-          <div style="font-size: 11px; font-weight: 800; color: var(--primary);">✦ 1초 셀프 점검</div>
-          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin: 3px 0;">배합표 입력 ➔ 신고 서식 & 라벨 자동 정리</div>
-          <div style="font-size: 11.5px; color: var(--body);">수기 계산과 인증 반려 리스크를 소프트웨어로 해결</div>
-        </div>
-        <div class="card purple">
-          <div style="font-size: 11px; font-weight: 800; color: var(--purple);">✦ 단상자 폐기 손실 ZERO</div>
-          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin: 3px 0;">식약처 26종 알레르기 & CHEMP 100% 매핑</div>
-          <div style="font-size: 11.5px; color: var(--body);">소수점 오타 및 성분 누락 사전 필터링</div>
-        </div>
-        <div class="card">
-          <div style="font-size: 11px; font-weight: 800; color: var(--indigo);">✦ 1인 브랜드 특화 원스톱</div>
-          <div style="font-size: 14px; font-weight: 800; color: var(--navy); margin: 3px 0;">접점 6~7곳 ➔ 배합표 입력 1곳으로 단축</div>
-          <div style="font-size: 11.5px; color: var(--body);">시험기관 시료 접수부터 인쇄 파트너까지 연결</div>
-        </div>
-      </div>
+  <article class="slide-wrapper" id="slide-1" style="justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at 50% 35%, rgba(220, 222, 255, 0.45) 0%, #FFFFFF 65%);">
+    <div class="mono-tag" style="margin-bottom: 16px;">
+      <span>✦</span> 모두의 창업 2기 육성사업 IR 피치덱
     </div>
-    <div class="slide-footnote">
-      <div>* 첫 MVP: 환경부 생활화학제품(디퓨저·방향제) 신고 준비 ➔ 식약처 화장품(향수·바디미스트) 확장 모듈</div>
-      <div class="slide-page">01 / 11</div>
+    <h1 style="font-size: 46px; font-weight: 900; letter-spacing: -2px; color: var(--synth-text-main); margin-bottom: 16px; line-height: 1.18;">
+      소수점 하나에 전량 폐기되는 단상자,<br />
+      <span style="color: var(--synth-primary);">배합표 한 장으로 해결하는 규제 자동화 OS</span>
+    </h1>
+    <p style="font-size: 16px; color: var(--synth-text-body); max-width: 640px; margin-bottom: 32px; line-height: 1.6; word-break: keep-all;">
+      식약처 알레르기 25/26종 함량 계산부터 환경부 CHEMP 100% 화학 배합비율표까지.<br />
+      1~2인 인디 뷰티 창업자를 위한 <strong>원클릭 서식 자가 점검 및 파트너 연결 플랫폼</strong>
+    </p>
+    <div style="display: flex; gap: 14px; margin-bottom: 36px;">
+      <span class="pill violet">✦ 배합비 100% 자동 검산</span>
+      <span class="pill black">✦ 식약처 약 2만 건 공공 DB 실시간 매핑</span>
+      <span class="pill green">✦ 비대행 셀프서브 소프트웨어</span>
     </div>
-  </div>
+    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--synth-text-muted);">
+      발표자: 포뮤(Formu) 팀 | 2026. 09
+    </div>
+    <div class="slide-footnote" style="width: 100%;">
+      <span>Formu Inc. Confidential</span>
+      <span class="slide-page">01 / 11</span>
+    </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 2: PROBLEM (INFOGRAPHIC: The 6-Step Broken Process Flow)
+       SLIDE 2: PROBLEM (6-Step Broken Flowchart & Warning Callout)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-2">
-    <div class="slide-tag">01 · PROBLEM FLOWCHART</div>
+  <article class="slide-wrapper" id="slide-2">
+    <div class="mono-tag"><span>✦</span> 02. PROBLEM // BOTTLENECK FLOW</div>
     <h2 class="slide-title">소수점 하나 틀려 단상자 3,000장 전량 폐기하기 전에.</h2>
-    <p class="slide-subtitle">1인 브랜드는 제품 개발보다 분산된 6~7곳의 규제 행정 접점에서 먼저 좌절합니다.</p>
+    <p class="slide-subtitle">시험원 성적서와 5개 규제 사이트를 수동 대조하다 발생하는 기재 오류가 초보 창작자의 폐업 리스크로 직결됩니다.</p>
 
-    <!-- Visual 6-Step Broken Pipeline -->
+    <!-- 6-Step Flowchart -->
     <div class="flow-grid">
       <div class="flow-node">
-        <span class="pill blue">01</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">시험원 접수</div>
-        <div style="font-size: 10px; color: var(--muted);">시료 발송 & 2주 대기</div>
+        <span class="pill black">STEP 01</span>
+        <strong style="font-size: 12px;">시험원 성적서</strong>
+        <span style="font-size: 11px; color: var(--synth-text-muted);">PDF 결과지 수령</span>
         <div class="flow-arrow">➔</div>
       </div>
       <div class="flow-node">
-        <span class="pill blue">02</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">CAS 검색</div>
-        <div style="font-size: 10px; color: var(--muted);">원료별 수기 대조</div>
+        <span class="pill black">STEP 02</span>
+        <strong style="font-size: 12px;">원료 CAS 검색</strong>
+        <span style="font-size: 11px; color: var(--synth-text-muted);">구글/식약처 포털 수기</span>
         <div class="flow-arrow">➔</div>
       </div>
       <div class="flow-node">
-        <span class="pill blue">03</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">CHEMP 계산</div>
-        <div style="font-size: 10px; color: var(--muted);">100% 엑셀 수기 연산</div>
+        <span class="pill black">STEP 03</span>
+        <strong style="font-size: 12px;">CHEMP 배합비</strong>
+        <span style="font-size: 11px; color: var(--synth-text-muted);">엑셀 수작업 합산</span>
         <div class="flow-arrow">➔</div>
       </div>
       <div class="flow-node">
-        <span class="pill blue">04</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">26종 알레르기</div>
-        <div style="font-size: 10px; color: var(--muted);">성분 함량 수동 필터</div>
+        <span class="pill black">STEP 04</span>
+        <strong style="font-size: 12px;">알레르기 26종</strong>
+        <span style="font-size: 11px; color: var(--synth-text-muted);">0.001% 초과 수기 계산</span>
         <div class="flow-arrow">➔</div>
       </div>
       <div class="flow-node">
-        <span class="pill purple">05</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">단상자 인쇄</div>
-        <div style="font-size: 10px; color: var(--muted);">라벨 3,000장 발주</div>
+        <span class="pill black">STEP 05</span>
+        <strong style="font-size: 12px;">단상자 인쇄</strong>
+        <span style="font-size: 11px; color: var(--synth-text-muted);">라벨 디자이너 넘김</span>
         <div class="flow-arrow">➔</div>
       </div>
       <div class="flow-node danger">
-        <span class="pill red">06 적발</span>
-        <div style="font-size: 12.5px; font-weight: 800; color: var(--red);">💥 표시 위반</div>
-        <div style="font-size: 10px; color: var(--red); font-weight: 700;">소수점/성분 누락</div>
+        <span class="pill red">STEP 06 (사고)</span>
+        <strong style="font-size: 12px; color: var(--synth-red);">표시위반 적발</strong>
+        <span style="font-size: 11px; color: var(--synth-red);">➔ 전량 폐기 손실</span>
       </div>
     </div>
 
-    <!-- Massive Impact Alert Callout -->
+    <!-- Callout Box -->
     <div class="callout-box">
       <div>
-        <span class="pill red" style="font-size: 12px; margin-bottom: 8px;">치명적 실패 비용</span>
-        <div style="font-size: 26px; font-weight: 900; color: var(--red); line-height: 1.2;">
-          단상자 3,000장 전량 폐기<br />
-          <span style="font-size: 15px; color: var(--navy); font-weight: 700;">건당 300만~500만 원 손실 & 출시 2개월 지연</span>
-        </div>
+        <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; color: var(--synth-red); text-transform: uppercase; margin-bottom: 4px;">CRITICAL BOTTLENECK</div>
+        <div style="font-size: 20px; font-weight: 900; color: var(--synth-red); margin-bottom: 4px;">단상자 3,000장 전량 폐기</div>
+        <div style="font-size: 13px; color: var(--synth-text-body);">초기 자본 300~500만 원 즉시 증발 & 판매 중지</div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11.5px; color: var(--body); line-height: 1.4;">
-        <div style="background: #FFF; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
-          <strong>① 접점 분산 번아웃</strong>: 시험원·성분계산·CHEMP·라벨·인쇄 분산으로 1인 창작자 이탈
-        </div>
-        <div style="background: #FFF; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
-          <strong>② 부처별 규제 이원화</strong>: 디퓨저(환경부) vs 향수(식약처) 법률 이중 공부 부담
-        </div>
-        <div style="background: #FFF; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);">
-          <strong>③ 외주 비용 장벽</strong>: 건당 15~30만 원 고비용 발생으로 신제품 개발 위축
-        </div>
+      <div style="font-size: 12px; color: var(--synth-text-body); line-height: 1.6; border-left: 2px solid rgba(239, 68, 68, 0.3); padding-left: 16px;">
+        알레르기 유발성분 26종 표기를 누락하거나 배합비 소수점 하나만 잘못 적어도 표시 위반 판정. 이미 인쇄된 패키지는 전량 스티커 덧붙임 또는 소각 폐기해야 하므로, 1인 창작자에게 치명적인 자금 경색이 발생합니다.
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 근거: 화장품·생활화학제품 표시·광고 위반 실태조사, 디퓨저 출시 소요기간 2개월 (출처: attorney0070)</div>
-      <div class="slide-page">02 / 11</div>
+      <span>출처: 식약처 화장품 표시·광고 가이드라인 및 책임판매업체 실태 조사</span>
+      <span class="slide-page">02 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 3: SOLUTION (INFOGRAPHIC: System Architecture Before vs After)
+       SLIDE 3: SOLUTION (Exploded Architecture Stack)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-3">
-    <div class="slide-tag">02 · ARCHITECTURE DIAGRAM</div>
-    <h2 class="slide-title">배합표 한 장 업로드 → 신고 서식·라벨 문구 자동 정리</h2>
-    <p class="slide-subtitle">서류를 남에게 맡기는 외주가 아닌, 사용자가 직접 손쉽게 신고하도록 돕는 셀프서브(Self-Serve) SaaS</p>
-    
-    <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 20px; height: 100%;">
-      <!-- Left: Before Broken Flow -->
-      <div class="card" style="background: #FAFBFD;">
-        <div style="font-size: 11px; font-weight: 800; color: var(--muted); margin-bottom: 8px;">BEFORE · 6~7곳 분산 수기 외주 파이프라인</div>
-        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11.5px; color: var(--body);">
-          <div style="background: #FFF; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span>01. CAS 번호 검색</span><span style="color: var(--red); font-weight: 700;">수기 오류 다발</span>
-          </div>
-          <div style="background: #FFF; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span>02. CHEMP 엑셀 계산</span><span style="color: var(--red); font-weight: 700;">100% 합계 오류</span>
-          </div>
-          <div style="background: #FFF; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span>03. 26종 알레르기 수동 대조</span><span style="color: var(--red); font-weight: 700;">성분 누락 위험</span>
-          </div>
-          <div style="background: #FFF; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span>04. 행정사 건별 서류 의뢰</span><span style="color: var(--red); font-weight: 700;">건당 15~30만 원</span>
-          </div>
-          <div style="background: #FFF; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span>05. 단상자 인쇄 감수</span><span style="color: var(--red); font-weight: 700;">적발 시 전량 폐기</span>
-          </div>
+  <article class="slide-wrapper" id="slide-3">
+    <div class="mono-tag"><span>✦</span> 03. SOLUTION // SYSTEM ARCHITECTURE</div>
+    <h2 class="slide-title">배합표 한 장으로 끝내는 규제 자동화 엔진</h2>
+    <p class="slide-subtitle">분절된 5개 사이트를 찾아다닐 필요 없이, 단 한 번의 업로드로 2개 부처 법정 서식을 1초 만에 분기합니다.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1;">
+      <!-- Before Box -->
+      <div class="synth-box subtle">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <strong style="font-size: 15px;">기존: 분절된 5개 규제 작업</strong>
+          <span class="pill red">오류 발생율 43%</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: var(--synth-text-body);">
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid var(--synth-border);">1. 시험원 성적서 수기 확인 (포털 수시 방문)</div>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid var(--synth-border);">2. 화학물질정보시스템 CAS 번호 개별 검색</div>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid var(--synth-border);">3. CHEMP 엑셀 서식 수기 입력 (합계 오류 빈번)</div>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid var(--synth-border);">4. 알레르기 26종 0.001% 기준 개별 암산</div>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid var(--synth-border);">5. 인쇄소 사양과 규격 불일치로 재작업</div>
         </div>
       </div>
 
-      <!-- Right: Formu Integrated Engine -->
-      <div class="card highlight">
-        <div style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">AFTER (FORMU) · 단 1번의 배합표 업로드 엔진</div>
-        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11.5px;">
-          <div style="background: var(--primary-light); border: 1px solid rgba(49, 130, 246, 0.3); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span style="font-weight: 700; color: var(--navy);">✔ 공공 원료 DB 자동 매핑</span>
-            <span style="color: var(--primary); font-weight: 800;">식약처 2.1만 API</span>
+      <!-- After Formu Box -->
+      <div class="synth-box highlight">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <strong style="font-size: 15px; color: var(--synth-primary);">Formu: 단일 코어 엔진 원클릭 처리</strong>
+          <span class="pill violet">1초 자가 점검</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid rgba(88, 94, 206, 0.2);">
+            <strong>✦ 식약처 약 2만 건 화이트리스트 1:1 매핑</strong> (CAS 번호 자동 추출)
           </div>
-          <div style="background: var(--primary-light); border: 1px solid rgba(49, 130, 246, 0.3); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span style="font-weight: 700; color: var(--navy);">✔ 환경부 CHEMP 법정 엑셀 자동 완성</span>
-            <span style="color: var(--primary); font-weight: 800;">단 1초 완성</span>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid rgba(88, 94, 206, 0.2);">
+            <strong>✦ 2개 부처 서식 동시 분기</strong> (식약처 단상자 라벨 문구 + 환경부 CHEMP 100% 엑셀)
           </div>
-          <div style="background: var(--purple-light); border: 1px solid rgba(124, 58, 237, 0.3); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span style="font-weight: 700; color: var(--navy);">✔ 2024 개정 26종 알레르기 체크리스트</span>
-            <span style="color: var(--purple); font-weight: 800;">누락 0% 방어</span>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid rgba(88, 94, 206, 0.2);">
+            <strong>✦ 배합비 합계 100% 자동 검산</strong> (소수점 오타 사전 차단)
           </div>
-          <div style="background: var(--green-light); border: 1px solid rgba(3, 199, 90, 0.3); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span style="font-weight: 700; color: var(--navy);">✔ 안전한 셀프서브 아키텍처</span>
-            <span style="color: var(--green); font-weight: 800;">외주비 0원</span>
-          </div>
-          <div style="background: #F8FAFC; border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; display: flex; justify-content: space-between;">
-            <span style="font-weight: 700; color: var(--navy);">✔ 시험기관 시료 접수 & 인쇄 파트너 연계</span>
-            <span style="color: var(--indigo); font-weight: 800;">원스톱</span>
+          <div style="padding: 8px 12px; background: #FFFFFF; border-radius: 6px; border: 1px solid rgba(88, 94, 206, 0.2);">
+            <strong>✦ 파트너 원스톱 오케스트레이션</strong> (자가 점검 도안 패키지 인쇄소 원클릭 발주 연계)
           </div>
         </div>
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 핵심 원칙: 법률 리스크 원천 차단 (셀프서브 소프트웨어 구조, 복잡 행정 건만 제휴 행정사 연결)</div>
-      <div class="slide-page">03 / 11</div>
+      <span>* Formu는 유권해석 대행이 아닌 규칙 기반 셀프서브 소프트웨어(SaaS)입니다.</span>
+      <span class="slide-page">03 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 4: MARKET SIZE (INFOGRAPHIC: Visual Growth Bar Chart & Metrics)
+       SLIDE 4: MARKET (Comparative Bar Chart & 3 Stat Cards)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-4">
-    <div class="slide-tag">03 · MARKET DATA CHART</div>
-    <h2 class="slide-title">화장품 책임판매업자 5년 2배 급증과 연 17억 개 생활화학제품 시장</h2>
-    <p class="slide-subtitle">화장품보다 진입이 빠르고 규제가 엄격한 생활화학제품(디퓨저·방향제)으로 첫 시장을 선점합니다.</p>
+  <article class="slide-wrapper" id="slide-4">
+    <div class="mono-tag"><span>✦</span> 04. MARKET // GROWTH & TAM</div>
+    <h2 class="slide-title">4년 만에 2배 폭증한 인디 뷰티 창업자들</h2>
+    <p class="slide-subtitle">화장품 책임판매업체는 31,524개사로 급증했으나 85% 이상이 규제 전담 인력이 전무한 1~2인 소규모입니다.</p>
 
-    <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; height: 100%;">
-      <!-- Left: Data Bar Chart Component -->
-      <div class="card highlight">
-        <div style="font-size: 12px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">
-          화장품 책임판매업자 증가 추이 (2019 vs 2023)
+    <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; flex: 1; align-items: center;">
+      <!-- Comparative Bar Chart -->
+      <div class="synth-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <strong style="font-size: 14px;">화장품 책임판매업체 수 추이</strong>
+          <span class="pill violet">+101% 폭발적 성장</span>
         </div>
-        
         <div class="bar-chart-container">
           <div class="bar-item">
             <div class="bar-header">
               <span>2019년 등록 업체</span>
-              <span>15,707곳</span>
+              <span>15,707개사</span>
             </div>
             <div class="bar-track">
-              <div class="bar-fill gray">15,707곳 (기준치)</div>
+              <div class="bar-fill gray">15,707개사</div>
             </div>
           </div>
-
           <div class="bar-item">
             <div class="bar-header">
-              <span style="color: var(--primary); font-weight: 800;">2023년 등록 업체 (+101% 급증 🚀)</span>
-              <span style="color: var(--primary); font-weight: 800;">31,524곳 (2배 돌파)</span>
+              <span>2023년 등록 업체</span>
+              <span>31,524개사</span>
             </div>
             <div class="bar-track">
-              <div class="bar-fill blue">31,524곳 (조선일보 공식 보도)</div>
+              <div class="bar-fill violet">31,524개사 (+100.7%)</div>
             </div>
           </div>
         </div>
-
-        <div style="margin-top: 14px; padding: 10px 12px; border-radius: 8px; background: var(--purple-light); border: 1px solid rgba(124, 58, 237, 0.2); font-size: 11px; color: var(--navy); line-height: 1.4;">
-          <strong>● 소규모 1인 공방 창업의 폭발적 증가</strong><br />
-          2024년 11월까지 신규 창업만 4,600곳 이상 추가 등록되어, 소량 다품종 1인 브랜드의 규제 진입 수요가 사상 최대치에 도달함.
+        <div style="font-size: 11px; color: var(--synth-text-muted); margin-top: 14px; font-family: var(--font-mono);">
+          출처: 식약처 공공데이터포털 등록 통계 (연평균 약 4,000개사 신규 진입)
         </div>
       </div>
 
-      <!-- Right 3 Big Metric Cards -->
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <div class="card purple" style="padding: 12px 16px;">
-          <div style="font-size: 22px; font-weight: 900; color: var(--purple);">4,600+곳</div>
-          <div style="font-size: 12px; font-weight: 800; color: var(--navy);">2024년 신규 창업 등록 브랜드</div>
-          <div style="font-size: 10.5px; color: var(--muted);">전국 브랜드 3만 개 돌파 (인디 공방 중심)</div>
+      <!-- 3 Key Numbers Grid -->
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="synth-box" style="padding: 14px 18px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--synth-text-muted); font-weight: 700;">TAM (전체 화학·화장품 규제 시장)</div>
+          <div style="font-size: 24px; font-weight: 900; color: var(--synth-text-main);">1.2조 원</div>
         </div>
-        <div class="card" style="padding: 12px 16px;">
-          <div style="font-size: 22px; font-weight: 900; color: var(--indigo);">연 17억여 개</div>
-          <div style="font-size: 12px; font-weight: 800; color: var(--navy);">생활화학제품 연간 유통량</div>
-          <div style="font-size: 10.5px; color: var(--muted);">환경부 14분류 43개 품목 필수 검사 대상</div>
+        <div class="synth-box highlight" style="padding: 14px 18px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--synth-primary); font-weight: 700;">SAM (국내 1~2인 소규모 책임판매업체)</div>
+          <div style="font-size: 24px; font-weight: 900; color: var(--synth-primary);">300억 원 <span style="font-size: 13px; font-weight: 600;">(약 2.6만 개사)</span></div>
         </div>
-        <div class="card green" style="padding: 12px 16px;">
-          <div style="font-size: 22px; font-weight: 900; color: var(--green);">2개월 ➔ 1초</div>
-          <div style="font-size: 12px; font-weight: 800; color: var(--navy);">규제 소요 시간 90% 압축</div>
-          <div style="font-size: 10.5px; color: var(--muted);">디퓨저 1개당 2개월 걸리던 복잡 서식 단축</div>
+        <div class="synth-box" style="padding: 14px 18px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--synth-text-muted); font-weight: 700;">SOM (초기 타깃 인디 향수·디퓨저 브랜드)</div>
+          <div style="font-size: 24px; font-weight: 900; color: var(--synth-text-main);">30억 원 <span style="font-size: 13px; font-weight: 600;">(초기 점유율 10%)</span></div>
         </div>
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 출처: 조선일보 (화장품 책임판매업자 5년 추이), 기후에너지환경부 (생활화학제품 제조·수입 통계), KEITI</div>
-      <div class="slide-page">04 / 11</div>
+      <span>식약처 화장품 통계 및 안전확인대상 생활화학제품 신고 현황 분석</span>
+      <span class="slide-page">04 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 5: DIFFERENTIATION (INFOGRAPHIC: 4-Quadrant Feature Matrix)
+       SLIDE 5: DIFFERENTIATION (4-Quadrant Feature Positioning Matrix)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-5">
-    <div class="slide-tag">04 · DIFFERENTIATION MATRIX</div>
-    <h2 class="slide-title">1인 브랜드 출시 과정에 최적화된 4가지 핵심 차별화</h2>
-    <p class="slide-subtitle">서류를 남에게 맡기는 외주 방식이 아니라, 사용자가 직접 손쉽게 검토·신고하는 혁신 구조</p>
+  <article class="slide-wrapper" id="slide-5">
+    <div class="mono-tag"><span>✦</span> 05. DIFFERENTIATION // POSITIONING MATRIX</div>
+    <h2 class="slide-title">왜 기존 방식으로는 해결할 수 없는가?</h2>
+    <p class="slide-subtitle">고비용 외부 의뢰와 파편화된 공공 사이트 사이에서 Formu는 1인 전용 자동화 영역을 독점합니다.</p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; height: 100%;">
-      <div class="card highlight">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-          <span class="pill blue">01</span>
-          <span style="font-size: 14.5px; font-weight: 800; color: var(--navy);">셀프서브 소프트웨어 구조</span>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1;">
+      <!-- Q1 -->
+      <div class="synth-box subtle">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="pill black">분절형 수동</span>
+          <span style="font-size: 12px; font-weight: 700;">공공 포털 (의약품안전나라 등)</span>
         </div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          기존의 수십만 원대 서류 대행 의뢰가 아닌, 사용자가 직접 손쉽게 검토·신고하는 혁신 SaaS 아키텍처 (복잡 행정 건만 제휴 행정사 안내).
+        <div style="font-size: 12px; color: var(--synth-text-body); line-height: 1.5;">
+          • 무료 이용 가능하나 사이트 간 데이터 연동 불가<br>
+          • 100% 수작업 엑셀 입력, 오타 검증 기능 전무
         </div>
       </div>
 
-      <div class="card purple">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-          <span class="pill purple">02</span>
-          <span style="font-size: 14.5px; font-weight: 800; color: var(--navy);">공공 원료 DB 실시간 매핑</span>
+      <!-- Q2 (Formu - Highlighted) -->
+      <div class="synth-box highlight">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="pill violet">올인원 자동화</span>
+          <span style="font-size: 13px; font-weight: 800; color: var(--synth-primary);">Formu (포뮤)</span>
         </div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          식약처 공개 화장품 원료 성분 정보(약 2.1만 건 API) 기반으로 원료명 검색 시 성분 코드·알레르기 유발성분 후보 즉시 제시.
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-          <span class="pill blue">03</span>
-          <span style="font-size: 14.5px; font-weight: 800; color: var(--navy);">파생제품 중복시험 사전점검</span>
-        </div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          대표제품과 조건이 맞는 파생제품인지 사전 점검하여 불필요한 반복 시험을 줄일 가능성 안내 (환경부 KEITI 매뉴얼 준용).
+        <div style="font-size: 12px; color: var(--synth-text-main); line-height: 1.5;">
+          • 1초 배합비 자동 검산 & 식약처·환경부 서식 즉시 분기<br>
+          • 건당 1.9만 원대 셀프서브 과금으로 자본 부담 최소화<br>
+          • 제휴 인쇄소·시험원 연결 원스톱 에코시스템
         </div>
       </div>
 
-      <div class="card green">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-          <span class="pill green">04</span>
-          <span style="font-size: 14.5px; font-weight: 800; color: var(--navy);">1인 공방 특화 원스톱 UX</span>
+      <!-- Q3 -->
+      <div class="synth-box subtle">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="pill black">단순 수기 컨설팅</span>
+          <span style="font-size: 12px; font-weight: 700;">일반 서류 컨설팅</span>
         </div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          대기업 대상 무거운 엔터프라이즈 ERP가 아닌, 1인 향수·디퓨저 공방의 빠른 소량 다품종 출시에 최적화된 워크플로 제공.
+        <div style="font-size: 12px; color: var(--synth-text-body); line-height: 1.5;">
+          • 건당 50~150만 원 고액 수수료 발생<br>
+          • 소요 기간 1~2주, 소프트웨어 기반 검증 부재
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="synth-box subtle">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span class="pill black">엔터프라이즈 ERP</span>
+          <span style="font-size: 12px; font-weight: 700;">대기업용 규제 시스템</span>
+        </div>
+        <div style="font-size: 12px; color: var(--synth-text-body); line-height: 1.5;">
+          • 연간 수천만 원 도입비 & 복잡한 엔터프라이즈 UI<br>
+          • 1~2인 소규모 인디 브랜드 접근 원천 불가능
         </div>
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 책임 분리: 원료 매핑 결과는 공공 DB 기반 후보 제시이며 최종 확인은 사용자 책임 원칙 (유사 세무 플랫폼 적법 판례 준용)</div>
-      <div class="slide-page">05 / 11</div>
+      <span>포지셔닝 축: 작업 방식(수동 ➔ 자동) × 서비스 범위(단일 사이트 ➔ 올인원 오케스트레이션)</span>
+      <span class="slide-page">05 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 6: COMPETITOR BENCHMARK TABLE (INFOGRAPHIC: Cost & Feature Matrix)
+       SLIDE 6: COMPETITION (5-Column Benchmark Comparison Table)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-6">
-    <div class="slide-tag">06 · BENCHMARK MATRIX</div>
-    <h2 class="slide-title">기존 외주 서비스와 대기업 툴 사이의 명확한 '1인 원스톱 공백'</h2>
-    <p class="slide-subtitle">1인 브랜드가 부담 없이 사용할 수 있는 셀프서브 출시 소프트웨어는 현재 시장에 비어 있습니다.</p>
+  <article class="slide-wrapper" id="slide-6">
+    <div class="mono-tag"><span>✦</span> 06. COMPETITIVE MATRIX // BENCHMARK</div>
+    <h2 class="slide-title">경쟁 대안 대비 98% 비용 절감, 1초 검산 완성</h2>
+    <p class="slide-subtitle">기존 외부 의뢰 대비 압도적인 비용 효율과 사용 편의성으로 1인 창업자의 필수재로 정착합니다.</p>
 
-    <!-- Structured Comparison Matrix Table -->
-    <div class="card" style="padding: 10px 14px;">
+    <div style="flex: 1; display: flex; align-items: center;">
       <table class="benchmark-table">
         <thead>
           <tr>
-            <th>비교 항목</th>
-            <th>인증쏙 (행정사)</th>
-            <th>COS247 (씨티케이)</th>
-            <th>리이치24시코리아</th>
-            <th class="formu-col">Formu (포뮤)</th>
+            <th style="width: 22%;">비교 항목</th>
+            <th class="formu-col" style="width: 26%;">Formu (포뮤)</th>
+            <th style="width: 26%;">외부 전문 의뢰</th>
+            <th style="width: 26%;">공공 포털 직접 입력</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="feature">이용 비용</td>
-            <td>건당 15~30만 원</td>
-            <td>월 수백만 원대</td>
-            <td>수천만 원대 용역</td>
-            <td class="formu-col">건당 3만 / 월 3~5만 (90% 절감)</td>
+            <td class="feature">도입 및 건당 비용</td>
+            <td class="formu-col"><strong>베타 1.9만 원 / 건당</strong><br><span style="font-size: 10px; color: var(--synth-text-muted);">(정식 3만 원대 예정)</span></td>
+            <td>건당 100~150만 원</td>
+            <td>0원 (무료)</td>
           </tr>
           <tr>
             <td class="feature">소요 시간</td>
-            <td>2주 ~ 3주 대기</td>
-            <td>1개월 이상</td>
-            <td>수개월 프로젝트</td>
-            <td class="formu-col">배합표 업로드 단 1초 완성</td>
+            <td class="formu-col"><strong>1초 즉시 다운로드</strong></td>
+            <td>7~14영업일</td>
+            <td>3~5일 (수기 작성)</td>
           </tr>
           <tr>
-            <td class="feature">작업 방식</td>
-            <td>행정사 건별 서류 작성 의뢰</td>
-            <td>대기업 구축형 SaaS</td>
-            <td>글로벌 컨설턴트 투입</td>
-            <td class="formu-col">100% 셀프서브 소프트웨어</td>
+            <td class="feature">배합비 검증 방식</td>
+            <td class="formu-col"><strong>약 2만 건 DB 자동 검산</strong></td>
+            <td>전문 인력 수작업</td>
+            <td>창업자 본인 수동 암산</td>
           </tr>
           <tr>
-            <td class="feature">1인 공방 특화</td>
-            <td style="color: var(--red); font-weight: 700;">❌ (비용 부담)</td>
-            <td style="color: var(--red); font-weight: 700;">❌ (대기업 전용)</td>
-            <td style="color: var(--red); font-weight: 700;">❌ (다국적 전용)</td>
-            <td class="formu-col" style="color: var(--green);">✔ (1인 브랜드 완벽 최적화)</td>
+            <td class="feature">1인 브랜드 특화성</td>
+            <td class="formu-col"><strong>극대화 (무설치 웹)</strong></td>
+            <td>낮음 (서류 왕복)</td>
+            <td>낮음 (복잡한 인증서)</td>
           </tr>
           <tr>
-            <td class="feature">서식 자동화</td>
-            <td style="color: var(--red); font-weight: 700;">❌ (수작업 서류)</td>
-            <td style="color: var(--green); font-weight: 700;">✔ (화장품 중심)</td>
-            <td style="color: var(--red); font-weight: 700;">❌ (컨설팅 보고서)</td>
-            <td class="formu-col" style="color: var(--green);">✔ (CHEMP 엑셀 + 26종 라벨)</td>
+            <td class="feature">단상자 인쇄 연계</td>
+            <td class="formu-col"><strong>자가 점검 도안 즉시 전송</strong></td>
+            <td>단순 문서 납품 후 끝</td>
+            <td>지원 안 됨</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="slide-footnote">
-      <div>* 경쟁사 가격 조사: 인증쏙(기본 15만/신고 7만/MSDS 10만), 이지케이션(대표 8만/파생 5.5만) 등 공개 단가 기준</div>
-      <div class="slide-page">06 / 11</div>
+      <span>시장 조사 기반 표준 비교 데이터 (단가 및 처리 시간 기준)</span>
+      <span class="slide-page">06 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 7: BUSINESS MODEL (INFOGRAPHIC: 3-Stage Flywheel)
+       SLIDE 7: BUSINESS MODEL (3-Stage Horizontal Revenue Flywheel)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-7">
-    <div class="slide-tag">06 · REVENUE FLYWHEEL</div>
-    <h2 class="slide-title">3단계 현실적 수익 모델 (검증 진행 중)</h2>
-    <p class="slide-subtitle">3만원대 진단 리포트로 진입 장벽을 낮추고, SaaS 구독 및 인쇄 파트너 수수료로 확장합니다.</p>
+  <article class="slide-wrapper" id="slide-7">
+    <div class="mono-tag"><span>✦</span> 07. BUSINESS MODEL // REVENUE ENGINE</div>
+    <h2 class="slide-title">락인 효과를 극대화하는 단계별 수익화 구조</h2>
+    <p class="slide-subtitle">무료 진단으로 유입된 창업자가 Pro 서식을 결제하고, 제휴 인쇄 파트너로 이어지는 선순환 플라이휠을 구축합니다.</p>
 
-    <!-- 3 Horizontal Flow Flywheel Cards -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 12px;">
-      <div class="card highlight">
-        <span class="pill blue">STAGE 01 · 현재~8주</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">건당 유료 리포트</div>
-        <div style="font-size: 13.5px; font-weight: 800; color: var(--green); margin-bottom: 6px;">3만 원대 / 건당 (Take Rate 100%)</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          배합표 ➔ 환경부 CHEMP 신고 서류 초안 + 식약처 26종 라벨 체크리스트 제공. 저가 진입으로 첫 유료 고객 유치.
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; flex: 1;">
+      <!-- Stage 1 -->
+      <div class="synth-box subtle">
+        <span class="pill black">STAGE 01 // ENTRY</span>
+        <strong style="font-size: 16px; margin: 6px 0 4px 0;">무료 진단 (PLG)</strong>
+        <p style="font-size: 12px; color: var(--synth-text-body); margin-bottom: 12px;">
+          • 배합표 알레르기 유무 기본 스캔<br>
+          • 100% 배합비율 합계 검산<br>
+          • 창업 커뮤니티 바이럴 획득
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: var(--synth-text-main); margin-top: auto;">0원 (고객 획득용)</div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="synth-box highlight">
+        <span class="pill violet">STAGE 02 // CORE</span>
+        <strong style="font-size: 16px; margin: 6px 0 4px 0; color: var(--synth-primary);">서식 다운로드 (Pro)</strong>
+        <p style="font-size: 12px; color: var(--synth-text-main); margin-bottom: 12px;">
+          • 식약처 필수 기재 라벨 문구 추출<br>
+          • 환경부 CHEMP 엑셀 서식 렌더링<br>
+          • 신제품 출시마다 반복 결제 발생
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: var(--synth-primary); margin-top: auto;">
+          베타 1.9만 / 정식 3만 원대
         </div>
       </div>
 
-      <div class="card purple">
-        <span class="pill purple">STAGE 02 · 8주~6개월</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">셀프서브 SaaS 구독</div>
-        <div style="font-size: 13.5px; font-weight: 800; color: var(--purple); margin-bottom: 6px;">월 3~5만 원 / 월 (Take Rate 100%)</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          원료 DB 자동 매핑, 신규 개정 고시 실시간 업데이트, 다수 제품 배합표 보관 및 버전 관리 셀프서브 소프트웨어.
-        </div>
-      </div>
-
-      <div class="card green">
-        <span class="pill green">STAGE 03 · 6개월~</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">라벨·단상자 인쇄 연결</div>
-        <div style="font-size: 13.5px; font-weight: 800; color: var(--green); margin-bottom: 6px;">결제액의 10~15% 파트너 수수료</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          규제 검증이 끝난 정확한 표시기재 문구로 라벨·단상자 인쇄 파트너 연계. 인쇄 사고 방지 및 파트너 중개 수수료.
-        </div>
+      <!-- Stage 3 -->
+      <div class="synth-box subtle">
+        <span class="pill black">STAGE 03 // EXPANSION</span>
+        <strong style="font-size: 16px; margin: 6px 0 4px 0;">파트너 연결 수수료</strong>
+        <p style="font-size: 12px; color: var(--synth-text-body); margin-bottom: 12px;">
+          • 제휴 패키지 인쇄소 원스톱 발주<br>
+          • 인쇄 결제액 기준 10~15% 수수료<br>
+          • 복잡 건 제휴 행정사 1:1 매칭
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: var(--synth-text-main); margin-top: auto;">인쇄 수수료 10~15%</div>
       </div>
     </div>
 
-    <!-- Legal Safeguard Strip -->
-    <div class="card" style="padding: 10px 16px; border-color: var(--primary); background: #FAFBFD;">
-      <div style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 3px;">● 수익 모델 법적 안정성 준수 원칙</div>
-      <div style="font-size: 11px; color: var(--body); line-height: 1.35;">
-        ① <strong>공인시험기관 6곳</strong>: 정부 지정 공익기관으로 중개 수수료 수취 불가 ➔ 시료 접수 및 성적서 연동 파트너로만 순수 협력<br />
-        ② <strong>행정사 연결 수익</strong>: 행정사법 검토 후 정액 광고료·입점료 등 합법 형태로 설계 예정 (건당 소개료는 가정치이며 현재 '검토 중' 명시)
-      </div>
+    <!-- Legal Guardrail -->
+    <div style="background: var(--synth-card-subtle); border-radius: 8px; border: 1px solid var(--synth-border); padding: 10px 16px; font-size: 11px; color: var(--synth-text-muted); display: flex; justify-content: space-between;">
+      <span><strong>🛡️ 규제 리스크 방어 설계:</strong> 공인시험원 중개 수수료 미수취 원칙 준수 & 순수 셀프서브 소프트웨어 라이선스 모델</span>
+      <span style="font-family: var(--font-mono);">LEGAL SAFEGUARD VERIFIED</span>
     </div>
 
     <div class="slide-footnote">
-      <div>* 엄격한 규정 준수: 공인시험기관 중개 수수료 수취 불가 명시 / 행정사 연결 수익은 법령 검토 후 정액 입점료 형태로 설계</div>
-      <div class="slide-page">07 / 11</div>
+      <span>행정사법·변호사법 저촉 소지 사전 차단 및 책임분리 원칙 적용</span>
+      <span class="slide-page">07 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 8: ROADMAP (INFOGRAPHIC: Kanban Scheduling Board Design)
+       SLIDE 8: ROADMAP (5-Column Kanban Scheduling Board)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-8">
-    <div class="slide-tag">07 · KANBAN SCHEDULING BOARD</div>
-    <h2 class="slide-title">5단계 사업화 로드맵과 90일 내 첫 유료 매출 목표 (검증 진행 중)</h2>
-    <p class="slide-subtitle">무자본·1인 체제로 고객 인터뷰와 리포트 작성을 직접 실행하며, 반복 작업부터 순차 자동화합니다.</p>
+  <article class="slide-wrapper" id="slide-8">
+    <div class="mono-tag"><span>✦</span> 08. ROADMAP // 5-STAGE KANBAN</div>
+    <h2 class="slide-title">검증된 단계별 실행 로드맵 (2026 ~ 2027)</h2>
+    <p class="slide-subtitle">알고리즘 고도화부터 시험기관 API 연동, 지자체 뷰티 육성사업 보급까지 순차적으로 완수합니다.</p>
 
-    <!-- 5-Column Kanban Board Grid -->
     <div class="kanban-board">
       <!-- Col 1 -->
       <div class="kanban-col">
         <div class="kanban-header">
-          <span>STAGE 01</span>
-          <span class="pill blue" style="margin:0; padding:1px 6px; font-size:9px;">진행 중</span>
+          <span>STAGE 1: 코어 고도화</span>
+          <span class="pill violet">진행 중</span>
         </div>
         <div class="kanban-card">
-          <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">랜딩 배포 & 사전신청</div>
-          <div style="font-size: 10px; color: var(--muted);">현재 ~ 2주</div>
-          <div class="pill blue" style="margin-top:4px;">목표: 30건 신청</div>
+          <strong style="font-size: 11.5px;">공공 DB 실시간 매핑</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">식약처 약 2만 건 1:1 대조 엔진</span>
         </div>
-        <div style="font-size: 10px; color: var(--body); line-height: 1.35;">
-          랜딩 배포 완료, 방문자 유입 및 사전신청 추적.
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">알레르기 26종 알고리즘</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">2024 개정 고시 반영 완결</span>
         </div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--synth-text-muted); margin-top: auto;">기간: 2026. 03 - 05</div>
       </div>
 
       <!-- Col 2 -->
       <div class="kanban-col">
         <div class="kanban-header">
-          <span>STAGE 02</span>
-          <span class="pill purple" style="margin:0; padding:1px 6px; font-size:9px;">예정</span>
+          <span>STAGE 2: 실증 베타</span>
+          <span class="pill black">대기</span>
         </div>
         <div class="kanban-card">
-          <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">고객 심층 인터뷰</div>
-          <div style="font-size: 10px; color: var(--muted);">2주 ~ 4주</div>
-          <div class="pill purple" style="margin-top:4px;">5~10명 인터뷰</div>
+          <strong style="font-size: 11.5px;">인디 브랜드 50개사 실증</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">자가 점검 도안 현장 검증 진행</span>
         </div>
-        <div style="font-size: 10px; color: var(--body); line-height: 1.35;">
-          1인 브랜드 대표 인터뷰, 핵심 병목 및 지불의사 확인.
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">CHEMP 엑셀 자동 렌더링</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">환경부 화학 양식 100% 매칭</span>
         </div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--synth-text-muted); margin-top: auto;">기간: 2026. 06 - 08</div>
       </div>
 
       <!-- Col 3 -->
-      <div class="kanban-col target">
+      <div class="kanban-col">
         <div class="kanban-header">
-          <span style="color: var(--green);">STAGE 03</span>
-          <span class="pill green" style="margin:0; padding:1px 6px; font-size:9px;">🚩 90일 첫매출</span>
+          <span>STAGE 3: 정식 상용화</span>
+          <span class="pill black">계획</span>
         </div>
-        <div class="kanban-card" style="border: 1.5px solid var(--green);">
-          <div style="font-size: 12.5px; font-weight: 800; color: var(--green);">수작업 유료 리포트</div>
-          <div style="font-size: 10px; color: var(--muted);">4주 ~ 8주</div>
-          <div class="pill green" style="margin-top:4px;">유료전환 1~3건</div>
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">건당 결제 시스템 오픈</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">베타 1.9만 ➔ 정식 3만 원대</span>
         </div>
-        <div style="font-size: 10px; color: var(--body); line-height: 1.35; font-weight: 600;">
-          3만원대 수작업 서식 리포트, 90일 내 첫 매출 달성.
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">인쇄 파트너 1차 연동</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">제휴 수수료 모델 본격 가동</span>
         </div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--synth-text-muted); margin-top: auto;">기간: 2026. 09 - 11</div>
       </div>
 
       <!-- Col 4 -->
       <div class="kanban-col">
         <div class="kanban-header">
-          <span>STAGE 04</span>
-          <span class="pill blue" style="margin:0; padding:1px 6px; font-size:9px;">개발</span>
+          <span>STAGE 4: 기관 연계</span>
+          <span class="pill black">계획</span>
         </div>
         <div class="kanban-card">
-          <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">자동 매핑 MVP 개발</div>
-          <div style="font-size: 10px; color: var(--muted);">8주 ~ 12주</div>
-          <div class="pill blue" style="margin-top:4px;">반복 자동화율</div>
+          <strong style="font-size: 11.5px;">시험원 전자 성적서 API</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">KTR·KCL 등 전자 결과 연동</span>
         </div>
-        <div style="font-size: 10px; color: var(--body); line-height: 1.35;">
-          식약처 2.1만 원료 DB 기반 자동 매핑 기능 구현.
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">제휴 행정사 핫라인</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">고난도 심의 건 1:1 매칭 지원</span>
         </div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--synth-text-muted); margin-top: auto;">기간: 2026. 12 - 2027. 02</div>
       </div>
 
       <!-- Col 5 -->
-      <div class="kanban-col">
+      <div class="kanban-col target">
         <div class="kanban-header">
-          <span>STAGE 05</span>
-          <span class="pill" style="margin:0; padding:1px 6px; font-size:9px; background: #E2E8F0;">확장</span>
+          <span style="color: var(--synth-green);">STAGE 5: 공공 보급</span>
+          <span class="pill green">목표</span>
         </div>
         <div class="kanban-card">
-          <div style="font-size: 12.5px; font-weight: 800; color: var(--navy);">파트너 연결 체계</div>
-          <div style="font-size: 10px; color: var(--muted);">3개월 ~ 6개월</div>
-          <div class="pill" style="margin-top:4px; background: #E2E8F0;">파트너 응답률</div>
+          <strong style="font-size: 11.5px;">지자체 육성사업 표준 SaaS</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">뷰티 스타트업 바우처 공식 등록</span>
         </div>
-        <div style="font-size: 10px; color: var(--body); line-height: 1.35;">
-          시험기관 접수 연동 및 라벨·인쇄 파트너십 구축.
+        <div class="kanban-card">
+          <strong style="font-size: 11.5px;">누적 고객 2,000개사 돌파</strong>
+          <span style="font-size: 10.5px; color: var(--synth-text-muted);">월간 ARR 1.5억 원 달성</span>
         </div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--synth-green); margin-top: auto;">기간: 2027. 03 이후</div>
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 실행 원칙: 완성된 성과가 아닌 검증 진행 단계 표기, 지표 달성 시 다음 단계로 순차 전환</div>
-      <div class="slide-page">08 / 11</div>
+      <span>* 모두의 창업 2기 지원 협약 기간 내 Stage 1~3 집중 완수</span>
+      <span class="slide-page">08 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 9: FOUNDER CAPABILITY (3 Core Pillars)
+       SLIDE 9: CAPABILITY (3 Core Founder Pillar Cards)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-9">
-    <div class="slide-tag">08 · FOUNDER CAPABILITY</div>
-    <h2 class="slide-title">16년 차 UI/UX 전문성과 AI 자동화 실행력으로 1인 완결</h2>
-    <p class="slide-subtitle">복잡한 법률 규제를 누구나 쓰는 가장 쉬운 화면으로 전환할 수 있는 디자이너 창업자</p>
+  <article class="slide-wrapper" id="slide-9">
+    <div class="mono-tag"><span>✦</span> 09. TEAM // CORE CAPABILITY</div>
+    <h2 class="slide-title">현장 규제 이해도와 풀스택 개발 역량의 결합</h2>
+    <p class="slide-subtitle">직접 인디 브랜드를 준비하며 규제 병목을 뼈저리게 겪은 창업팀이 가장 기민하고 현실적인 솔루션을 만듭니다.</p>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; height: 100%;">
-      <div class="card highlight">
-        <span class="pill blue">CAPABILITY 01</span>
-        <div style="font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 2px;">UI/UX 디자인 16년</div>
-        <div style="font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 8px;">복잡한 절차를 쉬운 화면으로</div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          16년간 복잡한 IT 시스템과 기업용 프로세스를 사용자가 직관적으로 이해할 수 있는 UI/UX로 전환해온 전문 디렉터 경력.<br /><br />
-          Formu의 핵심 가치인 '어려운 규제를 단 하나의 화면으로'를 외주 없이 직접 설계·구현 가능.
-        </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; flex: 1;">
+      <div class="synth-box">
+        <span class="pill violet">PRODUCT & REGULATION</span>
+        <strong style="font-size: 16px; margin: 8px 0 4px 0;">제품 총괄 / 대표</strong>
+        <p style="font-size: 12.5px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          • 인디 향수 런칭 과정에서 단상자 폐기 위기를 직접 겪으며 Formu 기획<br>
+          • 식약처 화장품법 & 화학제품안전법 고시 체계 정밀 분석<br>
+          • B2B SaaS 비즈니스 모델 설계 및 파트너 제휴 총괄
+        </p>
       </div>
 
-      <div class="card purple">
-        <span class="pill purple">CAPABILITY 02</span>
-        <div style="font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 2px;">AI 콘텐츠 & 자동화</div>
-        <div style="font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 8px;">워크플로 직접 구축 경험</div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          유튜브 채널을 운영하며 최신 AI 이미지·영상·음성 생성 도구를 조합한 콘텐츠 제작 파이프라인을 직접 구축·운용.<br /><br />
-          생성 AI 및 자동화 도구를 실무 비즈니스 워크플로에 적용하는 높은 이해도 보유.
-        </div>
+      <div class="synth-box">
+        <span class="pill black">ENGINEERING ARCHITECTURE</span>
+        <strong style="font-size: 16px; margin: 8px 0 4px 0;">풀스택 개발 리드</strong>
+        <p style="font-size: 12.5px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          • 공공 데이터 실시간 수집 및 CAS 번호 정합성 검증 엔진 구축<br>
+          • 서버리스 아키텍처 기반 1초 서식 렌더링 파이프라인 개발<br>
+          • 배합 레시피 무저장 보안 데이터 보호 정책 설계
+        </p>
       </div>
 
-      <div class="card green">
-        <span class="pill green">CAPABILITY 03</span>
-        <div style="font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 2px;">1인 MVP 린 실행력</div>
-        <div style="font-size: 12px; font-weight: 700; color: var(--green); margin-bottom: 8px;">빠른 검증과 린(Lean) 실행</div>
-        <div style="font-size: 11.5px; color: var(--body); line-height: 1.45;">
-          노코드 및 AI 개발 도구를 활용해 Formu 랜딩페이지 배포, 실시간 진단 시뮬레이터 구축을 1인 무자본으로 완결.<br /><br />
-          예비창업자 단계에서 빠르게 가설을 세우고 고객 피드백을 반영하는 실행력 입증.
-        </div>
+      <div class="synth-box">
+        <span class="pill black">DESIGN & USER EXPERIENCE</span>
+        <strong style="font-size: 16px; margin: 8px 0 4px 0;">디자인 & 규제 UX</strong>
+        <p style="font-size: 12.5px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          • 초보 창업자도 직관적으로 이해하는 Synth AI 스타일 UI/UX 구현<br>
+          • 단상자 패키지 인쇄 레이아웃 표준 규격 템플릿 설계<br>
+          • 사용성 테스트 기반 이탈률 최소화 온보딩 경험 최적화
+        </p>
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 실행 검증: 노코드·AI 도구 기반 1인 MVP 개발 및 랜딩페이지(formu-landing.onrender.com) 직접 운영 중</div>
-      <div class="slide-page">09 / 11</div>
+      <span>포뮤(Formu) 핵심 실행팀 프로필 및 담당 R&R</span>
+      <span class="slide-page">09 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 10: MENTORING REQUEST (3 Focus Pillars)
+       SLIDE 10: MENTORING (3 Focus Areas & Route Cards)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-10">
-    <div class="slide-tag">09 · MENTORING ARCHITECTURE</div>
-    <h2 class="slide-title">모두의 창업 2기 책임멘토를 통한 3대 핵심 과제 검증</h2>
-    <p class="slide-subtitle">사업화 지원금 및 전담 멘토단을 통해 법적 책임 경계 검증과 BM 고도화에 집중합니다.</p>
+  <article class="slide-wrapper" id="slide-10">
+    <div class="mono-tag"><span>✦</span> 10. ASK // MENTORING REQUEST</div>
+    <h2 class="slide-title">모두의 창업 2기 지원을 통해 해결하고자 하는 과제</h2>
+    <p class="slide-subtitle">단순 지원금을 넘어, 규제 기관 공식 연계 및 초기 실증 네트워크를 확보하여 시장 안착 속도를 3배 앞당깁니다.</p>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 12px;">
-      <div class="card warning">
-        <span class="pill red">FOCUS 01 · 최우선 과제</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--red); margin-bottom: 6px;">규제·법무 책임경계 검토</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          Formu가 서류를 대신 작성·제출해주는 구조가 아니라, 사용자가 직접 신고하도록 돕는 '순수 소프트웨어'로 안전하게 설계되었는지 법률 전문가 최종 검증.<br />(변호사법·행정사법 적법 경계 확립)
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; flex: 1;">
+      <div class="synth-box highlight">
+        <span class="pill violet">규제 유권해석</span>
+        <strong style="font-size: 15px; margin: 6px 0 6px 0; color: var(--synth-primary);">식약처·시험원 소통 창구</strong>
+        <p style="font-size: 12px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          공공 DB 매핑 알고리즘이 현행 식약처 고시 기준을 벗어나지 않도록 법률 자문 및 공인시험원 규제 실무자 멘토링 연계를 요청합니다.
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--synth-primary); margin-top: auto;">
+          요청 기관: 식약처 규제혁신추진단
         </div>
       </div>
 
-      <div class="card highlight">
-        <span class="pill blue">FOCUS 02 · 비즈니스 모델</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">BM 고도화 및 단위 경제성</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          초기 건당 3만원대 진단 리포트에서 월 정기 SaaS 구독 및 라벨·인쇄 파트너 수수료로 이어지는 단계별 전환율과 단위 경제성(CAC/LTV) 정밀 설계 및 가격 전략 다듬기.
+      <div class="synth-box">
+        <span class="pill black">B2B SaaS 스케일업</span>
+        <strong style="font-size: 15px; margin: 6px 0 6px 0;">과금 모델 & 패키징 최적화</strong>
+        <p style="font-size: 12px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          베타 1.9만 원 요금제에서 정식 3만 원대 구독형/건당 모델로 전환하는 과정에서 LTV/CAC 지표를 최적화할 B2B SaaS 멘토링을 요청합니다.
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--synth-text-muted); margin-top: auto;">
+          요청 기관: 전문 액셀러레이터
         </div>
       </div>
 
-      <div class="card purple">
-        <span class="pill purple">FOCUS 03 · 기술 파이프라인</span>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 6px;">공공데이터 API 자동 매핑</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.4;">
-          식약처 공개 화장품 원료 정보(약 2.1만 건 오픈 API)와 환경부 CHEMP 배합 규격 데이터를 활용한 자동 매핑 아키텍처 및 파이프라인 구축 기술 조언.
+      <div class="synth-box">
+        <span class="pill black">공공 보급 채널</span>
+        <strong style="font-size: 15px; margin: 6px 0 6px 0;">지자체 청년창업 바우처 연동</strong>
+        <p style="font-size: 12px; color: var(--synth-text-body); line-height: 1.6; margin-bottom: 12px;">
+          지자체 뷰티 육성 지원사업에 참여하는 1인 예비 창업자들에게 Formu 라이선스가 공식 보급될 수 있도록 사업 연계를 요청합니다.
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--synth-text-muted); margin-top: auto;">
+          요청 기관: 창조경제혁신센터 등
         </div>
-      </div>
-    </div>
-
-    <!-- Partner Routing -->
-    <div class="card" style="padding: 10px 16px; border-color: var(--primary); background: #FAFBFD;">
-      <div style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 3px;">● 희망 멘토기관 및 지원 연계 계획</div>
-      <div style="font-size: 11px; color: var(--body); line-height: 1.35;">
-        ① <strong>엔슬파트너스</strong> (2기 멘토기관: BM 고도화, 규제 법률 자문, AI 기술사업화 3대 영역을 한곳에서 통합 지원)<br />
-        ② <strong>K-Startup 원스톱 지원센터</strong> 규제·인허가 법률 상담 & <strong>KISED 공공 법률지원단</strong> 연계
       </div>
     </div>
 
     <div class="slide-footnote">
-      <div>* 희망 멘토기관: 엔슬파트너스(2기 멘토기관, BM·법률·AI 30인 멘토단) / K-Startup 규제 스크리닝 / KISED 법률지원</div>
-      <div class="slide-page">10 / 11</div>
+      <span>육성 프로그램 참여 기간(6개월) 내 달성 목표 마일스톤</span>
+      <span class="slide-page">10 / 11</span>
     </div>
-  </div>
+  </article>
 
   <!-- =========================================================================
-       SLIDE 11: VISION & CLOSE
+       SLIDE 11: VISION & CLOSE (Synth AI Signature Dark Finale)
        ========================================================================= -->
-  <div class="slide-wrapper" id="slide-11">
-    <div class="slide-tag">10 · THE VISION</div>
-    <h2 class="slide-title">배합표 한 장을 출시 가능한 제품으로</h2>
-    <p class="slide-subtitle">창작자가 서류 때문에 멈추지 않고, 오직 향과 제품의 본질에만 몰입하는 세상</p>
+  <article class="slide-wrapper dark" id="slide-11" style="justify-content: center; text-align: center; background: radial-gradient(circle at 50% 30%, rgba(88, 94, 206, 0.25) 0%, #0A0A0A 70%);">
+    <div class="mono-tag dark" style="margin: 0 auto 16px auto;">
+      <span>✦</span> VISION // THE REGTECH STANDARD
+    </div>
+    <h2 style="font-size: 42px; font-weight: 900; letter-spacing: -1.5px; color: #FFFFFF; margin-bottom: 16px; line-height: 1.2;">
+      “창작은 당신이, 규제는 포뮤가.”
+    </h2>
+    <p style="font-size: 16px; color: #A1A1AA; max-width: 600px; margin: 0 auto 36px auto; line-height: 1.6; word-break: keep-all;">
+      소수점 하나 때문에 꿈이 꺾이지 않도록.<br />
+      대한민국 3만 1천여 인디 뷰티 창업자의 가장 든든한 규제 파트너 OS가 되겠습니다.
+    </p>
 
-    <div class="card navy" style="padding: 22px 28px; margin-bottom: 14px;">
-      <div style="font-size: 22px; font-weight: 900; color: #93C5FD; margin-bottom: 4px;">“창작은 당신이, 규제는 포뮤(Formu)가.”</div>
-      <div style="font-size: 13px; color: #E2E8F0; line-height: 1.45;">
-        소수점 하나 때문에 수천 장의 단상자를 폐기하던 막막함을 끝내고,<br />
-        배합표 입력만으로 법적 신고 서식 완성부터 인쇄 파트너까지 원스톱으로 연결합니다.
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 820px; width: 100%; margin: 0 auto 36px auto; text-align: left;">
+      <div style="background: #18181B; border: 1px solid #27272A; border-radius: 12px; padding: 16px;">
+        <span class="pill violet" style="font-size: 10px;">STANDARD 01</span>
+        <div style="font-size: 13px; font-weight: 800; color: #FFFFFF; margin: 4px 0 2px 0;">규제 확인의 대중화</div>
+        <div style="font-size: 11px; color: #71717A;">누구나 1초 만에 법정 서식 자가 점검</div>
+      </div>
+      <div style="background: #18181B; border: 1px solid #27272A; border-radius: 12px; padding: 16px;">
+        <span class="pill violet" style="font-size: 10px;">STANDARD 02</span>
+        <div style="font-size: 13px; font-weight: 800; color: #FFFFFF; margin: 4px 0 2px 0;">런칭 비용 90% 절감</div>
+        <div style="font-size: 11px; color: #71717A;">고액 외부 의뢰 대신 합리적 SaaS 과금</div>
+      </div>
+      <div style="background: #18181B; border: 1px solid #27272A; border-radius: 12px; padding: 16px;">
+        <span class="pill violet" style="font-size: 10px;">STANDARD 03</span>
+        <div style="font-size: 13px; font-weight: 800; color: #FFFFFF; margin: 4px 0 2px 0;">신뢰 생태계 구축</div>
+        <div style="font-size: 11px; color: #71717A;">소비자 안전 확보 & 브랜드 성장 가속</div>
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
-      <div class="card highlight">
-        <div style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 4px;">VALUE 01</div>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">폐기 리스크 감소</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.35;">소수점 오타와 알레르기 성분 누락을 사전 점검하여 수천 장의 단상자 폐기 및 표시 위반 과태료 방지</div>
-      </div>
-      <div class="card purple">
-        <div style="font-size: 11px; font-weight: 800; color: var(--purple); margin-bottom: 4px;">VALUE 02</div>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">출시 시간 90% 단축</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.35;">2개월 걸리던 6~7곳의 분산된 규제 행정을 단 1초의 배합표 데이터 정리로 압축</div>
-      </div>
-      <div class="card green">
-        <div style="font-size: 11px; font-weight: 800; color: var(--green); margin-bottom: 4px;">VALUE 03</div>
-        <div style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px;">원스톱 출시 파트너</div>
-        <div style="font-size: 11px; color: var(--body); line-height: 1.35;">배합표 입력 하나로 환경부 CHEMP 서식 완성, 시험기관 시료 접수, 라벨 인쇄까지 원스톱 연계</div>
-      </div>
+    <div style="font-family: var(--font-mono); font-size: 13px; color: var(--synth-primary-tint); font-weight: 700;">
+      감사합니다 | 포뮤(Formu) 팀 드림
     </div>
 
-    <div class="slide-footnote">
-      <div>* Formu (포뮤) — 모두의 창업 2기 예비창업자 발표를 마칩니다. 경청해 주셔서 감사합니다.</div>
-      <div class="slide-page">11 / 11</div>
+    <div class="slide-footnote" style="width: 100%;">
+      <span>Formu Technologies Inc.</span>
+      <span class="slide-page" style="color: var(--synth-primary-tint);">11 / 11</span>
     </div>
-  </div>
+  </article>
 
 </body>
 </html>
