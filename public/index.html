@@ -477,7 +477,7 @@
       <a href="/" class="brand">
         <img src="/favicon.png" alt="Formu Logo" style="width: 32px; height: 32px; border-radius: 9px; object-fit: contain; box-shadow: 0 4px 12px rgba(49, 130, 246, 0.25);" />
         <span class="brand-title">Formu</span>
-        <span class="brand-badge">REGTECH OS</span>
+        <span class="brand-badge">규제 출시 SaaS</span>
       </a>
 
       <nav class="nav-menu">
@@ -526,7 +526,7 @@
         
         <div class="floating-glass-card top">
           <div class="val">배합비 합계 100% 자동 검산</div>
-          <div class="lbl">식약처 26종 알레르기 유발성분 사전 점검</div>
+          <div class="lbl">식약처 알레르기 25종(2024 개정 26종) 사전 점검</div>
         </div>
         <div class="floating-glass-card bottom">
           <div class="val" style="color: var(--text-main);">사전 점검</div>
@@ -611,13 +611,13 @@
         <div class="bento-card">
           <div>
             <img src="assets/glass_growth.jpg" alt="3D Glass Chart" class="bento-icon-img" />
-            <h3 class="bento-card-title">2개 부처 서식 초안 자동 정리</h3>
+            <h3 class="bento-card-title">환경부 CHEMP 서식 우선 지원</h3>
             <p class="bento-card-desc">
-              단 한 번의 업로드로 식약처 단상자 라벨 표기 문구와 환경부 CHEMP 100% 배합비율표(.xlsx)를 동시에 다운로드할 수 있습니다.
+              환경부 CHEMP 서식 우선 지원, 식약처 라벨은 확장 예정입니다.
             </p>
           </div>
           <div class="bento-visual-pill">
-            ● 산출물: 단상자 라벨 문구 + CHEMP 엑셀 서식
+            ● 산출물: CHEMP 배합비율표 (식약처 라벨 확장 예정)
           </div>
         </div>
 
@@ -687,7 +687,7 @@
             <div class="result-card green" id="result-chemp">
               <div class="result-card-hdr">
                 <span>[환경부] CHEMP 안전확인대상 배합비율표</span>
-                <span style="font-weight: 800;">PASS (100%)</span>
+                <span style="font-weight: 800;">정합성 확인</span>
               </div>
               <div style="font-size: 12px; line-height: 1.5;">
                 ➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비
@@ -756,7 +756,7 @@
             <ul class="plan-features">
               <li><span class="check">✓</span> Pro 서식 다운로드 전 기능 포함</li>
               <li><span class="check">✓</span> 제휴 인쇄 파트너 연결 (수수료 10~15%)</li>
-              <li><span class="check">✓</span> 공인시험원 시료 접수 전자 성적서 연동</li>
+              <li><span class="check">✓</span> 성적서 연동 파트너 (예정)</li>
               <li><span class="check">✓</span> 복잡 건 제휴 공인 행정사 1:1 매칭</li>
             </ul>
           </div>
@@ -794,7 +794,7 @@
             <span style="font-weight: 800; font-size: 18px; color: var(--primary);">+</span>
           </div>
           <div class="faq-answer">
-            공익기관 회계규정에 따라 Formu는 공인시험기관으로부터 일체의 중개 수수료를 수취하지 않습니다. 창작자가 시험 성적서를 편리하게 발급받을 수 있도록 시료 접수 안내 및 전자 성적서 API 연동 파트너로만 투명하게 협력합니다.
+            공익기관 회계규정에 따라 Formu는 공인시험기관으로부터 일체의 중개 수수료를 수취하지 않습니다. 창작자가 시험 성적서를 편리하게 발급받을 수 있도록 시료 접수 안내 및 성적서 연동 파트너 (예정)로만 투명하게 협력합니다.
           </div>
         </div>
 
@@ -821,7 +821,7 @@
           <div class="name">Formu (포뮤)</div>
           <div class="desc">
             “창작은 당신이, 규제는 포뮤가.”<br />
-            배합표 한 장을 법적 출시 가능한 완제품으로 변환하는 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS
+            배합표 한 장을 출시 가능한 제품으로 정리하는 화학·화장품 규제 자동화 및 파트너 오케스트레이션 OS
           </div>
         </div>
         <ul class="footer-links">
@@ -832,7 +832,7 @@
         </ul>
       </div>
       <div class="footer-bottom">
-        <div>© 2026 Formu Technologies Inc. All rights reserved.</div>
+        <div>© 2026 Formu (포뮤)</div>
         <div>식약처 화장품법 & 환경부 화학제품관리시스템(CHEMP) 고시 기준 준수</div>
       </div>
     </div>
@@ -851,7 +851,7 @@
         event.target.classList.add('active');
         formulaBox.innerText = "• 라벤더 오일 (CAS 8000-28-0): 12.50%\n• 리날룰 (Linalool, CAS 78-70-6): 2.40%\n• 리모넨 (Limonene, CAS 5989-27-5): 0.80%\n• 발효주정 에탄올 (CAS 64-17-5): 84.30%\n총 배합비: 100.00% (정합성 일치)";
         kdaResult.innerHTML = '<div class="result-card-hdr"><span>[식약처] 화장품 알레르기 25/26종 결과</span><span style="color: var(--primary); font-weight: 800;">검출 2건</span></div><div style="font-size: 12px; line-height: 1.5;">➔ 리날룰 2.40%, 리모넨 0.80% (0.001% 초과 검출 ➔ 라벨 필수 기재 문구 즉시 추출 완료)</div>';
-        chempResult.innerHTML = '<div class="result-card-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800;">PASS (100%)</span></div><div style="font-size: 12px; line-height: 1.5;">➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
+        chempResult.innerHTML = '<div class="result-card-hdr"><span>[환경부] CHEMP 안전확인대상 배합비율표</span><span style="font-weight: 800;">정합성 확인</span></div><div style="font-size: 12px; line-height: 1.5;">➔ CAS 번호 기준 정합성 확인 · 검토 필요 항목 표시 · 공식 CHEMP 엑셀 서식 다운로드 준비</div>';
       } else {
         event.target.classList.add('active');
         formulaBox.innerText = "• 유칼립투스 오일 (CAS 8000-48-4): 8.00%\n• 디프로필렌 글리콜 (DPG, CAS 25265-71-8): 20.00%\n• 발효 에탄올 (CAS 64-17-5): 72.00%\n총 배합비: 100.00% (정합성 일치)";
