@@ -4,25 +4,18 @@
       <stop offset="0%" stop-color="#0F172A" />
       <stop offset="100%" stop-color="#020617" />
     </linearGradient>
-    <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="dropGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" />
-      <stop offset="100%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1E60F2" />
     </linearGradient>
   </defs>
-  <!-- Background Squircle -->
+  <!-- Background Squircle (Deep Obsidian) -->
   <rect width="64" height="64" rx="16" fill="url(#bgGrad)" />
-  <rect width="64" height="64" rx="16" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+  <rect width="64" height="64" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
   
-  <!-- Modern Geometric Monogram 'F' -->
-  <!-- Vertical Stem -->
-  <rect x="15" y="15" width="8" height="34" rx="4" fill="#FFFFFF" />
+  <!-- Formulation Droplet (화장품·향료 처방 원액 방울) -->
+  <path d="M32 9 C32 9 14 28 14 41 C14 51 22 57 32 57 C42 57 50 51 50 41 C50 28 32 9 32 9 Z" fill="url(#dropGrad)" />
   
-  <!-- Top Horizontal Bar -->
-  <rect x="15" y="15" width="22" height="8" rx="4" fill="#FFFFFF" />
-  
-  <!-- Middle Horizontal Bar -->
-  <rect x="15" y="28" width="16" height="7" rx="3.5" fill="#93C5FD" />
-  
-  <!-- Precision Inspection Spark (✦) at Top Right -->
-  <path d="M47 13 C47 17 49 19 53 19 C49 19 47 21 47 25 C47 21 45 19 41 19 C45 19 47 17 47 13 Z" fill="url(#sparkGrad)" />
+  <!-- High-Contrast Bold Regulatory Pass Checkmark (규제 검증 통과) -->
+  <path d="M23 40.5 L29.5 46.5 L41 33" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
