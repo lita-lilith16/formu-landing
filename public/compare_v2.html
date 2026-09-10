@@ -546,6 +546,110 @@
     }
     .pulse-run { animation: pulseGlow 0.35s ease-out; }
 
+  
+    /* =========================================================================
+       Unified 1:1 Live Reactive Matrix CSS (Zero-Click Instant Feedback)
+       ========================================================================= */
+    .matrix-top-bar {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .matrix-quick-presets { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .btn-preset-chip {
+      font-size: 11.5px; font-weight: 700; padding: 4px 9px; border-radius: 4px;
+      background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-body);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .btn-preset-chip:hover { border-color: var(--primary); color: var(--primary); background: #EFF6FF; }
+
+    /* Verdict HUD with Live Indicator */
+    .verdict-live-indicator {
+      font-size: 11.5px; font-weight: 800; color: currentColor; display: flex; align-items: center; gap: 6px;
+      padding: 4px 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.6); align-self: flex-start;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #10B981; display: inline-block;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3); animation: pulseDot 1.5s infinite;
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Unified Matrix Layout */
+    .diff-matrix-card {
+      background: #FFFFFF; border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .diff-matrix-header {
+      display: grid; grid-template-columns: 140px 1fr 1fr 240px;
+      background: #F8FAFC; border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 18px; font-size: 12.5px; font-weight: 800; color: var(--text-body);
+    }
+    .col-th { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .badge-source {
+      font-size: 10.5px; font-weight: 700; color: var(--text-muted); background: #FFFFFF;
+      border: 1px solid var(--border-subtle); padding: 1px 6px; border-radius: 3px;
+    }
+
+    /* Matrix Rows */
+    .matrix-row {
+      display: grid; grid-template-columns: 140px 1fr 1fr 240px;
+      padding: 16px 18px; border-bottom: 1px solid var(--border-subtle);
+      align-items: start; gap: 16px; transition: all 0.2s ease;
+    }
+    .matrix-row:last-child { border-bottom: none; }
+    .matrix-row.row-mismatch { background: #FEF2F2; border-left: 5px solid #EF4444; }
+    .matrix-row.row-missing { background: #FFFBEB; border-left: 5px solid #F59E0B; }
+    .matrix-row.row-insufficient { background: #F8FAFC; border-left: 5px solid #94A3B8; }
+    .matrix-row.row-match { background: #F0FDF4; border-left: 5px solid #10B981; }
+
+    .field-title { font-size: 14px; font-weight: 900; color: var(--text-main); }
+    .field-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Inputs inside Matrix */
+    .matrix-input {
+      width: 100%; background: #FFFFFF; border: 1.5px solid var(--border-subtle);
+      border-radius: 6px; padding: 9px 12px; font-size: 13.5px; font-weight: 700;
+      color: var(--text-main); outline: none; transition: all 0.15s;
+    }
+    .matrix-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.15); }
+    .matrix-row.row-mismatch .matrix-input { border-color: #F87171; }
+    .matrix-row.row-match .matrix-input { border-color: #86EFAC; }
+    .matrix-row.row-missing .matrix-input { border-color: #FCD34D; }
+
+    .matrix-textarea {
+      width: 100%; background: #FFFFFF; border: 1.5px solid var(--border-subtle);
+      border-radius: 6px; padding: 9px 12px; font-size: 13px; font-weight: 600;
+      color: var(--text-main); outline: none; min-height: 68px; resize: vertical; line-height: 1.45;
+      transition: all 0.15s;
+    }
+    .matrix-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(49, 130, 246, 0.15); }
+    .matrix-row.row-mismatch .matrix-textarea { border-color: #F87171; }
+    .matrix-row.row-match .matrix-textarea { border-color: #86EFAC; }
+
+    /* Status Column */
+    .col-td.td-status { display: flex; flex-direction: column; gap: 5px; }
+    .status-top-line { display: flex; align-items: center; }
+    .status-reason-text { font-size: 12px; color: var(--text-body); line-height: 1.4; word-break: break-word; }
+
+    /* Responsive Queries for Matrix */
+    @media (max-width: 900px) {
+      .diff-matrix-header { display: none; }
+      .matrix-row {
+        grid-template-columns: 1fr; gap: 10px; padding: 14px;
+      }
+      .col-td.td-field {
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 1px dashed var(--border-subtle); padding-bottom: 6px;
+      }
+      .col-td.td-status {
+        background: rgba(255, 255, 255, 0.7); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border-subtle);
+      }
+    }
+
   </style>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
@@ -627,21 +731,23 @@
     </section>
 
     <!-- 2. Interactive Comparison Demo Section -->
+        <!-- 2. Unified Live Reactive Comparison Matrix Demo Section -->
     <section class="demo-section" id="compare-demo" aria-labelledby="demo-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Interactive Text Comparison Demo</div>
-          <h2 class="section-title" id="demo-heading">직접 비교 체험</h2>
+          <div class="section-tag">Zero-Click Live Reactive Diff Engine</div>
+          <h2 class="section-title" id="demo-heading">실시간 1:1 대조 매트릭스</h2>
           <p class="section-sub">
-            사례를 선택하거나 입력값을 직접 수정한 뒤 [비교 실행하기] 버튼을 누르면 브라우저 내에서 즉시 계산됩니다.
+            버튼을 누를 필요 없이, 값을 바꾸거나 엑셀을 넣는 즉시 0.001초 만에 실시간으로 차이점을 판정합니다.
           </p>
         </div>
 
         <div class="demo-sandbox">
-          <!-- Control Bar -->
-          <div class="scenario-control-bar">
+          <!-- Top Control & Preset Strip -->
+          <div class="matrix-top-bar">
+            <!-- Scenario Selector -->
             <div class="scenario-selector-group">
-              <label for="scenarioSelect" class="scenario-label">테스트 시나리오 선택:</label>
+              <label for="scenarioSelect" class="scenario-label">테스트 시나리오:</label>
               <select id="scenarioSelect" class="scenario-select" onchange="onScenarioChange(this.value)">
                 <option value="S01">S01. 모든 정보 일치 (정상)</option>
                 <option value="S02">S02. 용량 변경 미반영 (200mL vs 150mL)</option>
@@ -652,179 +758,169 @@
                 <option value="S07">S07. 단위 환산 일치 (200 mL vs 0.2 L)</option>
                 <option value="S08">S08. 복수 항목 불일치</option>
                 <option value="S09">S09. 기준 문구 미확보 (자료 부족)</option>
-                <option value="S10">S10. 읽을 수 없는 용량 (판독 불가 가상 입력)</option>
-                <option value="custom">직접 입력 (사용자 커스텀)</option>
+                <option value="S10">S10. 읽을 수 없는 용량 (판독 불가)</option>
+                <option value="custom">직접 수정 (커스텀)</option>
               </select>
             </div>
 
-            <div class="demo-actions">
-              <button type="button" class="btn-reset" onclick="resetDemoInputs()">초기화</button>
-              <button type="button" class="btn-compare" id="btnRunCompare" onclick="runComparison()">
-                비교 실행하기 ➔
-              </button>
+            <!-- Fast Presets & Reset -->
+            <div class="matrix-quick-presets">
+              <span style="font-size:12px; font-weight:800; color:var(--text-muted);">원클릭 시험:</span>
+              <button type="button" class="btn-preset-chip" onclick="applyLabelPreset('match')">✓ 정상 (일치)</button>
+              <button type="button" class="btn-preset-chip" onclick="applyLabelPreset('vol_mismatch')">✕ 150mL 오표기</button>
+              <button type="button" class="btn-preset-chip" onclick="applyLabelPreset('prod_mismatch')">✕ 제품명 불일치</button>
+              <button type="button" class="btn-preset-chip" onclick="applyLabelPreset('missing_notice')">⚠ 문구 누락</button>
+              <button type="button" class="btn-reset" onclick="resetDemoInputs()" style="padding:4px 10px; font-size:11.5px; margin-left:6px;">초기화</button>
             </div>
           </div>
 
-          <!-- Stale Input Notice Banner -->
-          <div class="stale-notice" id="staleNotice" role="alert" aria-live="polite">
-            <span>⚠️ 입력이 변경됐습니다. 다시 [비교 실행하기] 버튼을 눌러주세요.</span>
-          </div>
-
-          <!-- 2 Columns Inputs -->
-          <div class="input-columns">
-            <!-- Left: 기준 제품 정보 (Reference Product Data) -->
-            <div class="col-pane">
-              <div class="col-header">
-                <div class="col-title">
-                  <span>기준 제품 정보 (Reference)</span>
-                </div>
-                <span class="col-pill">사내 기준표 / 기획서</span>
-              </div>
-
-              <!-- Excel Dropzone for Spec File -->
-              <div class="excel-dropzone" id="excelDropzone" onclick="document.getElementById('excelFileInput').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDropFile(event)">
-                <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display:none" onchange="handleFileInput(event)" />
-                <div class="dropzone-icon">📊</div>
+          <!-- Excel Dropzone Strip -->
+          <div class="excel-dropzone" id="excelDropzone" onclick="document.getElementById('excelFileInput').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDropFile(event)">
+            <input type="file" id="excelFileInput" accept=".xlsx, .xls, .csv" style="display:none" onchange="handleFileInput(event)" />
+            <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+              <span style="font-size:24px;">📊</span>
+              <div style="text-align:left;">
                 <div class="dropzone-title">사내 엑셀 사양서(.xlsx, .csv)를 여기에 끌어다 놓으세요</div>
-                <div class="dropzone-sub">파일은 서버로 전송되지 않고 브라우저에서 안전하게 파싱됩니다</div>
-                <div class="dropzone-actions" onclick="event.stopPropagation()">
-                  <button type="button" class="btn-dz-action primary" onclick="loadSampleExcelPreset()">⚡ 샘플 엑셀 1초 적용</button>
-                  <button type="button" class="btn-dz-action" onclick="document.getElementById('excelFileInput').click()">📂 내 파일 선택</button>
-                  <a href="/downloads/formu_sample_spec_standard.xlsx" download class="btn-dz-action" title="테스트용 엑셀 다운로드">📥 샘플 .xlsx 받기</a>
-                </div>
+                <div class="dropzone-sub">서버 전송 없이 100% 브라우저 메모리 안에서 즉시 읽어 기준값을 자동 채웁니다.</div>
               </div>
-              <div class="file-loaded-pill" id="fileLoadedPill">
-                <span id="fileLoadedName">📄 파일명: modu_spec.xlsx</span>
-                <span style="font-size:11px; opacity:0.8;">✓ 파싱 완료</span>
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row">
-                  <label for="refProduct" class="field-label">제품명</label>
-                  <span id="badgeRefProduct" class="field-status-badge"></span>
-                </div>
-                <input type="text" id="refProduct" class="input-text" value="포레스트 A" oninput="markInputsStale()" />
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row"><label for="refVolume" class="field-label">용량 (예: 200mL, 0.2L)</label><span id="badgeRefVolume" class="field-status-badge"></span></div>
-                <input type="text" id="refVolume" class="input-text" value="200mL" oninput="markInputsStale()" />
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row">
-                  <label for="refNotice" class="field-label">주의 문구</label>
-                  <label class="toggle-no-data">
-                    <input type="checkbox" id="refNoticeNoData" onchange="toggleRefNoticeNoData(this.checked)" />
-                    자료 없음
-                  </label>
-                </div>
-                <textarea id="refNotice" class="textarea-notice" oninput="markInputsStale()">사용 후 용기를 밀폐하여 보관하세요.</textarea>
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row"><label for="refRevision" class="field-label">문서 버전 (선택)</label><span id="badgeRefRevision" class="field-status-badge"></span></div>
-                <input type="text" id="refRevision" class="input-text" value="v2" oninput="markInputsStale()" />
-                <div class="field-helper">* 문서 버전은 내부 비교 정보이며 제품 라벨의 법정 필수 항목이 아닙니다.</div>
-              </div>
-            </div>
-
-            <!-- Right: 비교할 라벨 내용 (Label Text) -->
-            <div class="col-pane">
-              <div class="col-header">
-                <div class="col-title">
-                  <span>비교할 라벨 내용 (Label Copy)</span>
-                </div>
-                <span class="col-pill">인쇄 파일 / 패키지 표기</span>
-              </div>
-
-              <!-- Right Pane Quick Presets -->
-              <div class="quick-presets-wrap">
-                <span class="quick-presets-label">라벨 시안 프리셋:</span>
-                <button type="button" class="btn-preset" onclick="applyLabelPreset('match')">✓ 정상 (200mL)</button>
-                <button type="button" class="btn-preset" onclick="applyLabelPreset('vol_mismatch')">✕ 150mL 오표기</button>
-                <button type="button" class="btn-preset" onclick="applyLabelPreset('prod_mismatch')">✕ 제품명 불일치</button>
-                <button type="button" class="btn-preset" onclick="applyLabelPreset('missing_notice')">⚠ 문구 누락</button>
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row">
-                  <label for="labelProduct" class="field-label">제품명</label>
-                  <span id="badgeLabelProduct" class="field-status-badge"></span>
-                </div>
-                <input type="text" id="labelProduct" class="input-text" value="포레스트 A" oninput="markInputsStale()" />
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row"><label for="labelVolume" class="field-label">용량 (예: 200mL, 0.2L)</label><span id="badgeLabelVolume" class="field-status-badge"></span></div>
-                <input type="text" id="labelVolume" class="input-text" value="200mL" oninput="markInputsStale()" />
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row">
-                  <label for="labelNotice" class="field-label">주의 문구</label>
-                  <span style="font-size:11.5px; color:var(--text-muted);">(누락 시 빈칸)</span>
-                </div>
-                <textarea id="labelNotice" class="textarea-notice" oninput="markInputsStale()">사용 후 용기를 밀폐하여 보관하세요.</textarea>
-              </div>
-
-              <div class="form-group">
-                <div class="field-label-row"><label for="labelRevision" class="field-label">문서 버전</label><span id="badgeLabelRevision" class="field-status-badge"></span></div>
-                <input type="text" id="labelRevision" class="input-text" value="v2" oninput="markInputsStale()" />
-                <div class="field-helper">* 라벨 시안에 표기된 작업 버전 코드</div>
+              <div class="dropzone-actions" onclick="event.stopPropagation()">
+                <button type="button" class="btn-dz-action primary" onclick="loadSampleExcelPreset()">⚡ 샘플 엑셀 1초 적용</button>
+                <button type="button" class="btn-dz-action" onclick="document.getElementById('excelFileInput').click()">📂 파일 선택</button>
+                <a href="/downloads/formu_sample_spec_standard.xlsx" download class="btn-dz-action" title="테스트용 엑셀 다운로드">📥 샘플 .xlsx 다운</a>
               </div>
             </div>
           </div>
 
-          <!-- Results View Area -->
-          <div class="results-area" id="resultsArea">
-            <!-- Big Overall Verdict Banner -->
-            <div id="verdictHeroCard" class="verdict-hero-card match">
-              <div class="verdict-icon" id="verdictIcon">✓</div>
-              <div class="verdict-content">
-                <div class="verdict-title" id="verdictTitle">진단 결과 대기 중</div>
-                <div class="verdict-subtitle" id="verdictSubtitle">사양서 엑셀 파일을 넣거나 비교 실행하기를 누르면 0.1초 만에 종합 판정이 출력됩니다.</div>
-                <div class="verdict-pills-row" id="verdictPillsRow"></div>
+          <div class="file-loaded-pill" id="fileLoadedPill">
+            <span id="fileLoadedName">📄 파일명: modu_spec.xlsx</span>
+            <span style="font-size:11px; opacity:0.8;">✓ 파싱 완료 및 실시간 대조 반영</span>
+          </div>
+
+          <!-- Overall Verdict HUD Card (Always visible at top of matrix) -->
+          <div id="verdictHeroCard" class="verdict-hero-card match">
+            <div class="verdict-icon" id="verdictIcon">✓</div>
+            <div class="verdict-content">
+              <div class="verdict-title" id="verdictTitle">진단 결과 대기 중</div>
+              <div class="verdict-subtitle" id="verdictSubtitle">입력값을 바꾸는 즉시 0.001초 만에 실시간 대조 판정이 갱신됩니다.</div>
+              <div class="verdict-pills-row" id="verdictPillsRow"></div>
+            </div>
+            <div class="verdict-live-indicator">
+              <span class="live-dot"></span> 0ms 실시간 연산 중
+            </div>
+          </div>
+
+          <!-- The Unified 1:1 Diff Matrix -->
+          <div class="diff-matrix-card">
+            <div class="diff-matrix-header">
+              <div class="col-th th-field">항목명</div>
+              <div class="col-th th-spec">
+                <span>사내 기준 사양서 (Spec)</span>
+                <span class="badge-source">사양서 / 엑셀</span>
+              </div>
+              <div class="col-th th-label">
+                <span>라벨 인쇄 시안 (Label Copy)</span>
+                <span class="badge-source">패키지 표기</span>
+              </div>
+              <div class="col-th th-status">실시간 판정 및 사유</div>
+            </div>
+
+            <!-- Row 1: 제품명 -->
+            <div class="matrix-row" id="rowProduct">
+              <div class="col-td td-field">
+                <div class="field-title">제품명</div>
+                <div class="field-sub">Product Name</div>
+              </div>
+              <div class="col-td td-spec">
+                <input type="text" id="refProduct" class="matrix-input" value="포레스트 A" oninput="runLiveComparison()" placeholder="사양서 제품명 입력" />
+              </div>
+              <div class="col-td td-label">
+                <input type="text" id="labelProduct" class="matrix-input" value="포레스트 A" oninput="runLiveComparison()" placeholder="라벨 제품명 입력" />
+              </div>
+              <div class="col-td td-status">
+                <div class="status-top-line">
+                  <span id="statusBadgeProduct" class="badge-status match">✓ 일치</span>
+                </div>
+                <div id="statusReasonProduct" class="status-reason-text">제품명 내용이 정확히 일치합니다.</div>
               </div>
             </div>
 
-            <div class="results-header">
-              <div class="results-title">
-                <span>항목별 비교 결과</span>
+            <!-- Row 2: 용량 -->
+            <div class="matrix-row" id="rowVolume">
+              <div class="col-td td-field">
+                <div class="field-title">용량</div>
+                <div class="field-sub">Volume (mL, L)</div>
               </div>
-              <div class="results-stats-row" id="summaryChips">
-                <span class="summary-chip" style="background:#F1F5F9; color:#475569;">비교 대기 중</span>
+              <div class="col-td td-spec">
+                <input type="text" id="refVolume" class="matrix-input" value="200mL" oninput="runLiveComparison()" placeholder="예: 200mL, 0.2L" />
+              </div>
+              <div class="col-td td-label">
+                <input type="text" id="labelVolume" class="matrix-input" value="200mL" oninput="runLiveComparison()" placeholder="예: 200mL, 0.2L" />
+              </div>
+              <div class="col-td td-status">
+                <div class="status-top-line">
+                  <span id="statusBadgeVolume" class="badge-status match">✓ 일치</span>
+                </div>
+                <div id="statusReasonVolume" class="status-reason-text">용량 표기가 일치합니다.</div>
               </div>
             </div>
 
-            <!-- Table for Desktop & Tablet -->
-            <div class="results-table-wrap">
-              <table class="results-table" aria-label="제품 정보와 라벨 비교 결과">
-                <thead>
-                  <tr>
-                    <th scope="col" style="width: 16%;">항목명</th>
-                    <th scope="col" style="width: 22%;">기준 제품 정보</th>
-                    <th scope="col" style="width: 22%;">비교할 라벨 내용</th>
-                    <th scope="col" style="width: 15%;">판정 상태</th>
-                    <th scope="col" style="width: 25%;">이유 및 세부 사항</th>
-                  </tr>
-                </thead>
-                <tbody id="resultsTableBody">
-                  <!-- Injected via JavaScript -->
-                </tbody>
-              </table>
+            <!-- Row 3: 주의 문구 -->
+            <div class="matrix-row" id="rowNotice">
+              <div class="col-td td-field">
+                <div class="field-title">주의 문구</div>
+                <div class="field-sub">Notice & Caution</div>
+                <label class="toggle-no-data" style="margin-top:6px;">
+                  <input type="checkbox" id="refNoticeNoData" onchange="toggleRefNoticeNoData(this.checked)" />
+                  기준 자료 없음
+                </label>
+              </div>
+              <div class="col-td td-spec">
+                <textarea id="refNotice" class="matrix-textarea" oninput="runLiveComparison()" placeholder="사양서 주의 문구 입력">사용 후 용기를 밀폐하여 보관하세요.</textarea>
+              </div>
+              <div class="col-td td-label">
+                <textarea id="labelNotice" class="matrix-textarea" oninput="runLiveComparison()" placeholder="라벨 표기 문구 (누락 시 빈칸)">사용 후 용기를 밀폐하여 보관하세요.</textarea>
+              </div>
+              <div class="col-td td-status">
+                <div class="status-top-line">
+                  <span id="statusBadgeNotice" class="badge-status match">✓ 일치</span>
+                </div>
+                <div id="statusReasonNotice" class="status-reason-text">주의 문구 내용이 정확히 일치합니다.</div>
+              </div>
             </div>
 
-            <div class="security-notice-strip">
-              <span>🔒 <strong>로컬 연산 보장:</strong> 입력하신 정보는 외부 서버나 분석 도구로 전송되지 않으며, 현재 브라우저 안에서만 안전하게 계산됩니다.</span>
-              <span>⚠️ <strong>면책 고지:</strong> 본 결과는 입력된 텍스트 간의 단순 정합성 비교 결과이며, 제품의 법적 안전성이나 식약처/환경부 인허가 승인을 의미하지 않습니다.</span>
+            <!-- Row 4: 문서 버전 -->
+            <div class="matrix-row" id="rowRevision">
+              <div class="col-td td-field">
+                <div class="field-title">문서 버전</div>
+                <div class="field-sub">Revision Code</div>
+              </div>
+              <div class="col-td td-spec">
+                <input type="text" id="refRevision" class="matrix-input" value="v2" oninput="runLiveComparison()" placeholder="사양서 버전 (예: v2)" />
+              </div>
+              <div class="col-td td-label">
+                <input type="text" id="labelRevision" class="matrix-input" value="v2" oninput="runLiveComparison()" placeholder="라벨 시안 버전 (예: v2)" />
+              </div>
+              <div class="col-td td-status">
+                <div class="status-top-line">
+                  <span id="statusBadgeRevision" class="badge-status match">✓ 일치</span>
+                </div>
+                <div id="statusReasonRevision" class="status-reason-text">문서 버전 내용이 정확히 일치합니다.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Privacy & Live Info Strip -->
+          <div class="security-notice-strip" style="margin-top:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <span>⚡ <strong>제로 클릭 실시간 동기화:</strong> 키보드 입력이나 엑셀 드롭 시 즉시 계산되며, 위로 올라가서 실행 버튼을 누를 필요가 없습니다.</span>
+              <span>🔒 <strong>로컬 연산:</strong> 데이터는 외부 서버로 전송되지 않습니다.</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. How to Read Results Section -->
+<!-- 3. How to Read Results Section -->
     <section class="guide-section" id="guide" aria-labelledby="guide-heading">
       <div class="container">
         <div class="section-header">
@@ -1242,12 +1338,7 @@
       }
     }
 
-    // 3. UI Controller & Excel Drag & Drop Parser Logic
-    function markInputsStale() {
-      const notice = document.getElementById('staleNotice');
-      if (notice) notice.classList.add('show');
-    }
-
+    // 3. Zero-Click Live Reactive Diff Controller
     function toggleRefNoticeNoData(isChecked) {
       const textarea = document.getElementById('refNotice');
       if (isChecked) {
@@ -1258,14 +1349,11 @@
         textarea.disabled = false;
         textarea.value = textarea.dataset.prevVal || '';
       }
-      markInputsStale();
+      runLiveComparison();
     }
 
     function onScenarioChange(scenarioId) {
-      if (scenarioId === 'custom') {
-        markInputsStale();
-        return;
-      }
+      if (scenarioId === 'custom') return;
       const s = SCENARIOS[scenarioId];
       if (!s) return;
 
@@ -1284,8 +1372,8 @@
       document.getElementById('labelNotice').value = s.label.notice;
       document.getElementById('labelRevision').value = s.label.revision;
 
-      // Auto run comparison
-      runComparison();
+      // Zero-click instant live comparison!
+      runLiveComparison();
     }
 
     function resetDemoInputs() {
@@ -1294,7 +1382,7 @@
       onScenarioChange('S01');
     }
 
-    // Drag and Drop handlers
+    // Drag & Drop handlers
     function onDragOver(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -1312,19 +1400,14 @@
       e.stopPropagation();
       document.getElementById('excelDropzone').classList.remove('dragover');
       const files = e.dataTransfer.files;
-      if (files && files.length > 0) {
-        processExcelFile(files[0]);
-      }
+      if (files && files.length > 0) processExcelFile(files[0]);
     }
 
     function handleFileInput(e) {
       const files = e.target.files;
-      if (files && files.length > 0) {
-        processExcelFile(files[0]);
-      }
+      if (files && files.length > 0) processExcelFile(files[0]);
     }
 
-    // Robust Excel / CSV parser
     function processExcelFile(file) {
       const fileName = file.name;
       const reader = new FileReader();
@@ -1333,18 +1416,16 @@
         const data = e.target.result;
         let parsedRows = [];
 
-        // Check if SheetJS XLSX is available
         if (typeof XLSX !== 'undefined') {
           try {
             const workbook = XLSX.read(data, { type: 'binary' });
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
             parsedRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
           } catch (err) {
-            console.warn('XLSX parse fallback to raw CSV:', err);
+            console.warn('XLSX parse fallback to CSV:', err);
           }
         }
 
-        // Fallback for CSV if XLSX didn't produce rows
         if (!parsedRows || parsedRows.length === 0) {
           const text = new TextDecoder('utf-8').decode(new Uint8Array(data));
           parsedRows = text.split(/\r?\n/).map(line => line.split(',').map(cell => cell.trim().replace(/^["']|["']$/g, '')));
@@ -1353,7 +1434,7 @@
         if (parsedRows.length > 1) {
           applyParsedExcelData(parsedRows, fileName);
         } else {
-          alert('엑셀 파일에서 유효한 데이터 행을 찾을 수 없습니다. 헤더와 데이터가 포함되어 있는지 확인해 주세요.');
+          alert('엑셀 파일에서 유효한 데이터 행을 찾을 수 없습니다.');
         }
       };
 
@@ -1364,7 +1445,6 @@
       }
     }
 
-    // Header Fuzzy Matching
     function applyParsedExcelData(rows, fileName) {
       const headers = rows[0].map(h => String(h || '').trim().toLowerCase());
       const firstRow = rows[1];
@@ -1379,7 +1459,6 @@
         else if (/버전|개정|rev|version/.test(h) && !revVal) revVal = val;
       });
 
-      // Default fallbacks if header matching missed
       if (!prodVal && firstRow[0]) prodVal = firstRow[0];
       if (!volVal && firstRow[1]) volVal = firstRow[1];
 
@@ -1395,16 +1474,14 @@
         noticeArea.value = noticeVal;
       }
 
-      // Show loaded pill
       const pill = document.getElementById('fileLoadedPill');
       document.getElementById('fileLoadedName').textContent = `📄 ${fileName} (로드 완료)`;
       pill.classList.add('show');
 
-      // Run comparison immediately!
-      runComparison();
+      // Instant live recalculate!
+      runLiveComparison();
     }
 
-    // Quick Sample Excel Loader
     function loadSampleExcelPreset() {
       applyParsedExcelData([
         ['제품명', '용량', '주의문구', '문서버전'],
@@ -1412,7 +1489,6 @@
       ], '포레스트_사양서_샘플.xlsx');
     }
 
-    // Quick Label Presets
     function applyLabelPreset(type) {
       const p = document.getElementById('labelProduct');
       const v = document.getElementById('labelVolume');
@@ -1440,60 +1516,12 @@
         n.value = ''; // Missing!
         r.value = 'v2';
       }
-      runComparison();
+      runLiveComparison();
     }
 
-    // Helpers for In-line field status
-    function setFieldStatus(baseElemId, labelElemId, badgeBaseId, badgeLabelId, status, isMissing) {
-      const baseEl = document.getElementById(baseElemId);
-      const labelEl = document.getElementById(labelElemId);
-      const bBadge = document.getElementById(badgeBaseId);
-      const lBadge = document.getElementById(badgeLabelId);
-
-      // Clean classes
-      const cleanClasses = (el) => {
-        if (!el) return;
-        el.classList.remove('field-matched', 'field-mismatched', 'field-missing');
-      };
-      cleanClasses(baseEl);
-      cleanClasses(labelEl);
-
-      const applyBadge = (badgeEl, tagClass, text) => {
-        if (!badgeEl) return;
-        badgeEl.className = 'field-status-badge show ' + tagClass;
-        badgeEl.textContent = text;
-      };
-
-      if (status === '일치') {
-        if (baseEl) baseEl.classList.add('field-matched');
-        if (labelEl) labelEl.classList.add('field-matched');
-        applyBadge(bBadge, 'tag-match', '✓ 일치');
-        applyBadge(lBadge, 'tag-match', '✓ 일치');
-      } else if (status === '불일치') {
-        if (baseEl) baseEl.classList.add('field-mismatched');
-        if (labelEl) labelEl.classList.add('field-mismatched');
-        applyBadge(bBadge, 'tag-mismatch', '✕ 기준');
-        applyBadge(lBadge, 'tag-mismatch', '✕ 불일치');
-      } else if (status === '누락') {
-        if (baseEl) baseEl.classList.add('field-missing');
-        if (labelEl) labelEl.classList.add('field-missing');
-        applyBadge(bBadge, 'tag-missing', '⚠ 기준 존재');
-        applyBadge(lBadge, 'tag-missing', '⚠ 누락됨');
-      } else if (status === '자료 부족') {
-        applyBadge(bBadge, 'tag-insufficient', '? 자료 부족');
-        applyBadge(lBadge, 'tag-insufficient', '? 판정 보류');
-      } else if (status === '입력 해석 불가') {
-        if (labelEl) labelEl.classList.add('field-mismatched');
-        applyBadge(lBadge, 'tag-invalid', '⊘ 형식 오류');
-      }
-    }
-
-    function runComparison() {
-      // Hide stale banner
-      const staleNotice = document.getElementById('staleNotice');
-      if (staleNotice) staleNotice.classList.remove('show');
-
-      // Fetch input values
+    // ZERO-CLICK LIVE RECOVERY ENGINE
+    function runLiveComparison() {
+      // 1. Fetch values
       const refProd = document.getElementById('refProduct').value;
       const refVol = document.getElementById('refVolume').value;
       const refRev = document.getElementById('refRevision').value;
@@ -1505,34 +1533,51 @@
       const labelNotice = document.getElementById('labelNotice').value;
       const labelRev = document.getElementById('labelRevision').value;
 
-      // Execute Comparison
+      // 2. Compare fields
       const resProd = compareTextField(refProd, labelProd, '제품명', false);
       const resVol = compareVolumeField(refVol, labelVol, false);
       const resNotice = compareTextField(refNotice, labelNotice, '주의 문구', refNoticeNoData);
       const resRev = compareTextField(refRev, labelRev, '문서 버전', false);
 
       const items = [
-        { name: '제품명', baseVal: refProd, labelVal: labelProd, res: resProd, baseId: 'refProduct', labelId: 'labelProduct', bBadgeId: 'badgeRefProduct', lBadgeId: 'badgeLabelProduct' },
-        { name: '용량', baseVal: refVol, labelVal: labelVol, res: resVol, baseId: 'refVolume', labelId: 'labelVolume', bBadgeId: 'badgeRefVolume', lBadgeId: 'badgeLabelVolume' },
-        { name: '주의 문구', baseVal: refNoticeNoData ? '[자료 없음]' : refNotice, labelVal: labelNotice, res: resNotice, baseId: 'refNotice', labelId: 'labelNotice', bBadgeId: null, lBadgeId: null },
-        { name: '문서 버전', baseVal: refRev, labelVal: labelRev, res: resRev, baseId: 'refRevision', labelId: 'labelRevision', bBadgeId: 'badgeRefRevision', lBadgeId: 'badgeLabelRevision' }
+        { rowId: 'rowProduct', badgeId: 'statusBadgeProduct', reasonId: 'statusReasonProduct', name: '제품명', baseVal: refProd, labelVal: labelProd, res: resProd },
+        { rowId: 'rowVolume', badgeId: 'statusBadgeVolume', reasonId: 'statusReasonVolume', name: '용량', baseVal: refVol, labelVal: labelVol, res: resVol },
+        { rowId: 'rowNotice', badgeId: 'statusBadgeNotice', reasonId: 'statusReasonNotice', name: '주의 문구', baseVal: refNoticeNoData ? '[자료 없음]' : refNotice, labelVal: labelNotice, res: resNotice },
+        { rowId: 'rowRevision', badgeId: 'statusBadgeRevision', reasonId: 'statusReasonRevision', name: '문서 버전', baseVal: refRev, labelVal: labelRev, res: resRev }
       ];
 
-      // Update Field In-line States
-      items.forEach(it => {
-        setFieldStatus(it.baseId, it.labelId, it.bBadgeId, it.lBadgeId, it.res.status);
-      });
-
-      // Tally statuses
+      // 3. Update Each Row Live
       const counts = { '일치': 0, '불일치': 0, '누락': 0, '자료 부족': 0, '입력 해석 불가': 0 };
       const mismatches = [];
+
       items.forEach(it => {
         counts[it.res.status] = (counts[it.res.status] || 0) + 1;
         if (it.res.status === '불일치') mismatches.push(`${it.name} (${it.baseVal} ≠ ${it.labelVal || '빈값'})`);
         else if (it.res.status === '누락') mismatches.push(`${it.name} (라벨 누락)`);
+
+        const rowEl = document.getElementById(it.rowId);
+        const badgeEl = document.getElementById(it.badgeId);
+        const reasonEl = document.getElementById(it.reasonId);
+
+        // Update row class
+        rowEl.className = 'matrix-row';
+        if (it.res.status === '일치') rowEl.classList.add('row-match');
+        else if (it.res.status === '불일치') rowEl.classList.add('row-mismatch');
+        else if (it.res.status === '누락') rowEl.classList.add('row-missing');
+        else if (it.res.status === '자료 부족') rowEl.classList.add('row-insufficient');
+        else if (it.res.status === '입력 해석 불가') rowEl.classList.add('row-mismatch');
+
+        // Update badge
+        const badgeClass = it.res.status === '일치' ? 'match' : (it.res.status === '불일치' ? 'mismatch' : (it.res.status === '누락' ? 'missing' : 'insufficient'));
+        const icon = it.res.status === '일치' ? '✓' : (it.res.status === '불일치' ? '✕' : (it.res.status === '누락' ? '⚠' : '?'));
+        badgeEl.className = `badge-status ${badgeClass}`;
+        badgeEl.innerHTML = `${icon} ${escapeHtml(it.res.status)}`;
+
+        // Update reason
+        reasonEl.textContent = it.res.reason;
       });
 
-      // Update Verdict Hero Card
+      // 4. Update Top Verdict HUD
       const vCard = document.getElementById('verdictHeroCard');
       const vIcon = document.getElementById('verdictIcon');
       const vTitle = document.getElementById('verdictTitle');
@@ -1546,75 +1591,26 @@
         const totalIssues = counts['불일치'] + counts['누락'];
         vCard.classList.add(counts['불일치'] > 0 ? 'mismatch' : 'missing');
         vIcon.textContent = '⚠️';
-        vTitle.textContent = `[진단 결과] 총 4개 항목 중 ${totalIssues}건의 불일치·누락이 감지되었습니다!`;
-        vSub.textContent = '라벨 인쇄 또는 최종 출고 전 다음 상이한 항목의 수정이 필요합니다:';
+        vTitle.textContent = `[실시간 진단] 총 4개 항목 중 ${totalIssues}건의 불일치·누락 감지!`;
+        vSub.textContent = '라벨 인쇄 또는 최종 출고 전 아래 붉은색 표시 항목을 확인해 주세요:';
         mismatches.forEach(m => {
           pillsHtml += `<span class="verdict-pill">✕ ${escapeHtml(m)}</span>`;
         });
       } else if (counts['자료 부족'] > 0 || counts['입력 해석 불가'] > 0) {
         vCard.classList.add('missing');
         vIcon.textContent = 'ℹ️';
-        vTitle.textContent = `[진단 결과] 기준 자료 부족 또는 형식 확인이 필요한 항목이 있습니다.`;
-        vSub.textContent = '기준표가 비어 있거나 단위 형식이 불분명하여 판정이 보류된 항목이 존재합니다.';
+        vTitle.textContent = `[실시간 진단] 기준 자료 부족 또는 형식 확인 항목이 있습니다.`;
+        vSub.textContent = '기준표가 비어 있거나 단위 표기가 불분명하여 판정이 보류되었습니다.';
         pillsHtml += `<span class="verdict-pill">자료 부족 ${counts['자료 부족']}건</span>`;
         if (counts['입력 해석 불가'] > 0) pillsHtml += `<span class="verdict-pill">형식 오류 ${counts['입력 해석 불가']}건</span>`;
       } else {
         vCard.classList.add('match');
         vIcon.textContent = '✓';
-        vTitle.textContent = `[진단 결과] 4개 항목(제품명·용량·주의문구·버전) 모두 정확히 일치합니다!`;
+        vTitle.textContent = `[실시간 진단] 4개 항목(제품명·용량·주의문구·버전) 모두 정확히 일치합니다!`;
         vSub.textContent = '사내 엑셀 사양서와 라벨 시안 표기 간 텍스트 정합성이 100% 확인되었습니다.';
         pillsHtml += `<span class="verdict-pill" style="border-color:#166534; color:#166534;">✓ 전 항목 정합성 정상</span>`;
       }
       vPills.innerHTML = pillsHtml;
-
-      // Render Summary Chips
-      const chipsContainer = document.getElementById('summaryChips');
-      let chipsHtml = '';
-      if (counts['일치'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-match-bg); color:var(--status-match-text);">✓ 일치 ${counts['일치']}</span>`;
-      if (counts['불일치'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-mismatch-bg); color:var(--status-mismatch-text);">✕ 불일치 ${counts['불일치']}</span>`;
-      if (counts['누락'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-missing-bg); color:var(--status-missing-text);">⚠ 누락 ${counts['누락']}</span>`;
-      if (counts['자료 부족'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-insufficient-bg); color:var(--status-insufficient-text);">? 자료 부족 ${counts['자료 부족']}</span>`;
-      if (counts['입력 해석 불가'] > 0) chipsHtml += `<span class="summary-chip" style="background:var(--status-invalid-bg); color:var(--status-invalid-text);">⊘ 해석 불가 ${counts['입력 해석 불가']}</span>`;
-      chipsContainer.innerHTML = chipsHtml;
-
-      // Render Enhanced Table Rows
-      const tbody = document.getElementById('resultsTableBody');
-      let rowsHtml = '';
-
-      items.forEach(it => {
-        const bText = it.baseVal ? escapeHtml(it.baseVal).replace(/\n/g, '<br/>') : '<span class="cell-val empty">(비어 있음)</span>';
-        const lText = it.labelVal ? escapeHtml(it.labelVal).replace(/\n/g, '<br/>') : '<span class="cell-val empty">(비어 있음)</span>';
-        
-        let rowClass = 'tr-match';
-        if (it.res.status === '불일치') rowClass = 'tr-mismatch';
-        else if (it.res.status === '누락') rowClass = 'tr-missing';
-        else if (it.res.status === '자료 부족') rowClass = 'tr-insufficient';
-        else if (it.res.status === '입력 해석 불가') rowClass = 'tr-mismatch';
-
-        const badgeClass = it.res.status === '일치' ? 'match' : (it.res.status === '불일치' ? 'mismatch' : (it.res.status === '누락' ? 'missing' : 'insufficient'));
-        const icon = it.res.status === '일치' ? '✓' : (it.res.status === '불일치' ? '✕' : (it.res.status === '누락' ? '⚠' : '?'));
-
-        rowsHtml += `
-          <tr class="${rowClass}">
-            <td><strong>${escapeHtml(it.name)}</strong></td>
-            <td><div class="cell-val diff-val-old">${bText}</div></td>
-            <td><div class="cell-val diff-val-new ${it.res.status === '일치' ? 'diff-match' : ''}">${lText}</div></td>
-            <td>
-              <span class="badge-status ${badgeClass}">${icon} ${escapeHtml(it.res.status)}</span>
-            </td>
-            <td>
-              <div class="cell-reason">${escapeHtml(it.res.reason)}</div>
-            </td>
-          </tr>
-        `;
-      });
-
-      tbody.innerHTML = rowsHtml;
-
-      // Add visual pulse effect
-      vCard.classList.remove('pulse-run');
-      void vCard.offsetWidth; // trigger reflow
-      vCard.classList.add('pulse-run');
     }
 
     // Signup form handler
@@ -1665,7 +1661,7 @@
 
     // Auto run on DOM ready
     window.addEventListener('DOMContentLoaded', () => {
-      runComparison();
+      runLiveComparison();
     });
   </script>
 </body>
