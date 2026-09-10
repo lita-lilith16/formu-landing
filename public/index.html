@@ -416,6 +416,69 @@
       .scenario-control-bar { flex-direction: column; align-items: flex-start; }
       .demo-actions { width: 100%; justify-content: flex-end; }
     }
+  
+    /* 5. Pricing Section */
+    .pricing-section {
+      padding: 60px 0 80px 0; background: #FFFFFF; border-top: 1px solid var(--border-subtle);
+    }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px;
+    }
+    .pricing-card {
+      background: var(--bg-subtle); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 32px 26px; display: flex; flex-direction: column;
+      position: relative; transition: all 0.2s ease;
+    }
+    .pricing-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-float); }
+    .pricing-card.featured {
+      background: #FFFFFF; border: 2px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(49, 130, 246, 0.12);
+    }
+    .pricing-badge {
+      font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: var(--radius-pill);
+      background: #FFFFFF; border: 1px solid var(--border-subtle); color: var(--text-muted);
+      align-self: flex-start; margin-bottom: 14px;
+    }
+    .pricing-badge.featured {
+      background: var(--primary); color: #FFFFFF; border-color: var(--primary);
+    }
+    .pricing-name { font-size: 20px; font-weight: 900; color: var(--text-main); margin-bottom: 8px; }
+    .pricing-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; min-height: 40px; margin-bottom: 20px; }
+    
+    .pricing-price-box {
+      padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 20px;
+    }
+    .pricing-original {
+      font-size: 13px; color: var(--text-light); text-decoration: line-through; font-weight: 600; margin-bottom: 4px;
+    }
+    .pricing-current {
+      display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;
+    }
+    .price-val { font-size: 32px; font-weight: 900; color: var(--text-main); letter-spacing: -0.5px; }
+    .price-unit { font-size: 16px; font-weight: 800; color: var(--text-body); }
+    .price-pill {
+      font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px;
+      background: #EFF6FF; color: var(--primary); margin-left: 6px;
+    }
+    .price-pill.featured { background: #DCFCE7; color: #15803D; }
+    .pricing-notice { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
+
+    .pricing-features {
+      list-style: none; padding: 0; margin: 0 0 24px 0; display: flex; flex-direction: column; gap: 10px;
+      font-size: 13px; color: var(--text-body); flex: 1; line-height: 1.45;
+    }
+    .pricing-features li { display: flex; align-items: flex-start; gap: 8px; }
+
+    .pricing-bottom-note {
+      margin-top: 28px; padding: 16px 20px; background: var(--bg-subtle); border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-muted); line-height: 1.6;
+      display: flex; flex-direction: column; gap: 4px; text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -435,6 +498,7 @@
         <li><a href="#compare-demo" class="nav-link">비교 체험</a></li>
         <li><a href="#guide" class="nav-link">결과 읽는 법</a></li>
         <li><a href="#stages" class="nav-link">개발 로드맵</a></li>
+        <li><a href="#pricing" class="nav-link">상품 및 가격</a></li>
         <li><a href="#faq" class="nav-link">자주 묻는 질문</a></li>
       </ul>
 
@@ -735,19 +799,99 @@
 
           <div class="stage-card">
             <span class="stage-badge next">3단계 · 유료 출시 단계</span>
-            <h3 class="stage-title">브랜드 전용 관리 시스템</h3>
+            <h3 class="stage-title">신고 준비 자동화 & 서식 초안 정리</h3>
             <ul class="stage-list future">
-              <li>계정 관리 및 데이터 격리 보관/삭제</li>
-              <li>제품별 버전 변경 이력 관리</li>
-              <li>팀원별 열람/수정 접근 권한 관리</li>
-              <li>* 가격: 검증 예정 가격 (현재 결제 불가)</li>
+              <li>원료 엑셀 점검 및 누락 자료 자동 표시</li>
+              <li>CHEMP 제출용 배합비율표 초안 정리</li>
+              <li>라벨 표시 항목 초안 정리</li>
+              <li>* 단일팩(베타가 99,000원) / 3종 라인업팩(베타가 199,000원)</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. FAQ Section -->
+
+    <!-- 5. Pricing Section -->
+    <section class="pricing-section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Pricing & Service Scope</div>
+          <h2 class="section-title" id="pricing-heading">서비스 상품 및 가격 안내</h2>
+          <p class="section-sub">
+            행정사 의뢰 전 사전 점검 비용을 합리화하고, 출시 준비에 필요한 핵심 서식 초안을 빠르게 정리해 드립니다.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Tier 1: 단일 제품 준비팩 -->
+          <div class="pricing-card">
+            <div class="pricing-badge">기본 패키지</div>
+            <h3 class="pricing-name">단일 제품 준비팩</h3>
+            <div class="pricing-desc">신제품 1종에 대한 원료 데이터 점검 및 필수 신고 준비 서식 초안 정리</div>
+            <div class="pricing-price-box">
+              <div class="pricing-original">정가 129,000원</div>
+              <div class="pricing-current">
+                <span class="price-val">99,000</span><span class="price-unit">원</span>
+                <span class="price-pill">베타가</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><span>✓</span> 원료 엑셀 점검</li>
+              <li><span>✓</span> 누락 자료 표시</li>
+              <li><span>✓</span> CHEMP 제출용 배합비율표 초안</li>
+              <li><span>✓</span> 라벨 표시 항목 초안</li>
+            </ul>
+          </div>
+
+          <!-- Tier 2: 3종 라인업팩 -->
+          <div class="pricing-card featured">
+            <div class="pricing-badge featured">베스트셀러 · 추천</div>
+            <h3 class="pricing-name">3종 라인업팩</h3>
+            <div class="pricing-desc">동일 베이스 또는 향 변경 3종까지 다품종 라인업 한 번에 정리</div>
+            <div class="pricing-price-box">
+              <div class="pricing-original">정가 249,000원</div>
+              <div class="pricing-current">
+                <span class="price-val">199,000</span><span class="price-unit">원</span>
+                <span class="price-pill featured">베타가</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><span>✓</span> 동일 베이스 또는 향 변경 3종까지 정리</li>
+              <li><span>✓</span> 원료 엑셀 점검 및 누락 자료 표시</li>
+              <li><span>✓</span> CHEMP 제출용 배합비율표 초안 (3종)</li>
+              <li><span>✓</span> 라벨 표시 항목 초안 (3종)</li>
+            </ul>
+          </div>
+
+          <!-- Tier 3: 전문가 검토 연계형 -->
+          <div class="pricing-card">
+            <div class="pricing-badge">파트너십 연계</div>
+            <h3 class="pricing-name">전문가 검토 연계형</h3>
+            <div class="pricing-desc">소프트웨어 초안 정리에 공인 행정사의 실무 검토 메모를 결합한 옵션</div>
+            <div class="pricing-price-box">
+              <div class="pricing-current">
+                <span class="price-val" style="font-size: 26px;">출시 예정</span>
+                <span class="price-unit" style="font-size: 13px; color: var(--text-muted);">(별도 견적)</span>
+              </div>
+              <div class="pricing-notice">* 행정사 파트너 확정 전까지 고정가 표시 금지</div>
+            </div>
+            <ul class="pricing-features">
+              <li><span>✓</span> 준비팩 모든 초안 정리 포함</li>
+              <li><span>✓</span> 전문가 검토 메모 제공</li>
+              <li><span>✓</span> 출시 전 법적 고위험 항목 체크</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pricing-bottom-note">
+          <span>* 현재 베타 서비스 사전 등록 기간으로 결제 기능 연동 전 서비스 안내를 제공하고 있습니다.</span>
+          <span>* 본 도구는 서식 작성을 보조하는 '신고 준비 자동화 도구'이며 행정사법상 신고 대리 또는 법적 인허가 승인을 보증하지 않습니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ Section -->
     <section class="faq-section" id="faq" aria-labelledby="faq-heading">
       <div class="container">
         <div class="section-header">
@@ -786,20 +930,20 @@
             </div>
           </div>
 
-          <div class="faq-card">
+                    <div class="faq-card">
             <div class="faq-q">
               <span class="faq-q-icon">Q.</span>
               <span>정식 서비스 이용 가격은 얼마인가요?</span>
             </div>
             <div class="faq-a">
-              현재는 무료 샘플 비교 체험 단계이며 결제는 불가능합니다. 향후 정식 서비스 출시 시 1인 브랜드를 위한 건당 3만 원대 리포트 및 월 3~5만 원대 구독 모델을 검증 예정입니다. (검증 예정 가격 · 현재 결제 불가)
+              '단일 제품 준비팩'은 정가 129,000원(베타가 99,000원), '3종 라인업팩'은 정가 249,000원(베타가 199,000원)입니다. 원료 엑셀 점검, 누락 자료 표시, CHEMP 제출용 배합비율표 초안 및 라벨 표시 항목 초안이 제공됩니다. 전문가 검토 연계형은 행정사 파트너 확정 후 별도 견적으로 출시될 예정입니다.
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. Waiting List / Pre-signup Section -->
+    <!-- 7. Waiting List / Pre-signup Section -->
     <section class="signup-section" id="signup" aria-labelledby="signup-heading">
       <div class="container">
         <div class="signup-box">
