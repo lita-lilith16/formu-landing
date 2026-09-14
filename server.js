@@ -6,6 +6,7 @@ const { stringify } = require('csv-stringify');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data', 'db.json');
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || 'formu-admin-secret-2026';
 
 // Ensure db.json exists
 if (!fs.existsSync(DATA_FILE)) {
@@ -25,9 +26,23 @@ function getDb() {
 function saveDb(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    return true;
   } catch (err) {
     console.error('Error saving db:', err);
+    return false;
   }
+}
+
+// Middleware: Admin auth for sensitive report/export endpoints
+function verifyAdmin(req, res, next) {
+  const token = req.query.token || req.headers['x-admin-token'] || (req.headers.authorization && req.headers.authorization.replace('Bearer ', ''));
+  if (!token || token !== ADMIN_TOKEN) {
+    return res.status(401).json({
+      success: false,
+      error: '관리자 인증이 필요합니다. 올바른 접근 토큰(?token=...)을 입력해 주세요.'
+    });
+  }
+  next();
 }
 
 app.use(express.json());
@@ -94,7 +109,13 @@ app.post('/api/signup', (req, res) => {
   };
 
   db.signups.push(newSignup);
-  saveDb(db);
+  const saved = saveDb(db);
+  if (!saved) {
+    return res.status(500).json({
+      success: false,
+      error: '신청 정보 저장 중 서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.'
+    });
+  }
 
   return res.status(201).json({
     success: true,
@@ -104,8 +125,8 @@ app.post('/api/signup', (req, res) => {
   });
 });
 
-// 3. 리포트 API (/api/report)
-app.get('/api/report', (req, res) => {
+// 3. 리포트 API (/api/report) - 관리자 토큰 필수
+app.get('/api/report', verifyAdmin, (req, res) => {
   const db = getDb();
   const totalVisits = db.visits.length;
   const totalSignups = db.signups.length;

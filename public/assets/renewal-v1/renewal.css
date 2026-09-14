@@ -1,0 +1,805 @@
+/* Formu renewal, 2026-09-14. Loaded after legacy styles;
+   comparison IDs stay stable. */
+:root {
+  --primary:#265fe8;
+  --primary-hover:#184bc3;
+  --primary-light:#eef3ff;
+  --text-main:#18252c;
+  --text-body:#45545e;
+  --text-muted:#606e78;
+  --text-light:#687781;
+  --bg-subtle:#f6f8fa;
+  --container-max:1240px;
+  --border-subtle:#dfe5e8}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:100px}
+body {
+  background:#fbfcfd;
+  overflow-x:clip}
+img {
+  max-width:100%}
+a,button,summary {
+  transition:color .3s ease,background .3s ease,transform .3s ease}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible,[tabindex]:focus-visible {
+  outline:3px solid #265fe8;
+  outline-offset:4px}
+button:disabled {
+  opacity:.6;
+  cursor:wait}
+section {
+  scroll-margin-top:90px}
+.container {
+  padding:0 36px}
+.navbar {
+  top:0;
+  margin:0 auto;
+  padding:0 36px;
+  max-width:1240px}
+.navbar-inner {
+  height:84px;
+  border:0;
+  border-bottom:1px solid #dfe5e8;
+  border-radius:0;
+  padding:0;
+  background:rgba(251,252,253,.96);
+  box-shadow:none}
+.brand-title {
+  font-size:25px;
+  letter-spacing:-1px}
+.brand img {
+  width:34px;
+  height:34px}
+.brand-badge {
+  font-size:10px;
+  background:transparent;
+  border:1px solid #dce3e8;
+  color:#606e78;
+  padding:3px 7px;
+  font-weight:500}
+.nav-links {
+  gap:24px}
+.nav-link {
+  font-size:13px;
+  font-weight:500}
+.btn-nav-primary {
+  border-radius:8px;
+  padding:11px 16px;
+  box-shadow:none;
+  font-weight:600}
+.hero-section {
+  padding:55px 0 0;
+  background:#fbfcfd;
+  border:0}
+.hero-container {
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+  gap:30px;
+  align-items:center}
+.hero-content {
+  text-align:left;
+  align-items:flex-start;
+  gap:0;
+  margin:0;
+  max-width:none}
+.eyebrow {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#536673;
+  display:flex;
+  gap:9px;
+  align-items:center;
+  margin-bottom:27px}
+.live-dot {
+  width:6px;
+  height:6px;
+  background:#265fe8;
+  border-radius:50%}
+.hero-headline {
+  font-size:clamp(34px,3.6vw,49px);
+  font-weight:650;
+  line-height:1.3;
+  letter-spacing:-2px;
+  word-break:keep-all}
+.hero-headline span {
+  color:var(--primary)}
+.hero-desc {
+  margin-top:24px;
+  font-size:15px;
+  line-height:1.8;
+  color:#606e78;
+  font-weight:400;
+  word-break:keep-all}
+.hero-cta-group {
+  margin-top:28px;
+  align-items:center;
+  gap:22px;
+  justify-content:flex-start}
+.btn-hero-main {
+  border-radius:8px;
+  padding:14px 19px;
+  box-shadow:none;
+  font-size:13px;
+  font-weight:600}
+.hero-text-link {
+  color:#263a47;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  border-bottom:1px solid #a2b1bc;
+  padding:5px 0;
+  display:inline-block}
+.hero-micro {
+  font-size:11px;
+  color:#647480;
+  margin-top:16px}
+.hero-visual {
+  position:relative;
+  min-width:0;
+  margin:0;
+  aspect-ratio:1/1.07;
+  background:#dce8ee;
+  border-radius:14px}
+.hero-visual>img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:62% 50%;
+  border-radius:14px;
+  display:block}
+.visual-label {
+  position:absolute;
+  top:22px;
+  left:23px;
+  right:23px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:9px;
+  letter-spacing:1px;
+  color:#345061}
+.visual-label span:last-child {
+  letter-spacing:0}
+.floating-note {
+  position:absolute;
+  left:-26px;
+  bottom:48px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 22px;
+  background:rgba(255,255,255,.91);
+  backdrop-filter:blur(12px);
+  border:1px solid #fff;
+  border-radius:10px;
+  box-shadow:0 14px 45px #233f5514}
+.floating-note strong {
+  display:block;
+  font-size:13px;
+  font-weight:650}
+.floating-note div>span {
+  display:block;
+  font-size:10px;
+  color:#6b7781;
+  margin-top:5px}
+.note-icon {
+  width:35px;
+  height:35px;
+  background:#eaf0ff;
+  color:#265fe8;
+  display:grid;
+  place-items:center;
+  font-size:26px;
+  border-radius:8px}
+.image-caption {
+  position:absolute;
+  right:16px;
+  bottom:12px;
+  font-size:9px;
+  color:#35505f}
+.hero-bottom {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+  border-bottom:1px solid #dfe5e8;
+  padding:30px 0;
+  font-size:11px;
+  color:#687781;
+  margin-top:32px}
+.hero-bottom span:last-child {
+  color:#45545e;
+  font-size:12px}
+.hero-bottom i {
+  font-style:normal;
+  color:#95a5b1;
+  padding:0 20px}
+.pipeline-section,.demo-section,.guide-section,.stages-section,.pricing-section,.faq-section,.signup-section {
+  padding:90px 0;
+  border:0}
+.pipeline-section {
+  background:#fbfcfd}
+.section-tag {
+  font-size:10px;
+  letter-spacing:1.8px;
+  color:#265fe8;
+  font-weight:650;
+  margin-bottom:16px}
+.section-title {
+  font-size:34px;
+  font-weight:650;
+  line-height:1.35;
+  letter-spacing:-1.2px;
+  word-break:keep-all}
+.section-sub {
+  font-size:14px;
+  line-height:1.8;
+  font-weight:400;
+  color:#64717a;
+  word-break:keep-all}
+.section-header {
+  margin-bottom:38px}
+.editorial-intro {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:36px;
+  margin-bottom:40px}
+.editorial-intro .section-sub {
+  margin:0;
+  max-width:430px}
+.workflow-layout {
+  display:grid;
+  grid-template-columns:1.04fr 1fr;
+  gap:70px;
+  align-items:center}
+.workflow-photo {
+  position:relative;
+  margin:0;
+  border-radius:12px;
+  overflow:hidden;
+  aspect-ratio:1.14}
+.workflow-photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block}
+.workflow-photo figcaption {
+  position:absolute;
+  bottom:19px;
+  left:22px;
+  color:#40515a;
+  font-size:12px;
+  background:#ffffffce;
+  border-radius:4px;
+  padding:8px 12px}
+.workflow-steps article {
+  display:flex;
+  gap:21px;
+  padding:23px 0;
+  border-bottom:1px solid #e0e5e8}
+.workflow-steps article:first-child {
+  padding-top:0}
+.step-number {
+  font-size:12px;
+  color:#265fe8;
+  font-weight:650;
+  padding-top:4px}
+.workflow-steps h3 {
+  font-size:18px;
+  letter-spacing:-.5px;
+  font-weight:650;
+  margin-bottom:10px}
+.workflow-steps p {
+  font-size:13px;
+  color:#64717a;
+  line-height:1.8;
+  word-break:keep-all}
+.workflow-steps>a {
+  margin-top:22px}
+.section-footnote {
+  margin-top:24px;
+  color:#687781;
+  font-size:11px;
+  text-align:right}
+.demo-section {
+  background:#eff3f7}
+.demo-sandbox {
+  padding:30px;
+  border-radius:14px;
+  box-shadow:0 12px 42px #203a5110;
+  border:1px solid #dce3e8}
+.col-pane {
+  background:#f8fafc;
+  border-radius:8px;
+  padding:22px}
+.col-title {
+  font-size:13px}
+.col-pill {
+  font-size:10px}
+.field-label {
+  font-size:12px}
+.input-text,.textarea-notice {
+  border-radius:6px;
+  font-size:13px}
+.scenario-select {
+  max-width:100%}
+.btn-compare {
+  box-shadow:none;
+  font-weight:600}
+.results-area {
+  margin-top:0}
+.security-notice-strip span {
+  display:block;
+  line-height:1.8}
+.results-table-wrap {
+  overflow-x:auto}
+.results-table {
+  min-width:650px}
+.guide-section {
+  background:#fff}
+.status-cards-grid {
+  gap:12px}
+.status-guide-card {
+  padding:20px 17px;
+  border-radius:8px;
+  background:white;
+  min-width:0}
+.status-guide-card-desc {
+  font-size:12px;
+  line-height:1.8}
+.status-guide-card:nth-child(1) {
+  border-top:3px solid #108365}
+.status-guide-card:nth-child(2) {
+  border-top:3px solid #c54c4c}
+.status-guide-card:nth-child(3) {
+  border-top:3px solid #b88b30}
+.status-guide-card:nth-child(4) {
+  border-top:3px solid #77848e}
+.status-guide-card:nth-child(5) {
+  border-top:3px solid #8b6bab}
+.stages-section {
+  background:#f4f6f8}
+.stages-grid {
+  gap:0;
+  border:1px solid #dfe5e8;
+  border-radius:12px;
+  overflow:hidden}
+.stage-card,.stage-card.current {
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  padding:32px;
+  background:#fafbfc}
+.stage-card+.stage-card {
+  border-left:1px solid #e0e5e8}
+.stage-card.current {
+  background:#eef3ff}
+.stage-title {
+  font-size:18px;
+  line-height:1.5;
+  font-weight:650}
+.stage-list {
+  line-height:1.7;
+  gap:12px}
+.pricing-section {
+  background:#fff}
+.pricing-card {
+  border-radius:10px;
+  background:#fafbfc;
+  padding:28px;
+  box-shadow:none}
+.pricing-card.featured {
+  border:1px solid #265fe8;
+  box-shadow:0 8px 30px #265fe80d}
+.pricing-card:hover {
+  transform:translateY(-3px)}
+.pricing-name {
+  font-weight:650}
+.pricing-original {
+  text-decoration:none;
+  color:#687781;
+  font-size:11px}
+.price-val {
+  font-size:37px;
+  font-weight:600}
+.price-pill.featured {
+  background:#eef3ff;
+  color:#265fe8}
+.pricing-notice {
+  font-weight:400}
+.plan-cta {
+  display:block;
+  text-align:center;
+  padding:12px 10px;
+  border-radius:6px;
+  border:1px solid #ccd7e1;
+  color:#263d4d;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600}
+.featured .plan-cta {
+  color:#fff;
+  background:#265fe8;
+  border-color:#265fe8}
+.plan-cta:hover {
+  background:#e9eff8}
+.featured .plan-cta:hover {
+  background:#184bc3}
+.pricing-bottom-note {
+  background:transparent;
+  border:0;
+  padding:8px}
+.faq-section {
+  background:#f6f8fa}
+.faq-grid {
+  display:block;
+  max-width:880px}
+.faq-card {
+  display:block;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid #dbe2e7;
+  border-radius:0;
+  padding:0}
+.faq-q {
+  cursor:pointer;
+  list-style:none;
+  padding:24px 0;
+  align-items:center;
+  font-size:15px;
+  font-weight:600}
+.faq-q::-webkit-details-marker {
+  display:none}
+.faq-toggle {
+  margin-left:auto;
+  font-size:22px;
+  font-weight:400;
+  line-height:1;
+  color:#7a8993;
+  transition:transform .3s}
+.faq-card[open] .faq-toggle {
+  transform:rotate(45deg)}
+.faq-a {
+  margin:0;
+  padding:0 28px 24px;
+  font-size:14px;
+  line-height:1.9}
+.signup-section {
+  background:#edf3f9}
+.signup-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center}
+.signup-story h2 {
+  font-size:34px;
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:-1px}
+.signup-story p {
+  font-size:14px;
+  color:#64717a;
+  line-height:1.8;
+  margin-top:20px}
+.signup-story img {
+  display:block;
+  margin-top:28px;
+  width:100%;
+  height:auto;
+  border-radius:12px}
+.signup-box {
+  padding:32px;
+  text-align:left;
+  max-width:none;
+  width:100%;
+  border:1px solid #dde5ed;
+  border-radius:12px;
+  box-shadow:0 12px 40px #324b6710}
+.signup-title {
+  font-size:22px;
+  font-weight:650}
+.signup-desc {
+  font-size:12px;
+  line-height:1.8}
+.signup-subtext {
+  color:#677680;
+  line-height:1.7}
+.btn-submit-signup {
+  box-shadow:none;
+  border-radius:6px}
+.footer {
+  padding:35px 0}
+.footer-disclaimer {
+  max-width:440px;
+  color:#677680}
+.footer a {
+  color:#456070}
+ .form-group,.input-columns>* {
+  min-width:0}
+
+@media(min-width:1025px) {
+  .stages-grid,.pricing-grid {
+  grid-template-columns:repeat(3,1fr)}
+}
+
+@media(max-width:1100px) {
+  .nav-links {
+  gap:14px}
+.nav-link {
+  font-size:12px}
+.brand-badge {
+  display:none}
+.hero-headline {
+  font-size:38px}
+.hero-container {
+  gap:24px}
+.hero-visual {
+  aspect-ratio:1/1.17}
+.floating-note {
+  left:-10px}
+.hero-cta-group {
+  gap:14px}
+.workflow-layout {
+  gap:40px}
+.signup-layout {
+  gap:30px}
+.stage-card+.stage-card {
+  border-left:0;
+  border-top:1px solid #dfe5e8}
+}
+
+@media(max-width:760px) {
+  .container {
+  padding:0 22px}
+.navbar {
+  padding:0 22px}
+.navbar-inner {
+  height:68px}
+.brand-title {
+  font-size:23px}
+.brand img {
+  width:30px;
+  height:30px}
+.nav-links {
+  display:none}
+.btn-nav-primary {
+  font-size:12px;
+  padding:10px 13px}
+.hero-section {
+  padding-top:35px}
+.hero-container {
+  grid-template-columns:1fr;
+  gap:30px}
+.hero-content {
+  padding:0}
+.eyebrow {
+  font-size:9px;
+  margin-bottom:20px}
+.hero-headline {
+  font-size:38px;
+  letter-spacing:-1.7px}
+.hero-desc {
+  font-size:14px;
+  margin-top:20px}
+.hero-cta-group {
+  gap:20px;
+  margin-top:25px}
+.hero-micro {
+  font-size:10px}
+.hero-visual {
+  aspect-ratio:1.15}
+.hero-visual>img {
+  object-position:60% 50%}
+.floating-note {
+  left:14px;
+  bottom:30px;
+  padding:13px 15px;
+  gap:10px}
+.floating-note strong {
+  font-size:12px}
+.visual-label {
+  top:15px;
+  left:16px;
+  right:16px;
+  font-size:8px}
+.hero-bottom {
+  margin-top:8px;
+  padding:22px 0;
+  align-items:flex-start;
+  flex-direction:column;
+  gap:9px;
+  font-size:10px}
+.hero-bottom span:last-child {
+  font-size:11px}
+.hero-bottom i {
+  padding:0 12px}
+.pipeline-section,.demo-section,.guide-section,.stages-section,.pricing-section,.faq-section,.signup-section {
+  padding:60px 0}
+.section-title {
+  font-size:28px;
+  letter-spacing:-.8px}
+.section-tag {
+  font-size:9px;
+  margin-bottom:13px}
+.section-sub {
+  font-size:13px}
+.section-header {
+  text-align:left;
+  margin-bottom:28px}
+.section-sub {
+  margin:0}
+.editorial-intro {
+  display:block;
+  margin-bottom:27px}
+.editorial-intro .section-sub {
+  margin-top:15px}
+.workflow-layout,.signup-layout {
+  grid-template-columns:1fr;
+  gap:30px}
+.workflow-photo {
+  aspect-ratio:1.4}
+.workflow-steps h3 {
+  font-size:17px}
+.workflow-steps article {
+  padding:20px 0}
+.section-footnote {
+  text-align:left;
+  font-size:10px;
+  line-height:1.8}
+.demo-sandbox {
+  padding:16px}
+.input-columns {
+  gap:16px}
+.col-pane {
+  padding:16px}
+.col-header {
+  align-items:flex-start;
+  gap:8px;
+  flex-wrap:wrap}
+.col-title {
+  font-size:12px}
+.scenario-control-bar {
+  gap:14px}
+.scenario-selector-group {
+  width:100%;
+  display:block}
+.scenario-label {
+  display:block;
+  margin-bottom:8px}
+.scenario-select {
+  width:100%;
+  font-size:12px}
+.demo-actions {
+  justify-content:stretch}
+.demo-actions button {
+  flex:1}
+.results-header {
+  align-items:flex-start;
+  flex-direction:column;
+  gap:10px}
+.status-cards-grid {
+  grid-template-columns:1fr;
+  gap:10px}
+.status-guide-card {
+  display:grid;
+  grid-template-columns:95px 1fr;
+  padding:16px;
+  gap:12px;
+  border-top:1px solid #dfe5e8!important;
+  border-left-width:3px}
+.status-guide-card-desc {
+  font-size:12px}
+.stages-grid,.pricing-grid {
+  grid-template-columns:1fr;
+  gap:16px;
+  border:0;
+  border-radius:0}
+.stage-card,.stage-card.current {
+  border:1px solid #dfe5e8!important;
+  border-radius:9px;
+  padding:26px}
+.stage-card.current {
+  border-color:#b5c9ff!important}
+.pricing-grid {
+  margin-top:24px}
+.pricing-card {
+  padding:26px}
+.faq-q {
+  font-size:14px;
+  align-items:flex-start;
+  gap:8px;
+  padding:21px 0}
+.faq-a {
+  padding:0 0 22px;
+  font-size:13px}
+.signup-story h2 {
+  font-size:29px}
+.signup-story img {
+  max-height:290px;
+  object-fit:cover}
+.signup-box {
+  padding:24px}
+.signup-title {
+  font-size:21px}
+.form-row-2 {
+  grid-template-columns:1fr}
+.footer {
+  font-size:11px}
+.footer-inner {
+  align-items:flex-start;
+  gap:24px}
+.footer-disclaimer {
+  font-size:10px}
+.desktop-break {
+  display:none}
+}
+
+@media(max-width:360px) {
+  .container,.navbar {
+  padding-left:16px;
+  padding-right:16px}
+.hero-headline {
+  font-size:33px}
+.hero-cta-group {
+  gap:12px}
+.btn-hero-main {
+  padding:13px 14px;
+  font-size:12px}
+.hero-text-link {
+  font-size:12px}
+.status-guide-card {
+  grid-template-columns:1fr}
+.signup-box {
+  padding:18px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+  scroll-behavior:auto}
+*,*::before,*::after {
+  animation:none!important;
+  transition:none!important;
+  scroll-behavior:auto!important}
+.pricing-card:hover,.btn-hero-main:hover,.btn-nav-primary:hover,.btn-compare:hover,.btn-submit-signup:hover {
+  transform:none}
+}
+
+
+/* Comparison controls: keep action labels horizontal at narrow widths. */
+.demo-alpha-link {
+  font-size:12px;
+  color:#265fe8;
+  text-decoration:none;
+  padding:8px 10px;
+  border:1px solid #cedbf3;
+  border-radius:6px;
+  white-space:nowrap}
+.demo-alpha-link span {
+  font-size:10px;
+  color:#667581;
+  margin-left:6px}
+.demo-actions button {
+  white-space:nowrap;
+  min-height:42px}
+
+@media(max-width:760px) {
+  .demo-actions {
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px}
+.demo-alpha-link {
+  grid-column:1/-1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:42px}
+.demo-actions button {
+  width:100%;
+  padding:11px 15px}
+.btn-compare {
+  justify-content:center}
+}
+

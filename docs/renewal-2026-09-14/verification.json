@@ -1,0 +1,151 @@
+{
+  "initial": "✓ 일치 4",
+  "checks": {
+    "sections": 8,
+    "faq": 4,
+    "images": [
+      {
+        "src": "/favicon.png",
+        "loaded": true
+      },
+      {
+        "src": "/assets/renewal-v1/hero-1536.webp",
+        "loaded": true
+      },
+      {
+        "src": "/assets/renewal-v1/workflow-1536.webp",
+        "loaded": true
+      },
+      {
+        "src": "/assets/renewal-v1/collection-1536.webp",
+        "loaded": true
+      }
+    ],
+    "blankVolume": "자료 부족",
+    "blankText": "자료 부족",
+    "unit": "일치",
+    "mass": "자료 부족",
+    "negative": "입력 해석 불가",
+    "anchors": [],
+    "changed": "✓ 일치 3\n✕ 불일치 1",
+    "faqOpen": true,
+    "buttonHeight390": 42,
+    "overflow390": {
+      "viewport": 390,
+      "scroll": 390,
+      "offenders": []
+    },
+    "buttonHeight320": 42,
+    "overflow320": {
+      "viewport": 320,
+      "scroll": 320,
+      "offenders": []
+    },
+    "buttonHeight768": 42,
+    "overflow768": {
+      "viewport": 768,
+      "scroll": 768,
+      "offenders": []
+    },
+    "signupSuccessVisible": true,
+    "signupText": "사전 신청이 정상적으로 접수되었습니다. 새로운 기능이 출시되면 가장 먼저 안내해 드리겠습니다.",
+    "signupErrorVisible": true,
+    "signupErrorText": "네트워크 연결 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+    "reducedMotion": "auto"
+  },
+  "scenarios": [
+    {
+      "id": "S01",
+      "results": [
+        "일치",
+        "일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S02",
+      "results": [
+        "일치",
+        "불일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S03",
+      "results": [
+        "불일치",
+        "일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S04",
+      "results": [
+        "일치",
+        "일치",
+        "누락",
+        "일치"
+      ]
+    },
+    {
+      "id": "S05",
+      "results": [
+        "일치",
+        "일치",
+        "일치",
+        "불일치"
+      ]
+    },
+    {
+      "id": "S06",
+      "results": [
+        "일치",
+        "일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S07",
+      "results": [
+        "일치",
+        "일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S08",
+      "results": [
+        "불일치",
+        "불일치",
+        "일치",
+        "일치"
+      ]
+    },
+    {
+      "id": "S09",
+      "results": [
+        "일치",
+        "일치",
+        "자료 부족",
+        "일치"
+      ]
+    },
+    {
+      "id": "S10",
+      "results": [
+        "일치",
+        "입력 해석 불가",
+        "일치",
+        "일치"
+      ]
+    }
+  ],
+  "errors": [],
+  "signupScope": "Mocked responses only. No submission to real server or database.",
+  "assertions": "PASS"
+}

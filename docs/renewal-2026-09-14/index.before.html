@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <title>Formu (포뮤) — 향을 만드는 일에 집중하도록</title>
+  <title>Formu (포뮤) — 원료 엑셀 기반 CHEMP 신고 준비 및 라벨 초안 정리 도구</title>
   <meta name="description" content="포뮤는 디퓨저·방향제 브랜드의 제품 정보와 라벨 내용을 비교하는 도구를 개발하고 있습니다. 샘플에서 용량이나 문구를 바꾸고 달라진 항목을 직접 확인해 보세요." />
 
   <!-- Pretendard Modern Sans-Serif Font -->
@@ -523,7 +523,6 @@
     }
 
   </style>
-<link rel="stylesheet" href="/assets/renewal-v1/renewal.css" />
 </head>
 <body>
 
@@ -535,19 +534,20 @@
       <a href="/" class="brand" aria-label="Formu 홈">
         <img src="/favicon.png" alt="Formu 로고" />
         <span class="brand-title">Formu</span>
-        <span class="brand-badge">Public preview</span>
+        <span class="brand-badge">규제 출시 SaaS</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#compare-demo" class="nav-link">비교 체험</a></li>
         <li><a href="#guide" class="nav-link">결과 읽는 법</a></li>
-        <li><a href="#stages" class="nav-link">현재와 다음</a></li>
+        <li><a href="#stages" class="nav-link">개발 로드맵</a></li>
         <li><a href="#pricing" class="nav-link">상품 및 가격</a></li>
         <li><a href="#faq" class="nav-link">자주 묻는 질문</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="#signup" class="btn-nav-primary">출시 알림 받기 ↗</a>
+        <a href="/pitch_deck.html" class="nav-link" style="font-size:12.5px;">피치덱 보기 ↗</a>
+        <a href="#compare-demo" class="btn-nav-primary">비교 체험하기</a>
       </div>
     </div>
   </header>
@@ -556,29 +556,136 @@
   <main>
 
     <!-- 1. Hero Section -->
-    <section class="hero-section" aria-labelledby="hero-title"><div class="container hero-container"><div class="hero-content">
-<div class="eyebrow"><span class="live-dot"></span> FOR FRAGRANCE MAKERS</div>
-<h1 class="hero-headline" id="hero-title">향을 만드는 일에<br />집중하도록.<br /><span>자료 정리는 포뮤와.</span></h1>
-<p class="hero-desc">제품 정보부터 라벨 문구까지.<br />디퓨저·방향제 브랜드의 흩어진 자료를 연결하고,<br class="desktop-break" /> 다시 확인할 항목을 찾는 도구를 만듭니다.</p>
-<div class="hero-cta-group"><a href="#compare-demo" class="btn-hero-main">샘플로 직접 비교하기 ↗</a><a href="#pipeline" class="hero-text-link">어떻게 쓰나요? ↓</a></div>
-<p class="hero-micro">지금은 텍스트 비교 체험 단계 · 회원가입 없이 이용</p></div>
-<figure class="hero-visual"><img src="/assets/renewal-v1/hero-1536.webp" srcset="/assets/renewal-v1/hero-768.webp 768w, /assets/renewal-v1/hero-1536.webp 1536w" sizes="(max-width: 760px) 100vw, 55vw" width="1536" height="1024" alt="디퓨저 병과 향료 샘플, 빈 패키지와 제품 자료를 배치한 콘셉트 이미지" loading="eager" decoding="async" fetchpriority="high" /><div class="visual-label"><span>FORMU / WORKSPACE</span><span>01 — From scent to label</span></div><div class="floating-note"><span class="note-icon" aria-hidden="true">≍</span><div><strong>제품 정보와 라벨, 나란히.</strong><span>제품명 · 용량 · 문구 · 문서 버전</span></div></div><figcaption class="image-caption">AI 생성 콘셉트 이미지</figcaption></figure></div>
-<div class="container"><div class="hero-bottom"><span>작은 브랜드의 꼼꼼한 다음 단계</span><span>제품 정보 <i>→</i> 라벨 비교 <i>→</i> 확인할 항목</span></div></div></section>
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="hero-badge-item">환경부 생활화학제품 신고 준비 자동화</span>
+            <span class="hero-badge-item">사전 점검 보조 도구 · 규제 적합성 판정 제외</span>
+          </div>
+
+          <h1 class="hero-headline" id="hero-title">
+            원료 엑셀과 기본 제품 정보를 입력하면,<br />
+            CHEMP 신고 준비 항목과 라벨 초안을 정리합니다.
+          </h1>
+
+          <p class="hero-desc">
+            포뮤(Formu)는 1인 디퓨저·방향제 브랜드를 위한 신고 준비 자동화 도구입니다. 원료 엑셀과 제품 기본 정보를 입력하면, 화학제품관리시스템(CHEMP) 제출용 배합비율표 초안과 라벨 표시 항목 초안을 빠르게 정리하여 행정사 의뢰 전 사전 점검 비용과 인쇄 착오 리스크를 줄여드립니다.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#pipeline" class="btn-primary">
+              신고 준비 3단계 흐름 보기 ➔
+            </a>
+            <a href="#pricing" class="btn-secondary">
+              서비스 요금제 안내
+            </a>
+          </div>
+
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>CHEMP 제출용 배합비율표 초안 정리</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>알레르기 유발성분 25종 및 라벨 표시 항목 초안</span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">✓</span>
+              <span>100% 브라우저 로컬 연산 (원료 정보 서버 전송 없음)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 1-B. Core Workflow Pipeline Section (Input -> Process -> Output) -->
-    <section class="pipeline-section" id="pipeline" aria-labelledby="pipeline-heading"><div class="container">
-<div class="editorial-intro"><div><div class="section-tag">01 / THE WORKFLOW</div><h2 class="section-title" id="pipeline-heading">한 제품의 정보가,<br />같은 이야기를 하도록.</h2></div><p class="section-sub">제품 정보표에서는 200mL, 라벨 시안에서는 150mL.<br />옮겨 적는 사이 생긴 차이를 나란히 놓고 확인하세요.</p></div>
-<div class="workflow-layout"><figure class="workflow-photo"><img src="/assets/renewal-v1/workflow-1536.webp" srcset="/assets/renewal-v1/workflow-768.webp 768w, /assets/renewal-v1/workflow-1536.webp 1536w" sizes="(max-width: 760px) 100vw, 55vw" width="1536" height="1024" alt="제품 정보표와 빈 라벨, 향료 병을 가지런히 배치한 콘셉트 이미지" loading="lazy" decoding="async" /><figcaption>서로 다른 자료를, 하나의 기준으로.</figcaption></figure><div class="workflow-steps">
-<article><span class="step-number">01</span><div><h3>기준이 될 정보를 넣으세요.</h3><p>제품명, 용량, 주의 문구, 문서 버전을 입력합니다. 샘플을 그대로 사용해도 됩니다.</p></div></article>
-<article><span class="step-number">02</span><div><h3>라벨 내용을 나란히 비교하세요.</h3><p>인쇄할 라벨의 텍스트를 넣고 비교하세요. 200mL와 0.2L처럼 같은 용량은 단위를 맞춰 확인합니다.</p></div></article>
-<article><span class="step-number">03</span><div><h3>다른 부분부터 다시 확인하세요.</h3><p>일치, 불일치, 누락과 함께 이유를 표시합니다. 기준 자료가 없으면 자료 부족으로 안내합니다.</p></div></article><a class="hero-text-link" href="#compare-demo">내 손으로 샘플 바꿔보기 ↗</a></div></div><p class="section-footnote">현재 체험은 입력한 텍스트의 비교입니다. 파일 자동 추출과 신고 준비 서식 초안은 개발 예정 기능입니다.</p></div></section>
+    <section class="pipeline-section" id="pipeline" aria-labelledby="pipeline-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">신고 준비 자동화 흐름</div>
+          <h2 class="section-title" id="pipeline-heading">신고 준비 자동화 3단계 흐름</h2>
+          <p class="section-sub">
+            원료 엑셀과 기본 정보를 바탕으로 서식 초안을 정리하며, 규제 적합/부적합 판정이 아닌 '확인 필요·자료 부족' 안내를 제공합니다.
+          </p>
+        </div>
+
+        <div class="pipeline-grid">
+          <!-- Step 1: Input -->
+          <div class="pipeline-card">
+            <div class="pipeline-step-badge">STEP 1 · 사용자 입력</div>
+            <h3 class="pipeline-title">입력 자료 제공</h3>
+            <p class="pipeline-desc">브랜드가 보유한 원료 사양서와 제품 기본 정보 입력</p>
+            <ul class="pipeline-list">
+              <li><strong>원료 엑셀:</strong> 성분명, CAS 번호, 배합비율(%)</li>
+              <li><strong>기본 제품 정보:</strong> 제품명, 용량, 품목, 제형</li>
+              <li><strong>제조·판매자:</strong> 상호, 주소, 연락처</li>
+              <li><strong>공급사 자료:</strong> 원료사 MSDS 보유 여부 체크</li>
+            </ul>
+          </div>
+
+          <!-- Step 2: Processing -->
+          <div class="pipeline-card highlight">
+            <div class="pipeline-step-badge highlight">STEP 2 · 시스템 자동 점검</div>
+            <h3 class="pipeline-title">규제 기준 대조 점검</h3>
+            <p class="pipeline-desc">공공데이터 기준 대조 및 배합비·누락 항목 점검</p>
+            <ul class="pipeline-list">
+              <li><strong>필수 항목 점검:</strong> 빠진 항목 및 배합비 합계 정합성 검토</li>
+              <li><strong>공공데이터 대조:</strong> 알레르기 25종(식약처 고시) 및 CHEMP 필수 항목</li>
+              <li><strong>상태 분류:</strong> 확인 필요 / 자료 부족 / 전문가 확인 필요</li>
+              <li style="color:#EF4444; font-weight:700;">* 규제 적합성·부적합 판정은 하지 않습니다.</li>
+            </ul>
+          </div>
+
+          <!-- Step 3: Output -->
+          <div class="pipeline-card">
+            <div class="pipeline-step-badge success">STEP 3 · 사용자 획득 산출물</div>
+            <h3 class="pipeline-title">신고 준비 리포트 초안</h3>
+            <p class="pipeline-desc">행정사 의뢰 전 사전 점검용 핵심 산출물 확보</p>
+            <ul class="pipeline-list">
+              <li><strong>CHEMP 제출용 배합비율표 초안:</strong> 엑셀 다운로드</li>
+              <li><strong>라벨 표시 항목 초안:</strong> 필수 기재사항 텍스트 정리</li>
+              <li><strong>누락 자료 리스트:</strong> 보완 필요한 항목 사전 안내</li>
+              <li><strong>사용자 직접 진행:</strong> 자료 보완 후 신고는 본인이 진행</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Public Data Sources Strip -->
+        <div class="public-data-strip">
+          <div class="pds-title">🏛️ 탑재 공공데이터 기준 및 적용 단계</div>
+          <div class="pds-grid">
+            <div class="pds-item">
+              <strong>알레르기 유발성분 25종 목록</strong>
+              <span>첫 MVP 정적 목록 탑재 · 식약처 고시 기준</span>
+            </div>
+            <div class="pds-item">
+              <strong>CHEMP 신고 필수 항목 체크리스트</strong>
+              <span>첫 MVP 정적 목록 탑재 · 기후에너지환경부 기준</span>
+            </div>
+            <div class="pds-item">
+              <strong>식약처 화장품 원료 DB (약 2만 건)</strong>
+              <span>2단계 공개 API 연동 예정 · data.go.kr</span>
+            </div>
+            <div class="pds-item">
+              <strong>지정 시험검사기관 6곳 안내</strong>
+              <span>참고 정보 제공 · 한국환경산업기술원(KEITI) 안내</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- 2. Interactive Comparison Demo Section -->
     <section class="demo-section" id="compare-demo" aria-labelledby="demo-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">02 / TRY FORMU</div>
-          <h2 class="section-title" id="demo-heading">한 글자, 한 숫자. 직접 바꿔보세요.</h2><p class="section-sub">합성 샘플로 제품 정보와 라벨을 비교합니다.<br />값을 바꾼 뒤 ‘비교 실행’을 눌러 달라진 결과를 확인하세요.</p>
+          <div class="section-tag">보조 정합성 확인 모듈</div>
+          <h2 class="section-title" id="demo-heading">보조 기능 · 텍스트 정합성 확인 모듈</h2>
+          <p class="section-sub">
+            <span style="display:inline-block; font-size:11.5px; font-weight:800; background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE; padding:2px 8px; border-radius:9999px; margin-right:6px;">합성자료 기반 시연</span>본 모듈은 리포트 생성 전 사양서와 라벨 시안 텍스트 간 오기재를 점검하는 보조 모듈입니다. (규제 적합성 판정 제외)
+          </p>
         </div>
 
         <div class="demo-sandbox">
@@ -602,7 +709,7 @@
             </div>
 
             <div class="demo-actions">
-              <a href="/compare_v2.html" class="demo-alpha-link">엑셀 비교 시연 <span>합성 샘플 · 별도 페이지 ↗</span></a>
+              <a href="/compare_v2.html" class="btn-reset" style="text-decoration:none; background:#EFF6FF; border-color:#BFDBFE; color:var(--primary); font-weight:800; display:inline-flex; align-items:center; gap:6px;"><span style="font-size:10.5px; font-weight:800; background:#DBEAFE; color:#1E40AF; padding:2px 6px; border-radius:3px;">합성자료 기반 시연</span>✨ v2 엑셀 드롭 버전 ➔</a>
               <button type="button" class="btn-reset" onclick="resetDemoInputs()">초기화</button>
               <button type="button" class="btn-compare" id="btnRunCompare" onclick="runComparison()">
                 비교 실행하기 ➔
@@ -695,13 +802,13 @@
               <div class="results-title">
                 <span>항목별 비교 결과</span>
               </div>
-              <div class="results-stats-row" id="summaryChips" aria-live="polite">
+              <div class="results-stats-row" id="summaryChips">
                 <span class="summary-chip" style="background:#F1F5F9; color:#475569;">비교 대기 중</span>
               </div>
             </div>
 
             <!-- Table for Desktop & Tablet -->
-            <div class="results-table-wrap" tabindex="0" role="region" aria-label="비교 결과 표, 작은 화면에서는 좌우로 스크롤하세요">
+            <div class="results-table-wrap">
               <table class="results-table" aria-label="제품 정보와 라벨 비교 결과">
                 <thead>
                   <tr>
@@ -731,10 +838,10 @@
     <section class="guide-section" id="guide" aria-labelledby="guide-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">03 / READ THE RESULT</div>
-          <h2 class="section-title" id="guide-heading">차이를 찾고, 다음 확인으로.</h2>
+          <div class="section-tag">결과 상태 정의</div>
+          <h2 class="section-title" id="guide-heading">결과를 읽는 5가지 상태</h2>
           <p class="section-sub">
-            색상과 상태 이름, 비교 근거를 함께 표시합니다. 정보가 부족한 항목은 확인할 수 없다고 안내합니다.
+            상태는 단순 색상뿐만 아니라 명확한 텍스트와 근거 이유로 표시됩니다.
           </p>
         </div>
 
@@ -791,10 +898,10 @@
     <section class="stages-section" id="stages" aria-labelledby="stages-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">04 / NOW & NEXT</div>
-          <h2 class="section-title" id="stages-heading">지금 할 수 있는 일.<br />그리고 준비하는 일.</h2>
+          <div class="section-tag">기능 범위 및 로드맵</div>
+          <h2 class="section-title" id="stages-heading">현재 기능과 개발 예정 기능</h2>
           <p class="section-sub">
-            텍스트 비교부터 시작합니다. 파일 대조와 신고 준비 자료 정리는 이후 단계에서 제공할 계획입니다.
+            포뮤는 단계별로 검증된 기능만 제공하며, 아직 지원하지 않는 기능을 지원하는 것처럼 표시하지 않습니다.
           </p>
         </div>
 
@@ -822,13 +929,13 @@
           </div>
 
           <div class="stage-card">
-            <span class="stage-badge next">3단계 · 개발 예정</span>
+            <span class="stage-badge next">3단계 · 유료 출시 단계</span>
             <h3 class="stage-title">신고 준비 자동화 & 서식 초안 정리</h3>
             <ul class="stage-list future">
               <li>원료 엑셀 점검 및 누락 자료 자동 표시</li>
               <li>CHEMP 제출용 배합비율표 초안 정리</li>
               <li>라벨 표시 항목 초안 정리</li>
-              <li>제공 범위와 출시 일정은 검증 후 안내</li>
+              <li>* 단일팩(베타가 99,000원) / 3종 라인업팩(베타가 199,000원)</li>
             </ul>
           </div>
         </div>
@@ -840,10 +947,10 @@
     <section class="pricing-section" id="pricing" aria-labelledby="pricing-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">05 / SIMPLE PLANS</div>
-          <h2 class="section-title" id="pricing-heading">가볍게 체험하고,<br />필요한 만큼 준비하세요.</h2>
+          <div class="section-tag">상품 및 가격</div>
+          <h2 class="section-title" id="pricing-heading">수익모델 — 신고 준비 리포트 중심</h2>
           <p class="section-sub">
-            현재 텍스트 비교는 무료입니다. 아래 유료 상품은 출시 준비 중이며, 가격과 제공 범위는 변경될 수 있습니다.
+            전문가(행정사) 의뢰 전, 신고 준비 자료를 빠르게 정리해주는 합리적 사전 점검 비용
           </p>
         </div>
 
@@ -851,8 +958,8 @@
           <!-- Tier 0: 무료 진단 -->
           <div class="pricing-card">
             <div class="pricing-badge">무료 체험</div>
-            <h3 class="pricing-name">텍스트 비교 체험</h3>
-            <div class="pricing-desc">제품 정보와 라벨 텍스트를 나란히 비교</div>
+            <h3 class="pricing-name">무료 진단</h3>
+            <div class="pricing-desc">기본 제품 정보 및 원료 누락 여부 기초 점검</div>
             <div class="pricing-price-box">
               <div class="pricing-current">
                 <span class="price-val">0</span><span class="price-unit">원</span>
@@ -860,15 +967,15 @@
               <div class="pricing-notice">누구나 바로 이용 가능</div>
             </div>
             <ul class="pricing-features">
-              <li><span>✓</span> 제품명 · 용량 · 문구 · 버전 비교</li>
-              <li><span>✓</span> 용량 단위와 공백 차이 정규화</li>
+              <li><span>✓</span> 기본 제품 정보 입력 점검</li>
+              <li><span>✓</span> 원료 데이터 정합성 기초 체크</li>
               <li><span>✓</span> 화면 내 기초 결과 확인</li>
-            </ul><a class="plan-cta" href="#compare-demo">무료로 비교하기 ↗</a>
+            </ul>
           </div>
 
           <!-- Tier 1: 단일 제품 준비팩 -->
           <div class="pricing-card featured">
-            <div class="pricing-badge featured">출시 준비 중</div>
+            <div class="pricing-badge featured">추천 패키지</div>
             <h3 class="pricing-name">단일 제품 준비팩</h3>
             <div class="pricing-desc">신제품 1종 신고 준비 서류 초안 및 라벨 표시 항목 정리</div>
             <div class="pricing-price-box">
@@ -884,7 +991,7 @@
               <li><span>✓</span> 누락 자료 및 확인 필요 항목 표시</li>
               <li><span>✓</span> CHEMP 제출용 배합비율표 초안 정리</li>
               <li><span>✓</span> 라벨 표시 항목 초안 정리</li>
-            </ul><a class="plan-cta" href="#signup">출시 알림 받기 ↗</a>
+            </ul>
           </div>
 
           <!-- Tier 2: 3종 라인업팩 -->
@@ -898,14 +1005,14 @@
                 <span class="price-val">199,000</span><span class="price-unit">원</span>
                 <span class="price-pill">베타가</span>
               </div>
-              <div class="pricing-notice">검증 예정 가격 · 현재 결제 불가</div>
+              <div class="pricing-notice">개당 약 66,000원 (검증 예정 가격)</div>
             </div>
             <ul class="pricing-features">
               <li><span>✓</span> 동일 베이스 또는 향 변경 3종까지 정리</li>
               <li><span>✓</span> 원료 엑셀 점검 및 누락 자료 표시</li>
               <li><span>✓</span> CHEMP 제출용 배합비율표 초안 (3종)</li>
               <li><span>✓</span> 라벨 표시 항목 초안 (3종)</li>
-            </ul><a class="plan-cta" href="#signup">출시 알림 받기 ↗</a>
+            </ul>
           </div>
         </div>
 
@@ -913,9 +1020,28 @@
         <div style="margin-top:20px; background:#F8FAFC; border:1px solid var(--border-subtle); border-radius:8px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
           <div>
             <strong style="color:var(--text-main); font-size:14px;">전문가 검토 연계형 (출시 예정 / 별도 견적)</strong>
-            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">파트너와 검토 범위가 확정되면 이용 방법과 비용을 별도로 안내합니다.</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">소프트웨어 초안 정리에 공인 행정사 파트너의 실무 검토 메모를 결합한 옵션 (* 행정사 파트너 확정 전까지 고정가 표시 금지)</div>
           </div>
           <span style="font-size:12px; font-weight:800; color:var(--primary); background:#EFF6FF; padding:4px 10px; border-radius:4px; border:1px solid #BFDBFE;">파트너십 준비 중</span>
+        </div>
+
+        <!-- Competitive Benchmark Box with Citations -->
+        <div style="margin-top:24px; background:#FFFFFF; border:1px solid var(--border-subtle); border-radius:8px; padding:18px 22px;">
+          <div style="font-size:13px; font-weight:800; color:var(--text-main); margin-bottom:10px;">대안 비용 및 리스크 비교 (참고 지표)</div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; font-size:12px; line-height:1.5;">
+            <div style="background:var(--bg-subtle); padding:12px; border-radius:6px; border:1px solid var(--border-subtle);">
+              <strong style="color:var(--text-main);">행정사 직접 의뢰: 건당 35만~60만원</strong><br />
+              <span style="color:var(--text-muted);">비용 부담 및 피드백 1~2주 소요 (출처: 인증쏙 injeungssok.com 기본검토 15만 / 파생 5만 / MSDS 10만)</span>
+            </div>
+            <div style="background:var(--bg-subtle); padding:12px; border-radius:6px; border:1px solid var(--border-subtle);">
+              <strong style="color:var(--text-main);">CHEMP 반려 시: 출시 지연 3~4주</strong><br />
+              <span style="color:var(--text-muted);">서류 반려 시 일정 지연으로 시즌 적기 출시 실패 및 재고 적체</span>
+            </div>
+            <div style="background:var(--bg-subtle); padding:12px; border-radius:6px; border:1px solid var(--border-subtle);">
+              <strong style="color:var(--text-main);">라벨 오기재 폐기: 150만~300만원 손실</strong><br />
+              <span style="color:var(--text-muted);">오표기로 인한 단상자·라벨 전량 폐기 및 재인쇄비 이중 지출 (내부 추정 참고 지표, 확정 수치 아님)</span>
+            </div>
+          </div>
         </div>
 
         <div class="pricing-bottom-note" style="margin-top:20px;">
@@ -928,38 +1054,50 @@
     <section class="faq-section" id="faq" aria-labelledby="faq-heading">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">06 / GOOD TO KNOW</div>
+          <div class="section-tag">자주 묻는 질문</div>
           <h2 class="section-title" id="faq-heading">자주 묻는 질문</h2>
         </div>
 
         <div class="faq-grid">
-          <details class="faq-card"><summary class="faq-q">
+          <div class="faq-card">
+            <div class="faq-q">
               <span class="faq-q-icon">Q.</span>
               <span>이 도구로 정부 기관 신고가 자동으로 완료되나요?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-a">
+            </div>
+            <div class="faq-a">
               아닙니다. 현재 도구는 기준 제품 정보와 라벨 인쇄 텍스트 사이의 오타, 누락, 단위 차이를 사전에 찾아내는 '텍스트 비교 도구'입니다. 정부 기관 신고나 법적 적합성 판정은 제공하지 않습니다.
-            </div></details>
+            </div>
+          </div>
 
-          <details class="faq-card"><summary class="faq-q">
+          <div class="faq-card">
+            <div class="faq-q">
               <span class="faq-q-icon">Q.</span>
               <span>입력한 우리 브랜드의 제품 정보가 서버에 저장되나요?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-a">
-              비교 체험에 입력한 제품 정보는 브라우저 안에서 계산하며 서버로 전송하지 않습니다. 출시 알림을 신청할 때 입력하는 이름·이메일·브랜드·품목·메시지는 신청 접수를 위해 서버로 전송됩니다.
-            </div></details>
+            </div>
+            <div class="faq-a">
+              저장되지 않습니다. 상단의 비교 체험 기능은 100% 방문자의 웹 브라우저 메모리 안에서만 계산되며, 어떤 입력값도 외부 서버나 분석 도구로 전송되지 않습니다.
+            </div>
+          </div>
 
-          <details class="faq-card"><summary class="faq-q">
+          <div class="faq-card">
+            <div class="faq-q">
               <span class="faq-q-icon">Q.</span>
               <span>실제 PDF 파일이나 엑셀 파일은 언제 비교해 볼 수 있나요?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-a">
+            </div>
+            <div class="faq-a">
               현재 파일 업로드 및 자동 추출 기능은 개발 단계(2단계)에 있습니다. 파일 업로드 버전이 준비되면 사전신청을 남겨주신 분들께 가장 먼저 안내해 드릴 예정입니다.
-            </div></details>
+            </div>
+          </div>
 
-                    <details class="faq-card"><summary class="faq-q">
+                    <div class="faq-card">
+            <div class="faq-q">
               <span class="faq-q-icon">Q.</span>
               <span>정식 서비스 이용 가격은 얼마인가요?</span>
-            <span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-a">
-              현재 비교 체험은 무료입니다. 단일 제품 준비팩 99,000원, 3종 라인업팩 199,000원은 검증 예정 베타 가격이며 결제는 제공하지 않습니다. 유료 상품의 기능 범위와 정식 가격은 출시 시 안내합니다.
-            </div></details>
+            </div>
+            <div class="faq-a">
+              '단일 제품 준비팩'은 정가 129,000원(베타가 99,000원), '3종 라인업팩'은 정가 249,000원(베타가 199,000원)입니다. 원료 엑셀 점검, 누락 자료 표시, CHEMP 제출용 배합비율표 초안 및 라벨 표시 항목 초안이 제공됩니다. 전문가 검토 연계형은 행정사 파트너 확정 후 별도 견적으로 출시될 예정입니다.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -967,12 +1105,12 @@
     <!-- 7. Waiting List / Pre-signup Section -->
     <section class="signup-section" id="signup" aria-labelledby="signup-heading">
       <div class="container">
-        <div class="signup-layout"><div class="signup-story"><div class="section-tag">07 / KEEP IN TOUCH</div><h2>다음 제품을 준비할 때,<br />포뮤도 함께.</h2><p>파일 비교와 자료 정리 기능의<br />다음 소식을 받아보세요.</p><img src="/assets/renewal-v1/collection-1536.webp" srcset="/assets/renewal-v1/collection-768.webp 768w, /assets/renewal-v1/collection-1536.webp 1536w" sizes="(max-width: 760px) 100vw, 55vw" width="1536" height="1024" alt="서로 다른 크기의 향 제품 병과 빈 패키지를 배치한 콘셉트 이미지" loading="lazy" decoding="async" /></div><div class="signup-box">
+        <div class="signup-box">
           <div class="signup-header">
-            <h2 class="signup-title" id="signup-heading">출시 소식을 받아보세요.</h2>
+            <h2 class="signup-title" id="signup-heading">기능 출시 알림 및 사전 신청</h2>
             <p class="signup-desc">
               실제 엑셀·PDF 파일 업로드 비교 기능이 준비되면 가장 먼저 알려드립니다.<br />
-              자료 정리 과정에서 불편했던 점도 함께 남겨주세요.
+              1인 디퓨저·방향제 브랜드의 피드백을 전달해 주시면 개발에 우선 반영합니다.
             </p>
           </div>
 
@@ -980,11 +1118,11 @@
             <div class="form-row-2">
               <div class="form-group">
                 <label for="applicantName" class="field-label">대표자명 / 담당자명</label>
-                <input type="text" id="applicantName" name="name" autocomplete="name" class="input-text" placeholder="홍길동" required />
+                <input type="text" id="applicantName" name="name" class="input-text" placeholder="홍길동" required />
               </div>
               <div class="form-group">
                 <label for="applicantEmail" class="field-label">이메일 주소</label>
-                <input type="email" id="applicantEmail" name="email" autocomplete="email" class="input-text" placeholder="example@brand.com" required />
+                <input type="email" id="applicantEmail" name="email" class="input-text" placeholder="example@brand.com" required />
               </div>
             </div>
 
@@ -1013,17 +1151,13 @@
               출시 알림 사전 신청하기
             </button>
 
-            <div id="signupStatusMsg" class="signup-msg" role="status" aria-live="polite"></div>
+            <div id="signupStatusMsg" class="signup-msg"></div>
 
             <div class="signup-subtext">
-              무료 신청 · 결제 없음<br />
-              <span style="display:inline-block; margin-top:4px; font-size:11px; color:var(--text-muted); line-height:1.5;">
-                * 수집 항목: 이름, 이메일, 브랜드명, 품목, 메시지 | 목적: 신규 기능 출시 알림 및 서비스 안내<br />
-                * 보유 기간: 서비스 정식 출시 후 1년 또는 신청자 삭제 요청 시 즉시 파기 (문의: privacy@formu.kr)
-              </span>
+              * 무료 사전 신청이며, 결제 기능은 포함되어 있지 않습니다.
             </div>
           </form>
-        </div></div>
+        </div>
       </div>
     </section>
 
@@ -1039,7 +1173,7 @@
       </div>
 
       <div class="footer-disclaimer">
-        <div>© 2026 Formu (포뮤) · <a href="/pitch_deck.html">프로젝트 소개 ↗</a></div>
+        <div>© 2026 Formu (포뮤)</div>
         <div style="margin-top: 4px;">
           Formu는 이용자가 직접 정보를 확인하고 정리하도록 돕는 소프트웨어를 개발하고 있습니다. 행정기관 제출 서류 작성이나 법적 책임 승인은 제공하지 않습니다.
         </div>
@@ -1156,7 +1290,7 @@
     function compareVolumeField(baseRaw, labelRaw, baseNoData) {
       if (baseNoData || baseRaw === null || String(baseRaw).trim() === '') {
         if (labelRaw === null || String(labelRaw).trim() === '') {
-          return { status: '자료 부족', reason: '기준과 라벨 모두 용량 정보가 없어 비교할 수 없습니다.' };
+          return { status: '일치', reason: '기준과 라벨 모두 용량 정보가 비어 있습니다.' };
         }
         return { status: '자료 부족', reason: '기준 정보가 없어 라벨 용량의 정합성을 판정할 수 없습니다.' };
       }
@@ -1214,7 +1348,7 @@
       const tLabel = normalizeText(labelRaw);
 
       if (tBase === null && tLabel === null) {
-        return { status: '자료 부족', reason: `기준과 라벨 모두 ${fieldName} 자료가 없어 비교할 수 없습니다.` };
+        return { status: '일치', reason: `기준과 라벨 모두 ${fieldName} 항목이 비어 있습니다.` };
       }
       if (tBase === null) {
         return { status: '자료 부족', reason: `기준 ${fieldName} 자료가 없어 라벨 내용의 정합성을 판정할 수 없습니다.` };
@@ -1416,7 +1550,6 @@
         msg.className = 'signup-msg error';
         msg.innerText = '네트워크 연결 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
       } finally {
-        msg.style.display = 'block';
         btn.disabled = false;
         btn.innerText = '출시 알림 사전 신청하기';
       }
