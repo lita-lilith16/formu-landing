@@ -1,0 +1,64 @@
+{
+  "checks": {
+    "sections": 8,
+    "faq": 4,
+    "images": [],
+    "anchors": [],
+    "blank": "자료 부족",
+    "mass": "자료 부족"
+  },
+  "signup": "Mocked success and error; no live submissions",
+  "deck": "10 slides, navigation and 320/390/768 overflow pass",
+  "print": [
+    {
+      "id": "slide-1",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-2",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-3",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-4",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-5",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-6",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-7",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-8",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-9",
+      "height": 720,
+      "scroll": 720
+    },
+    {
+      "id": "slide-10",
+      "height": 720,
+      "scroll": 720
+    }
+  ]
+}

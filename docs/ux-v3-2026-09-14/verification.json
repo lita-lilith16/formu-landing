@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checks": [
+    "guided start/change/compare/correct",
+    "custom unit equivalence",
+    "optional version excluded",
+    "draft survives example exploration",
+    "escaped input",
+    "all five state examples",
+    "keyboard tabs",
+    "320 and 390 viewport overflow",
+    "no page errors"
+  ],
+  "errors": []
+}

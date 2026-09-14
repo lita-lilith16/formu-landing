@@ -1,0 +1,10 @@
+# New hero photograph
+
+Built-in image_gen tool used. Model version is not selectable or exposed by this interface; GPT2.5 execution is not asserted.
+Generated source copied to hero-source.png. Website versions: public/assets/atelier-v4/worktable-768.webp and worktable-1536.webp. WebP output is resized/encoded from the same source; no compositing edits. Website caption and alt explicitly identify an AI concept image.
+
+## Prompt sent
+
+Use case: photorealistic-natural. Asset type: editorial hero photograph for Formu, a Korean fragrance maker product-information and label-comparison website. Create a single landscape 1536x1024 editorial still life, art-directed like a contemporary independent fragrance design studio rather than stock photography. A very close overhead and slightly oblique composition of one clear squat diffuser glass vessel partly cropped at upper right, warm amber liquid, two black reed sticks, one unbranded matte ultramarine blue bottle cap; two cream paper label proofs with fine unreadable grey typographic lines lie on a pale warm grey work surface; a single human hand enters from lower right holding a cobalt blue pencil poised at a small correction on a label. Natural anatomical hand with five fingers, only one hand. Strong afternoon window light from left, interesting broad shadows, visible physical paper fibers and slightly off-white surface. Restrained modern materials, sophisticated editorial crop, unexpectedly large negative space at left third suitable for overlay UI but NO overlay yourself. Fragrance information paperwork is the real subject, not generic beauty cosmetics glamour. Colors warm ivory, pale stone, amber, carbon black, small cobalt accent. Avoid leaves, flowers, sparkles, gradients, hovering glass, fake logos, legible text, watermarks, extra fingers, excessive objects, CGI plastic look. This is a concept photograph, not an actual customer or team. Compose naturally with intentional asymmetry and quiet confidence.
+
+The logo is code-native SVG geometry, not an image-generation output. See the brand directory and handoff for vector and raster sizes.

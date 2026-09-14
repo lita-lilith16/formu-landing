@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "project": {
+    "name": "formu-landing",
+    "productType": "Fragrance product information and label comparison",
+    "stack": [
+      "Static HTML",
+      "CSS",
+      "Vanilla JavaScript",
+      "Express"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "public/assets/atelier-v4/site.css",
+      "public/assets/atelier-v4/deck.css"
+    ],
+    "components": [],
+    "assets": [
+      "public/assets"
+    ],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "primary": "#3158e8",
+      "ink": "#192d31",
+      "paper": "#f3f3ed",
+      "sage": "#dce8dd",
+      "deep": "#173437"
+    },
+    "typography": {
+      "body": "Pretendard with system fallback",
+      "editorialLatin": "Georgia",
+      "headings": "500 weight, deliberate line breaks"
+    },
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {
+      "duration": "250–500ms",
+      "curve": "cubic-bezier(.2,.8,.2,1)",
+      "reducedMotion": "respected"
+    },
+    "density": "editorial"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Korean instructions and next actions",
+      "Browser-local text comparison",
+      "Separate synthetic examples and actual validation",
+      "Keyboard and mobile support"
+    ],
+    "avoid": [
+      "Unverified approval or compliance claims",
+      "Decorative status-only cards",
+      "File upload promises before implementation"
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2026-09-14",
+      "direction": "Guided start, one field change, result and correction. Label proof with review margin for five states.",
+      "basis": "User requested stepwise action and distinctive restrained Formu design."
+    },
+    {
+      "date": "2026-09-14",
+      "direction": "Whole-site editorial fragrance worktable, glass navigation and controls, solid proofing content. True-vector F symbol with angled terminals.",
+      "basis": "Explicit user request for full renewal, 2027-facing craft, Apple Liquid Glass and Microsoft Fluent inspiration, logo and favicon redesign."
+    }
+  ],
+  "evidence": [],
+  "generatedAt": "2026-09-14T04:15:13.777Z"
+}
